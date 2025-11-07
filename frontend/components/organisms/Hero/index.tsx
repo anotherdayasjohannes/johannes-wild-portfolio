@@ -18,10 +18,10 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <section
-      className={`relative min-h-screen flex items-center justify-center bg-[#0D0D0D] ${className}`}
+      className={`relative min-h-screen flex items-center justify-center bg-[#1A2A40] ${className}`}
     >
       {/* Subtle Background Accent - Static, elegant */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D] via-[#1A2A40]/20 to-[#0D0D0D]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#1A2A40] via-[#253B59] to-[#1A2A40]" />
 
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-6 py-32">
@@ -32,11 +32,8 @@ export const Hero = ({
             <div className="lg:col-span-5">
               <FadeIn>
                 <div className="relative">
-                  {/* Simple border accent */}
-                  <div className="absolute -inset-1 bg-gradient-to-br from-[#42628C] to-[#253B59] rounded-2xl opacity-50" />
-                  
-                  {/* Image Container - Clean */}
-                  <div className="relative rounded-2xl overflow-hidden bg-[#1A2A40]">
+                  {/* Image Container - Clean, no border */}
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                     <div className="relative aspect-square">
                       <Image
                         src={imageUrl}
@@ -127,8 +124,8 @@ export const Hero = ({
       {/* Scroll Indicator - Subtle */}
       {showScrollIndicator && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
-            <div className="w-px h-16 bg-gradient-to-b from-transparent via-[#5A7FB8] to-transparent" />
+          <div className="flex flex-col items-center gap-2 opacity-40 hover:opacity-80 transition-opacity">
+            <div className="w-px h-16 bg-gradient-to-b from-transparent via-[#F2F2F2]/30 to-transparent" />
           </div>
         </div>
       )}
