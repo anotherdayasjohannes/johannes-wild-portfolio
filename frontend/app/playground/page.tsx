@@ -94,16 +94,16 @@ export default function PlaygroundPage() {
           </Card>
         </div>
         <Hero
-          headline="Building Digital Experiences That Matter"
-          tagline="Full-Stack Developer & Digital Strategist specializing in React, Next.js, and modern web technologies"
-          primaryCTA={{ label: 'View Projects', href: '#projects' }}
-          secondaryCTA={{ label: 'Get in Touch', href: '#contact' }}
+          headline="Strategic Thinker. Digital Leader."
+          tagline="Transforming complexity into clarity through analytical thinking and structured execution"
+          primaryCTA={{ label: 'Learn More', href: '#about' }}
+          secondaryCTA={{ label: 'Contact', href: '#contact' }}
           imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
           imageAlt="Professional Portrait"
           stats={[
-            { value: '6+', label: 'Years Experience' },
-            { value: '50+', label: 'Projects Completed' },
-            { value: '25+', label: 'Happy Clients' },
+            { value: '15+', label: 'Years Leadership' },
+            { value: 'Global', label: 'Experience' },
+            { value: 'Strategic', label: 'Approach' },
           ]}
         />
       </div>
