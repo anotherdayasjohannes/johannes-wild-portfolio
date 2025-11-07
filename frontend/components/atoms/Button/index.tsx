@@ -15,31 +15,31 @@ export const Button = ({
   className = '',
   ...props
 }: ButtonProps) => {
-  // Variant styles
+  // Variant styles using Adobe Color palette
   const variants = {
     primary: `
-      bg-[${tokens.colors.brand.primary}] 
-      text-white 
-      hover:opacity-90
-      active:opacity-80
+      bg-[#42628C]
+      text-[#F2F2F2]
+      hover:bg-[#5A7FB8]
+      active:bg-[#253B59]
     `,
     secondary: `
-      bg-[${tokens.colors.background.tertiary}] 
-      text-[${tokens.colors.text.primary}]
-      hover:bg-[${tokens.colors.neutral[700]}]
+      bg-[#253B59]
+      text-[#F2F2F2]
+      hover:bg-[#1A2A40]
     `,
     ghost: `
       bg-transparent 
-      text-[${tokens.colors.text.primary}]
-      hover:bg-[${tokens.colors.background.secondary}]
+      text-[#F2F2F2]
+      hover:bg-[#1A2A40]
     `,
     outline: `
       bg-transparent 
       border 
-      border-[${tokens.colors.border.default}]
-      text-[${tokens.colors.text.primary}]
-      hover:border-[${tokens.colors.brand.primary}]
-      hover:text-[${tokens.colors.brand.primary}]
+      border-[#253B59]
+      text-[#F2F2F2]
+      hover:border-[#42628C]
+      hover:text-[#42628C]
     `,
   };
 
@@ -64,8 +64,8 @@ export const Button = ({
     focus:outline-none 
     focus:ring-2 
     focus:ring-offset-2 
-    focus:ring-[${tokens.colors.brand.primary}]
-    focus:ring-offset-[${tokens.colors.background.primary}]
+    focus:ring-[#42628C]
+    focus:ring-offset-[#0D0D0D]
   `;
 
   const widthStyles = fullWidth ? 'w-full' : '';

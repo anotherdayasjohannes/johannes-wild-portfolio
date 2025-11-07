@@ -29,19 +29,19 @@ export const SkillBar = ({
     }
   }, [percentage, animated]);
 
-  // Color variants
+  // Color variants using Adobe Color palette
   const colors = {
-    blue: 'bg-blue-500',
-    green: 'bg-green-500',
-    purple: 'bg-purple-500',
-    pink: 'bg-pink-500',
+    blue: 'bg-[#42628C]',      // Brand blue (UI/UX-3)
+    green: 'bg-[#10B981]',     // Keep green for variety
+    purple: 'bg-[#8B5CF6]',    // Keep purple for variety
+    pink: 'bg-[#EC4899]',      // Keep pink for variety
   };
 
   return (
     <div className="w-full">
       {/* Label */}
       <div className="flex justify-between items-center mb-2">
-        <Text variant="label" weight="medium" className="text-gray-200">
+        <Text variant="label" weight="medium" className="text-[#F2F2F2]">
           {name}
         </Text>
         {showPercentage && (
@@ -52,7 +52,7 @@ export const SkillBar = ({
       </div>
 
       {/* Progress Bar Background */}
-      <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-[#253B59] rounded-full overflow-hidden">
         {/* Progress Bar Fill */}
         <div
           className={`

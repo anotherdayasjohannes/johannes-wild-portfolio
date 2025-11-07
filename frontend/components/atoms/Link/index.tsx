@@ -9,21 +9,21 @@ export const Link = ({
   className = '',
   ...props
 }: LinkProps) => {
-  // Variant styles
+  // Variant styles using Adobe Color palette
   const variants = {
     default: `
-      text-blue-400 
-      hover:text-blue-300 
+      text-[#42628C]
+      hover:text-[#5A7FB8]
       transition-colors 
       duration-200
     `,
     underline: `
-      text-gray-50 
+      text-[#F2F2F2]
       underline 
-      decoration-blue-400 
+      decoration-[#42628C]
       decoration-2 
       underline-offset-4
-      hover:decoration-blue-300 
+      hover:decoration-[#5A7FB8]
       transition-colors 
       duration-200
     `,
@@ -33,10 +33,10 @@ export const Link = ({
       gap-2 
       px-4 
       py-2 
-      bg-blue-500 
-      text-white 
+      bg-[#42628C]
+      text-[#F2F2F2]
       rounded-lg 
-      hover:bg-blue-600 
+      hover:bg-[#5A7FB8]
       transition-colors 
       duration-200
     `,

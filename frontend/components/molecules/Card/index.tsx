@@ -8,28 +8,28 @@ export const Card = ({
   className = '',
   ...props
 }: CardProps) => {
-  // Variant styles
+  // Variant styles using Adobe Color palette
   const variants = {
     default: `
-      bg-gray-800 
+      bg-[#1A2A40]
       border 
-      border-gray-700
+      border-[#253B59]
     `,
     elevated: `
-      bg-gray-800 
+      bg-[#1A2A40]
       shadow-lg 
-      shadow-black/20
+      shadow-black/40
     `,
     outlined: `
       bg-transparent 
       border-2 
-      border-gray-700
+      border-[#253B59]
     `,
     glass: `
-      bg-gray-800/50 
+      bg-[#1A2A40]/50
       backdrop-blur-sm 
       border 
-      border-gray-700/50
+      border-[#253B59]/50
     `,
   };
 
@@ -41,7 +41,7 @@ export const Card = ({
   };
 
   const hoverStyles = hover
-    ? 'transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl hover:border-blue-500/50'
+    ? 'transition-transform duration-200 hover:scale-[1.02] hover:shadow-xl hover:border-[#42628C]/50'
     : '';
 
   return (

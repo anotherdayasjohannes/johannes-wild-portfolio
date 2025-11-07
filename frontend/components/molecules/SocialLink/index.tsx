@@ -112,8 +112,8 @@ export const SocialLink = ({
         inline-flex 
         items-center 
         gap-2 
-        text-gray-400 
-        hover:text-blue-400 
+        text-[#9CA3AF]
+        hover:text-[#42628C]
         transition-colors 
         duration-200
         group

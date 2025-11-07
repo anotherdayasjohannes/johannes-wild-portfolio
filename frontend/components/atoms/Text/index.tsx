@@ -19,12 +19,12 @@ export const Text = ({
     small: 'text-xs leading-tight',
   };
 
-  // Color styles
+  // Color styles using Adobe Color palette
   const colors = {
-    primary: 'text-gray-50',
-    secondary: 'text-gray-300',
-    tertiary: 'text-gray-400',
-    accent: 'text-blue-400',
+    primary: 'text-[#F2F2F2]',      // UI/UX-4
+    secondary: 'text-[#D1D5DB]',    // Light gray
+    tertiary: 'text-[#9CA3AF]',     // Muted gray
+    accent: 'text-[#42628C]',       // Brand blue
     success: 'text-green-400',
     warning: 'text-yellow-400',
     error: 'text-red-400',

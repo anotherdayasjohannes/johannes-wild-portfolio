@@ -14,7 +14,7 @@ import {
 
 export default function PlaygroundPage() {
   return (
-    <div className="min-h-screen bg-[#0A0A0A]">
+    <div className="min-h-screen bg-[#0D0D0D]">
       {/* Header */}
       <Section spacing="md" background="secondary">
         <div className="text-center">

@@ -39,11 +39,11 @@ export const Heading = ({
     '7xl': 'text-7xl md:text-8xl',
   };
 
-  // Color styles
+  // Color styles using Adobe Color palette
   const colors = {
-    primary: 'text-gray-50',
-    secondary: 'text-gray-300',
-    accent: 'text-blue-400',
+    primary: 'text-[#F2F2F2]',   // UI/UX-4
+    secondary: 'text-[#D1D5DB]',
+    accent: 'text-[#42628C]',    // Brand blue
   };
 
   // Weight styles
