@@ -17,17 +17,20 @@ export const SkillBar = ({
   // Normalize level to percentage
   const percentage = (level / maxLevel) * 100;
 
-  // Animate on mount
+  // Animate on mount and when level changes
   useEffect(() => {
     if (animated) {
+      // Reset to 0 first
+      setAnimatedLevel(0);
+      // Then animate to target percentage after a brief delay
       const timeout = setTimeout(() => {
         setAnimatedLevel(percentage);
-      }, 100);
+      }, 50);
       return () => clearTimeout(timeout);
     } else {
       setAnimatedLevel(percentage);
     }
-  }, [percentage, animated]);
+  }, [percentage, animated, name]); // Added 'name' to force re-animation on item change
 
   // Color variants using Adobe Color palette variations
   const colors = {
