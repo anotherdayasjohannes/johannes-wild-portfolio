@@ -13,6 +13,8 @@ import {
   Section,
   Logo,
   GlassCard,
+  Header,
+  Footer,
 } from '@/components';
 import {
   FadeIn,
@@ -880,7 +882,88 @@ export default function PlaygroundPage() {
         </div>
       </Section>
 
-      {/* Footer */}
+      {/* Header Component */}
+      <Section spacing="lg" background="primary">
+        <Heading level="h2" className="mb-8">
+          Header (Navigation)
+        </Heading>
+        
+        <div className="space-y-8">
+          <Text color="secondary" className="mb-6">
+            Responsive header with sticky behavior, mobile menu, and glassmorphism effect on scroll.
+          </Text>
+
+          {/* Header Preview */}
+          <Card variant="elevated" padding="lg">
+            <Text weight="semibold" className="mb-4">Preview</Text>
+            <div className="relative h-[600px] bg-gradient-to-b from-[#0D0D0D] to-[#1A2A40] rounded-lg overflow-hidden">
+              {/* Mock Header */}
+              <div className="relative">
+                <Header 
+                  sticky={false}
+                  transparent={false}
+                />
+                {/* Mock Content */}
+                <div className="px-6 py-20 text-center">
+                  <Heading level="h1" className="mb-4">Welcome to My Portfolio</Heading>
+                  <Text color="secondary">Scroll to see the sticky header effect</Text>
+                </div>
+                <div className="h-96 flex items-center justify-center">
+                  <Text color="secondary">Scroll content...</Text>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          {/* Features */}
+          <Card variant="outlined" padding="lg">
+            <Heading level="h4" className="mb-4">Features</Heading>
+            <div className="space-y-2">
+              <Text color="secondary">✓ Sticky positioning with blur effect on scroll</Text>
+              <Text color="secondary">✓ Responsive mobile menu</Text>
+              <Text color="secondary">✓ Logo integration</Text>
+              <Text color="secondary">✓ CTA button included</Text>
+              <Text color="secondary">✓ Smooth transitions</Text>
+            </div>
+          </Card>
+        </div>
+      </Section>
+
+      {/* Footer Component */}
+      <Section spacing="lg" background="secondary">
+        <Heading level="h2" className="mb-8">
+          Footer
+        </Heading>
+        
+        <div className="space-y-8">
+          <Text color="secondary" className="mb-6">
+            Comprehensive footer with social links, quick navigation, and contact information.
+          </Text>
+
+          {/* Footer Preview */}
+          <div className="border border-white/10 rounded-lg overflow-hidden">
+            <Footer 
+              companyName="Johannes Wild"
+              tagline="Building digital experiences with passion and precision"
+              showNewsletter={false}
+            />
+          </div>
+
+          {/* Features */}
+          <Card variant="outlined" padding="lg">
+            <Heading level="h4" className="mb-4">Features</Heading>
+            <div className="space-y-2">
+              <Text color="secondary">✓ Social media integration</Text>
+              <Text color="secondary">✓ Quick links navigation</Text>
+              <Text color="secondary">✓ Contact information</Text>
+              <Text color="secondary">✓ Optional newsletter signup</Text>
+              <Text color="secondary">✓ Responsive grid layout</Text>
+            </div>
+          </Card>
+        </div>
+      </Section>
+
+      {/* Design System Footer */}
       <Section spacing="md" background="secondary">
         <div className="text-center">
           <Text color="secondary">

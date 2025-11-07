@@ -9,9 +9,9 @@ export * from './atoms';
 // Molecules (Simple Components)
 export * from './molecules';
 
+// Organisms (Complex Components)
+export * from './organisms';
+
 // Templates (Layouts)
 export * from './templates';
-
-// Organisms will be exported here once built
-// export * from './organisms';
 
