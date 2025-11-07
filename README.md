@@ -104,14 +104,17 @@ npm run dev
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS
 - **CMS**: Sanity.io
 - **Deployment**: Vercel
-- **Animations**: Framer Motion
+- **Animations**: Motion One (5KB) + Auto-Animate (2KB)
 - **Forms**: React Hook Form + Sanity Forms
+- **Fonts**: Geist Sans & Geist Mono
 
 ## 📚 Documentation
 
 - **[Quick Start](docs/QUICKSTART.md)** - Get started in 5 minutes
 - **[Component Docs](docs/COMPONENTS.md)** - Complete component reference
+- **[Animation System](docs/ANIMATIONS.md)** - Modern, lightweight animations
 - **[Design System](DESIGN_SYSTEM.md)** - Architecture overview
+- **[Color Palette](COLOR_PALETTE.md)** - Adobe Color branding
 - **[Progress Report](PROGRESS.md)** - What's been built
 - **[Setup Guide](docs/SETUP.md)** - Initial setup instructions
 - **[Codespaces Guide](CODESPACES_SETUP.md)** - Cloud development setup

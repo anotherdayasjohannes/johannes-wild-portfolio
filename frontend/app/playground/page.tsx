@@ -13,6 +13,16 @@ import {
   Logo,
   GlassCard,
 } from '@/components';
+import {
+  FadeIn,
+  SlideUp,
+  SlideDown,
+  SlideInLeft,
+  SlideInRight,
+  Scale,
+  Stagger,
+  AutoAnimate,
+} from '@/lib/animations';
 
 export default function PlaygroundPage() {
   return (
@@ -34,8 +44,230 @@ export default function PlaygroundPage() {
         </div>
       </Section>
 
-      {/* Buttons */}
+      {/* Animations */}
       <Section spacing="lg">
+        <Heading level="h2" className="mb-8">
+          🎬 Animations (Motion One)
+        </Heading>
+
+        <Card variant="glass" padding="lg" className="mb-8">
+          <Heading level="h4" className="mb-4">
+            What Are These?
+          </Heading>
+          <Text color="secondary" className="mb-4">
+            Modern, lightweight animations using Motion One (5KB). Scroll down to see each animation trigger as it enters the viewport. 
+            All animations are smooth 60fps and work great on mobile!
+          </Text>
+          <div className="flex gap-2">
+            <Text variant="small" color="tertiary">Bundle: Motion One (5KB) + Auto-Animate (2KB) = 7KB total</Text>
+          </div>
+        </Card>
+
+        <div className="space-y-12">
+          {/* FadeIn */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              FadeIn Animation
+            </Text>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <FadeIn>
+                <Card variant="elevated" padding="lg">
+                  <Heading level="h5" className="mb-2">Fade In 1</Heading>
+                  <Text color="secondary" variant="small">
+                    Smoothly fades in when scrolled into view
+                  </Text>
+                </Card>
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <Card variant="elevated" padding="lg">
+                  <Heading level="h5" className="mb-2">Fade In 2</Heading>
+                  <Text color="secondary" variant="small">
+                    With 0.2s delay
+                  </Text>
+                </Card>
+              </FadeIn>
+              <FadeIn delay={0.4}>
+                <Card variant="elevated" padding="lg">
+                  <Heading level="h5" className="mb-2">Fade In 3</Heading>
+                  <Text color="secondary" variant="small">
+                    With 0.4s delay
+                  </Text>
+                </Card>
+              </FadeIn>
+            </div>
+          </div>
+
+          {/* SlideUp */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              SlideUp Animation
+            </Text>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <SlideUp>
+                <GlassCard intensity="medium" padding="lg">
+                  <Heading level="h5" className="mb-2">Slide Up</Heading>
+                  <Text color="secondary" variant="small">
+                    Slides up while fading in
+                  </Text>
+                </GlassCard>
+              </SlideUp>
+              <SlideUp delay={0.2}>
+                <GlassCard intensity="medium" padding="lg">
+                  <Heading level="h5" className="mb-2">Slide Up (Delayed)</Heading>
+                  <Text color="secondary" variant="small">
+                    Perfect for sequential reveals
+                  </Text>
+                </GlassCard>
+              </SlideUp>
+            </div>
+          </div>
+
+          {/* SlideInLeft & SlideInRight */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              SlideIn Animations (Left/Right)
+            </Text>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <SlideInLeft>
+                <Card variant="outlined" padding="lg">
+                  <Heading level="h5" className="mb-2">← Slide In Left</Heading>
+                  <Text color="secondary" variant="small">
+                    Slides in from the left side
+                  </Text>
+                </Card>
+              </SlideInLeft>
+              <SlideInRight>
+                <Card variant="outlined" padding="lg">
+                  <Heading level="h5" className="mb-2">Slide In Right →</Heading>
+                  <Text color="secondary" variant="small">
+                    Slides in from the right side
+                  </Text>
+                </Card>
+              </SlideInRight>
+            </div>
+          </div>
+
+          {/* Scale */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              Scale Animation
+            </Text>
+            <Scale>
+              <GlassCard intensity="strong" padding="lg" className="max-w-2xl mx-auto">
+                <div className="text-center">
+                  <Heading level="h4" className="mb-3">Scale Effect</Heading>
+                  <Text color="secondary" className="mb-4">
+                    Scales up from 90% to 100% while fading in. Great for feature cards!
+                  </Text>
+                  <div className="flex justify-center gap-2">
+                    <Button size="sm" variant="primary">Learn More</Button>
+                    <Button size="sm" variant="ghost">View Demo</Button>
+                  </div>
+                </div>
+              </GlassCard>
+            </Scale>
+          </div>
+
+          {/* Stagger */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              Stagger Animation (Children Animate in Sequence)
+            </Text>
+            <Stagger staggerDelay={0.15}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Card variant="elevated" padding="md">
+                  <div className="text-center">
+                    <Text variant="h4" className="text-3xl mb-2">🎨</Text>
+                    <Text variant="small">Item 1</Text>
+                  </div>
+                </Card>
+                <Card variant="elevated" padding="md">
+                  <div className="text-center">
+                    <Text variant="h4" className="text-3xl mb-2">⚡</Text>
+                    <Text variant="small">Item 2</Text>
+                  </div>
+                </Card>
+                <Card variant="elevated" padding="md">
+                  <div className="text-center">
+                    <Text variant="h4" className="text-3xl mb-2">🚀</Text>
+                    <Text variant="small">Item 3</Text>
+                  </div>
+                </Card>
+                <Card variant="elevated" padding="md">
+                  <div className="text-center">
+                    <Text variant="h4" className="text-3xl mb-2">✨</Text>
+                    <Text variant="small">Item 4</Text>
+                  </div>
+                </Card>
+              </div>
+            </Stagger>
+          </div>
+
+          {/* AutoAnimate (Dynamic List) */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              AutoAnimate (Dynamic Lists - Zero Config!)
+            </Text>
+            <Card variant="glass" padding="lg" className="max-w-2xl mx-auto">
+              <Heading level="h5" className="mb-4">Skill Bars with Auto Animation</Heading>
+              <Text color="secondary" variant="small" className="mb-6">
+                The list automatically animates when items are added, removed, or reordered. No configuration needed!
+              </Text>
+              <AutoAnimate className="space-y-4">
+                <SkillBar name="React & Next.js" level={6} maxLevel={6} color="blue" animated={false} />
+                <SkillBar name="TypeScript" level={5} maxLevel={6} color="purple" animated={false} />
+                <SkillBar name="Tailwind CSS" level={6} maxLevel={6} color="green" animated={false} />
+                <SkillBar name="Motion One" level={5} maxLevel={6} color="pink" animated={false} />
+              </AutoAnimate>
+            </Card>
+          </div>
+
+          {/* Combined Example */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              Combined Example (Multiple Animations)
+            </Text>
+            <SlideUp>
+              <GlassCard hover intensity="medium" padding="lg" className="max-w-3xl mx-auto">
+                <FadeIn delay={0.2}>
+                  <Heading level="h3" className="mb-4 text-center">
+                    Build Something Amazing
+                  </Heading>
+                </FadeIn>
+                <FadeIn delay={0.4}>
+                  <Text color="secondary" className="mb-6 text-center">
+                    Combine animations for sophisticated effects. This card slides up, then the heading and text fade in sequentially.
+                  </Text>
+                </FadeIn>
+                <Stagger staggerDelay={0.1}>
+                  <div className="flex justify-center gap-3">
+                    <Button variant="primary">Get Started</Button>
+                    <Button variant="ghost">Learn More</Button>
+                    <Button variant="outline">View Docs</Button>
+                  </div>
+                </Stagger>
+              </GlassCard>
+            </SlideUp>
+          </div>
+        </div>
+
+        <Card variant="outlined" padding="lg" className="mt-12">
+          <Heading level="h5" className="mb-4">
+            💡 Usage Tips
+          </Heading>
+          <div className="space-y-2 text-sm">
+            <Text color="secondary">• Use <code className="px-2 py-1 bg-[#1A2A40] rounded">FadeIn</code> for simple, subtle reveals</Text>
+            <Text color="secondary">• Use <code className="px-2 py-1 bg-[#1A2A40] rounded">SlideUp</code> for content that needs more impact</Text>
+            <Text color="secondary">• Use <code className="px-2 py-1 bg-[#1A2A40] rounded">Stagger</code> for grids and lists</Text>
+            <Text color="secondary">• Use <code className="px-2 py-1 bg-[#1A2A40] rounded">AutoAnimate</code> for dynamic content (zero config!)</Text>
+            <Text color="secondary">• Add <code className="px-2 py-1 bg-[#1A2A40] rounded">delay</code> prop to create sequences</Text>
+            <Text color="secondary">• All animations are 60fps, GPU-accelerated, and mobile-friendly</Text>
+          </div>
+        </Card>
+      </Section>
+
+      {/* Buttons */}
+      <Section spacing="lg" background="secondary">
         <Heading level="h2" className="mb-8">
           Buttons
         </Heading>
