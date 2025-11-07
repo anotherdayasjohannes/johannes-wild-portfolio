@@ -28,10 +28,10 @@ import {
 export default function PlaygroundPage() {
   // State for AutoAnimate demo
   const [skills, setSkills] = useState([
-    { id: 1, name: 'React & Next.js', level: 6, color: '#42628C' as const },
-    { id: 2, name: 'TypeScript', level: 5, color: '#5A7FB8' as const },
-    { id: 3, name: 'Tailwind CSS', level: 6, color: '#3A5374' as const },
-    { id: 4, name: 'Motion One', level: 5, color: '#6B8CAF' as const },
+    { id: 1, name: 'React & Next.js', level: 6, color: 'blue' as const },
+    { id: 2, name: 'TypeScript', level: 5, color: 'green' as const },
+    { id: 3, name: 'Tailwind CSS', level: 6, color: 'purple' as const },
+    { id: 4, name: 'Motion One', level: 5, color: 'pink' as const },
   ]);
 
   const addSkill = () => {
@@ -44,7 +44,7 @@ export default function PlaygroundPage() {
     ];
     const randomSkill = newSkills[Math.floor(Math.random() * newSkills.length)];
     const randomLevel = Math.floor(Math.random() * 3) + 4;
-    const colors = ['#42628C', '#5A7FB8', '#3A5374', '#6B8CAF'] as const;
+    const colors = ['blue', 'green', 'purple', 'pink'] as const;
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
     
     setSkills([...skills, {
@@ -285,6 +285,42 @@ export default function PlaygroundPage() {
                   No skills yet. Click "Add Skill" to see the animation!
                 </Text>
               )}
+            </Card>
+          </div>
+
+          {/* Scroll-Triggered Skill Bars */}
+          <div>
+            <Text weight="semibold" className="mb-6">
+              Scroll-Triggered Skill Bars
+            </Text>
+            <Card variant="elevated" padding="lg" className="max-w-2xl mx-auto">
+              <Heading level="h5" className="mb-4">My Tech Stack</Heading>
+              <Text color="secondary" variant="small" className="mb-6">
+                Scroll down to see these skill bars fill up automatically when they enter the viewport!
+              </Text>
+              
+              <FadeIn className="space-y-6">
+                <div className="space-y-4">
+                  <Text weight="semibold" className="text-[#F2F2F2]">Frontend Development</Text>
+                  <SkillBar name="React & Next.js" level={6} maxLevel={6} color="blue" animated={true} />
+                  <SkillBar name="TypeScript" level={5} maxLevel={6} color="green" animated={true} />
+                  <SkillBar name="Tailwind CSS" level={6} maxLevel={6} color="purple" animated={true} />
+                </div>
+                
+                <div className="space-y-4">
+                  <Text weight="semibold" className="text-[#F2F2F2]">Animation & Design</Text>
+                  <SkillBar name="Motion One" level={5} maxLevel={6} color="pink" animated={true} />
+                  <SkillBar name="Framer Motion" level={4} maxLevel={6} color="blue" animated={true} />
+                  <SkillBar name="CSS Animations" level={6} maxLevel={6} color="green" animated={true} />
+                </div>
+                
+                <div className="space-y-4">
+                  <Text weight="semibold" className="text-[#F2F2F2]">Backend & Tools</Text>
+                  <SkillBar name="Node.js" level={5} maxLevel={6} color="purple" animated={true} />
+                  <SkillBar name="Sanity CMS" level={5} maxLevel={6} color="pink" animated={true} />
+                  <SkillBar name="Git & GitHub" level={6} maxLevel={6} color="blue" animated={true} />
+                </div>
+              </FadeIn>
             </Card>
           </div>
 
