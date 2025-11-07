@@ -250,7 +250,7 @@ export default function PlaygroundPage() {
             <Card variant="glass" padding="lg" className="max-w-2xl mx-auto">
               <Heading level="h5" className="mb-4">Skill Bars with Auto Animation</Heading>
               <Text color="secondary" variant="small" className="mb-6">
-                Click the buttons below to add, remove, or shuffle items. Watch them animate automatically!
+                Click the buttons to add, remove, or shuffle. Watch the <strong>double animation</strong>: items slide in/out (AutoAnimate) + bars fill up (SkillBar animation)!
               </Text>
               
               {/* Control Buttons */}
@@ -275,7 +275,7 @@ export default function PlaygroundPage() {
                     level={skill.level} 
                     maxLevel={6} 
                     color={skill.color}
-                    animated={false}
+                    animated={true}
                   />
                 ))}
               </AutoAnimate>
