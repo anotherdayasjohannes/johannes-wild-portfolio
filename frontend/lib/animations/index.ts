@@ -64,6 +64,18 @@ export const animationPresets = {
 };
 
 /**
+ * Helper to separate keyframes from options
+ */
+const separateAnimation = (animation: any) => {
+  const { duration, easing, delay, ...keyframes } = animation;
+  const options: any = {};
+  if (duration !== undefined) options.duration = duration;
+  if (easing !== undefined) options.easing = easing;
+  if (delay !== undefined) options.delay = delay;
+  return { keyframes, options };
+};
+
+/**
  * Animate element on scroll into view
  */
 export const animateOnScroll = (
@@ -71,10 +83,11 @@ export const animateOnScroll = (
   animation: any = animationPresets.fadeIn,
   options?: { threshold?: number; amount?: number }
 ) => {
+  const { keyframes, options: animOptions } = separateAnimation(animation);
   return inView(
     selector,
     (entry: any) => {
-      animate(entry.target, animation);
+      animate(entry.target, keyframes, animOptions);
     },
     {
       amount: options?.amount || 0.3,
@@ -90,12 +103,14 @@ export const animateStagger = (
   animation: any = animationPresets.fadeIn,
   staggerDelay: number = 0.1
 ) => {
+  const { keyframes, options: animOptions } = separateAnimation(animation);
   return inView(selector, (entry: any) => {
     const children = Array.from(entry.target.children);
     animate(
       children,
-      animation,
+      keyframes,
       {
+        ...animOptions,
         delay: stagger(staggerDelay),
       }
     );
@@ -111,8 +126,9 @@ export const animateOnScrollProgress = (
   animation: any,
   options?: { target?: Element; offset?: [string, string] }
 ) => {
+  const { keyframes, options: animOptions } = separateAnimation(animation);
   return scroll(
-    animate(selector, animation),
+    animate(selector, keyframes, animOptions),
     {
       target: options?.target,
       offset: options?.offset || ['start end', 'end start'] as any,

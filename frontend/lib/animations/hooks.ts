@@ -7,6 +7,18 @@ import { animate, inView, scroll } from 'motion';
 import { animationPresets } from './index';
 
 /**
+ * Helper to separate keyframes from options
+ */
+const separateAnimation = (animation: any) => {
+  const { duration, easing, delay, ...keyframes } = animation;
+  const options: any = {};
+  if (duration !== undefined) options.duration = duration;
+  if (easing !== undefined) options.easing = easing;
+  if (delay !== undefined) options.delay = delay;
+  return { keyframes, options };
+};
+
+/**
  * Hook to animate element on mount
  */
 export const useAnimateOnMount = (
@@ -20,7 +32,8 @@ export const useAnimateOnMount = (
 
     const timeout = setTimeout(() => {
       if (ref.current) {
-        animate(ref.current, animation);
+        const { keyframes, options } = separateAnimation(animation);
+        animate(ref.current, keyframes, options);
       }
     }, delay * 1000);
 
@@ -43,10 +56,11 @@ export const useAnimateOnScroll = (
     if (!ref.current) return;
 
     const element = ref.current;
+    const { keyframes, options: animOptions } = separateAnimation(animation);
     const controls = inView(
       element,
       () => {
-        animate(element, animation);
+        animate(element, keyframes, animOptions);
       },
       {
         amount: options?.amount || 0.3,
@@ -75,8 +89,9 @@ export const useScrollProgress = (
   useEffect(() => {
     if (!ref.current) return;
 
+    const { keyframes, options: animOptions } = separateAnimation(animation);
     const controls = scroll(
-      animate(ref.current, animation),
+      animate(ref.current, keyframes, animOptions),
       {
         target: ref.current,
         offset: options?.offset || ['start end', 'end start'] as any,
@@ -106,12 +121,14 @@ export const useStagger = (
     if (!ref.current) return;
 
     const element = ref.current;
+    const { keyframes, options: animOptions } = separateAnimation(animation);
     const controls = inView(element, () => {
       const children = Array.from(element.children) as HTMLElement[];
       animate(
         children,
-        animation,
+        keyframes,
         {
+          ...animOptions,
           delay: (index) => index * staggerDelay,
         }
       );
