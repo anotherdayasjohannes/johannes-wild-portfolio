@@ -8,7 +8,7 @@ export const Card = ({
   className = '',
   ...props
 }: CardProps) => {
-  // Variant styles using Adobe Color palette
+  // Variant styles using Adobe Color palette with Apple-style glass effect
   const variants = {
     default: `
       bg-[#1A2A40]
@@ -26,10 +26,12 @@ export const Card = ({
       border-[#253B59]
     `,
     glass: `
-      bg-[#1A2A40]/50
-      backdrop-blur-sm 
+      bg-[#1A2A40]/40
+      backdrop-blur-xl
       border 
-      border-[#253B59]/50
+      border-white/10
+      shadow-lg
+      shadow-black/20
     `,
   };
 

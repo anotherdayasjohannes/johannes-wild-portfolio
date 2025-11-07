@@ -12,3 +12,6 @@ export type { SkillBarProps } from './SkillBar/types';
 export { SocialLink } from './SocialLink';
 export type { SocialLinkProps, SocialPlatform } from './SocialLink/types';
 
+export { GlassCard } from './GlassCard';
+export type { GlassCardProps } from './GlassCard/types';
+

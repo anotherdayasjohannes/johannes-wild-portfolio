@@ -11,6 +11,7 @@ import {
   SocialLink,
   Section,
   Logo,
+  GlassCard,
 } from '@/components';
 
 export default function PlaygroundPage() {
@@ -157,10 +158,77 @@ export default function PlaygroundPage() {
         </div>
       </Section>
 
-      {/* Cards */}
+      {/* Glass Cards (Apple-style) */}
       <Section spacing="lg">
         <Heading level="h2" className="mb-8">
-          Cards
+          Glass Cards (Apple-style Effect) ✨
+        </Heading>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <GlassCard intensity="subtle" padding="lg">
+            <Heading level="h4" className="mb-2">
+              Subtle Glass
+            </Heading>
+            <Text color="secondary" variant="label">
+              Light frosted effect
+            </Text>
+          </GlassCard>
+
+          <GlassCard intensity="medium" padding="lg">
+            <Heading level="h4" className="mb-2">
+              Medium Glass
+            </Heading>
+            <Text color="secondary" variant="label">
+              Balanced blur (default)
+            </Text>
+          </GlassCard>
+
+          <GlassCard intensity="strong" padding="lg">
+            <Heading level="h4" className="mb-2">
+              Strong Glass
+            </Heading>
+            <Text color="secondary" variant="label">
+              Heavy frosted blur
+            </Text>
+          </GlassCard>
+        </div>
+
+        <div className="mb-8">
+          <Text weight="semibold" className="mb-4">
+            Interactive Glass Cards (with hover)
+          </Text>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <GlassCard hover intensity="medium" padding="lg" className="group">
+              <Heading level="h4" className="mb-3">
+                Hover Me! 🎨
+              </Heading>
+              <Text color="secondary" className="mb-4">
+                Watch the glass effect intensify and the card lift on hover.
+              </Text>
+              <div className="flex gap-2">
+                <Button size="sm" variant="primary">Primary</Button>
+                <Button size="sm" variant="ghost">Ghost</Button>
+              </div>
+            </GlassCard>
+
+            <GlassCard hover intensity="medium" padding="lg" className="group">
+              <Heading level="h4" className="mb-3">
+                Skills Preview 📊
+              </Heading>
+              <div className="space-y-3">
+                <SkillBar name="Analytisches Denken" level={6} maxLevel={6} color="blue" animated={false} />
+                <SkillBar name="Teamfähigkeit" level={6} maxLevel={6} color="green" animated={false} />
+                <SkillBar name="Kreativität" level={5} maxLevel={6} color="purple" animated={false} />
+              </div>
+            </GlassCard>
+          </div>
+        </div>
+      </Section>
+
+      {/* Regular Cards */}
+      <Section spacing="lg" background="secondary">
+        <Heading level="h2" className="mb-8">
+          Regular Cards
         </Heading>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
