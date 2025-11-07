@@ -18,3 +18,6 @@ export type { ContainerProps, ContainerSize } from './Container/types';
 export { Link } from './Link';
 export type { LinkProps, LinkVariant } from './Link/types';
 
+export { Logo } from './Logo';
+export type { LogoProps } from './Logo/types';
+

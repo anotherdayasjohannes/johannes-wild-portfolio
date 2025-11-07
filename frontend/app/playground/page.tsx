@@ -10,6 +10,7 @@ import {
   SkillBar,
   SocialLink,
   Section,
+  Logo,
 } from '@/components';
 
 export default function PlaygroundPage() {
@@ -18,6 +19,11 @@ export default function PlaygroundPage() {
       {/* Header */}
       <Section spacing="md" background="secondary">
         <div className="text-center">
+          {/* Logo Showcase */}
+          <div className="flex justify-center mb-8">
+            <Logo width={240} height={74} href="#" />
+          </div>
+          
           <Heading level="h1" gradient>
             Component Playground
           </Heading>
@@ -344,8 +350,46 @@ export default function PlaygroundPage() {
         </div>
       </Section>
 
-      {/* Links */}
+      {/* Logo */}
       <Section spacing="lg" background="secondary">
+        <Heading level="h2" className="mb-8">
+          Logo
+        </Heading>
+
+        <div className="space-y-8">
+          <div>
+            <Text weight="semibold" className="mb-4">
+              Default Size
+            </Text>
+            <div className="flex justify-center p-8 bg-[#1A2A40] rounded-xl">
+              <Logo />
+            </div>
+          </div>
+
+          <div>
+            <Text weight="semibold" className="mb-4">
+              Different Sizes
+            </Text>
+            <div className="flex flex-col items-center gap-6 p-8 bg-[#1A2A40] rounded-xl">
+              <Logo width={160} height={49} />
+              <Logo width={240} height={74} />
+              <Logo width={320} height={99} />
+            </div>
+          </div>
+
+          <div>
+            <Text weight="semibold" className="mb-4">
+              With Link (clickable)
+            </Text>
+            <div className="flex justify-center p-8 bg-[#1A2A40] rounded-xl">
+              <Logo href="/" />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Links */}
+      <Section spacing="lg">
         <Heading level="h2" className="mb-8">
           Links
         </Heading>
