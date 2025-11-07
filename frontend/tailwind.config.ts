@@ -11,19 +11,25 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Dark theme colors matching current site
+        // Adobe Color Palette - UI/UX Theme
+        brand: {
+          primary: "#42628C",    // UI/UX-3 - Main brand
+          secondary: "#253B59",  // UI/UX-2 - Supporting
+          accent: "#5A7FB8",     // Lighter variant
+        },
         dark: {
-          bg: "#1a1a1a",
-          surface: "#2a2a2a",
-          border: "#3a3a3a",
+          bg: "#0D0D0D",         // UI/UX-5 - Main background
+          surface: "#1A2A40",    // UI/UX-1 - Cards
+          elevated: "#253B59",   // UI/UX-2 - Elevated
+          border: "#253B59",     // UI/UX-2 - Borders
           text: {
-            primary: "#ffffff",
-            secondary: "#b0b0b0",
-            muted: "#808080",
+            primary: "#F2F2F2",  // UI/UX-4
+            secondary: "#D1D5DB",
+            muted: "#9CA3AF",
           },
           accent: {
-            primary: "#4a9eff",
-            secondary: "#6b5b95",
+            primary: "#42628C",  // UI/UX-3
+            secondary: "#5A7FB8",
           }
         }
       },

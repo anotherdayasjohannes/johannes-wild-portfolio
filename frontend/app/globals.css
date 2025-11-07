@@ -3,8 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --background: #1a1a1a;
-  --foreground: #ffffff;
+  /* Adobe Color Palette - UI/UX Theme */
+  --color-ui-1: #1A2A40;  /* Dark navy blue */
+  --color-ui-2: #253B59;  /* Medium dark blue */
+  --color-ui-3: #42628C;  /* Brand blue */
+  --color-ui-4: #F2F2F2;  /* Light gray */
+  --color-ui-5: #0D0D0D;  /* Very dark background */
+  
+  --background: #0D0D0D;
+  --foreground: #F2F2F2;
 }
 
 * {
@@ -29,22 +36,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--color-ui-5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3a3a3a;
+  background: var(--color-ui-1);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4a4a4a;
+  background: var(--color-ui-2);
 }
 
 /* Selection styling */
 ::selection {
-  background: #4a9eff;
-  color: #ffffff;
+  background: var(--color-ui-3);
+  color: var(--color-ui-4);
 }
 
 @layer utilities {

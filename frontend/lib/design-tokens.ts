@@ -5,50 +5,50 @@
  */
 
 export const tokens = {
-  // Color Palette
+  // Color Palette (Adobe Color - UI/UX Theme)
   colors: {
     // Brand Colors
     brand: {
-      primary: '#3B82F6',     // Blue - for accents and CTAs
-      secondary: '#8B5CF6',   // Purple - for highlights
-      accent: '#10B981',      // Green - for success states
+      primary: '#42628C',     // UI/UX-3 - Main brand blue for CTAs
+      secondary: '#253B59',   // UI/UX-2 - Supporting dark blue
+      accent: '#5A7FB8',      // Lighter variant for highlights
     },
     
     // Neutral Colors (Dark Theme)
     neutral: {
       50: '#F9FAFB',
-      100: '#F3F4F6',
+      100: '#F2F2F2',         // UI/UX-4
       200: '#E5E7EB',
       300: '#D1D5DB',
       400: '#9CA3AF',
       500: '#6B7280',
       600: '#4B5563',
       700: '#374151',
-      800: '#1F2937',
-      900: '#111827',
-      950: '#030712',
+      800: '#253B59',         // UI/UX-2
+      900: '#1A2A40',         // UI/UX-1
+      950: '#0D0D0D',         // UI/UX-5
     },
     
     // Background
     background: {
-      primary: '#0A0A0A',     // Main background
-      secondary: '#111827',   // Card backgrounds
-      tertiary: '#1F2937',    // Elevated elements
+      primary: '#0D0D0D',     // UI/UX-5 - Main background (very dark)
+      secondary: '#1A2A40',   // UI/UX-1 - Card backgrounds (dark blue)
+      tertiary: '#253B59',    // UI/UX-2 - Elevated elements (medium blue)
     },
     
     // Text
     text: {
-      primary: '#F9FAFB',     // Main text
+      primary: '#F2F2F2',     // UI/UX-4 - Main text (light gray)
       secondary: '#D1D5DB',   // Secondary text
       tertiary: '#9CA3AF',    // Muted text
-      inverse: '#111827',     // Text on light backgrounds
+      inverse: '#0D0D0D',     // Text on light backgrounds
     },
     
     // Borders
     border: {
-      subtle: '#1F2937',
-      default: '#374151',
-      emphasis: '#4B5563',
+      subtle: '#1A2A40',      // UI/UX-1
+      default: '#253B59',     // UI/UX-2
+      emphasis: '#42628C',    // UI/UX-3
     },
     
     // Semantic Colors
@@ -56,7 +56,7 @@ export const tokens = {
       success: '#10B981',
       warning: '#F59E0B',
       error: '#EF4444',
-      info: '#3B82F6',
+      info: '#42628C',        // UI/UX-3 - Using brand color
     },
   },
   
