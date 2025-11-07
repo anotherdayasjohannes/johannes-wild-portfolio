@@ -1,0 +1,277 @@
+# Johannes Wild - Personal Portfolio Project
+
+## Tech Stack
+- **Framework**: Next.js 14.2 (App Router, React 18.3)
+- **Language**: TypeScript 5
+- **Styling**: Tailwind CSS 3.4.1
+- **CMS**: Sanity.io v3.68
+- **Animations**: Framer Motion 11.x
+- **Forms**: React Hook Form 7.x
+- **Deployment**: Vercel
+
+## Project Structure
+```
+johannes-wild-portfolio/
+├── frontend/           # Next.js application (Port 3100)
+│   ├── app/           # Next.js 14 App Router
+│   ├── components/    # React components
+│   ├── lib/           # Utilities & Sanity client
+│   └── public/        # Static assets
+├── studio/            # Sanity Studio CMS (Port 3444)
+│   ├── schemas/       # Content models
+│   └── sanity.config.ts
+└── docs/              # Project documentation
+```
+
+## Port Configuration (No Conflicts!)
+- **Frontend**: http://localhost:3100 (not 3000)
+- **Sanity Studio**: http://localhost:3444 (not 3333)
+- These ports avoid conflicts with other projects (e.g., 3lectrify)
+
+## Development Commands
+```bash
+# Frontend
+cd frontend && npm run dev        # Starts on port 3100
+
+# Sanity Studio
+cd studio && npm run dev          # Starts on port 3444
+
+# Stop all dev servers (if switching projects)
+pkill -f "next dev" && pkill -f "sanity dev"
+```
+
+## Philosophy
+**"Keep it simple first, make it cool later"** ✨
+- Build solid foundation before adding fancy features
+- Performance and accessibility first
+- Progressive enhancement for animations
+- Clean, maintainable code over clever tricks
+
+## Framer Motion Best Practices
+
+### 1. Use Variants for Reusability
+```typescript
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+<motion.div variants={fadeInUp} initial="hidden" animate="visible">
+  Content
+</motion.div>
+```
+
+### 2. Scroll-Triggered Animations
+```typescript
+<motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-100px" }}
+  transition={{ duration: 0.6 }}
+>
+  Appears on scroll
+</motion.div>
+```
+
+### 3. Stagger Children
+```typescript
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+<motion.div variants={container} initial="hidden" animate="visible">
+  {items.map(item => (
+    <motion.div key={item.id} variants={item}>
+      {item.content}
+    </motion.div>
+  ))}
+</motion.div>
+```
+
+### 4. Page Transitions
+```typescript
+// app/layout.tsx or template.tsx
+<AnimatePresence mode="wait">
+  <motion.div
+    key={pathname}
+    initial={{ opacity: 0, x: 20 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -20 }}
+    transition={{ duration: 0.3 }}
+  >
+    {children}
+  </motion.div>
+</AnimatePresence>
+```
+
+### 5. Respect User Preferences
+```typescript
+const shouldReduceMotion = useReducedMotion();
+
+<motion.div
+  animate={shouldReduceMotion ? {} : { scale: 1.05 }}
+  transition={{ duration: 0.3 }}
+>
+  Content
+</motion.div>
+```
+
+## Sanity Integration Patterns
+
+### Client Setup
+```typescript
+// lib/sanity.ts
+import { createClient } from "next-sanity";
+import imageUrlBuilder from "@sanity/image-url";
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: false, // false for fresh data in development
+});
+
+const builder = imageUrlBuilder(client);
+export const urlFor = (source: any) => builder.image(source);
+```
+
+### GROQ Queries
+```typescript
+// Fetch all projects
+const projects = await client.fetch(`
+  *[_type == "project"] | order(featured desc, order asc) {
+    _id,
+    title,
+    slug,
+    description,
+    image,
+    technologies,
+    projectUrl,
+    githubUrl,
+    featured
+  }
+`);
+
+// Fetch single profile
+const profile = await client.fetch(`
+  *[_type == "profile"][0] {
+    _id,
+    name,
+    tagline,
+    heroImage,
+    bio,
+    email,
+    socialLinks
+  }
+`);
+```
+
+### Image Optimization
+```typescript
+import Image from "next/image";
+import { urlFor } from "@/lib/sanity";
+
+<Image
+  src={urlFor(image).width(800).height(600).url()}
+  alt={image.alt || "Image"}
+  width={800}
+  height={600}
+  className="rounded-lg"
+  placeholder="blur"
+  blurDataURL={urlFor(image).width(20).blur(50).url()}
+/>
+```
+
+## Performance Rules
+1. **Use Server Components** by default (Next.js App Router)
+2. **Lazy load components** not in viewport: `dynamic(() => import('./Component'), { loading: () => <Skeleton /> })`
+3. **Optimize images**: Use next/image, specify dimensions, add blur placeholders
+4. **Code splitting**: Dynamic imports for heavy components
+5. **Reduce motion**: Always check `prefers-reduced-motion`
+
+## Content Schemas
+- **profile** (singleton): Personal info, bio, contact, social links
+- **skill**: Skills organized by category, with proficiency levels
+- **experience**: Work history with dates, descriptions, technologies
+- **project**: Portfolio projects with images, tech stack, links
+
+## Styling Guidelines
+- **Dark theme** by default (matching current site aesthetic)
+- **Responsive**: Mobile-first approach with Tailwind breakpoints
+- **Colors**: Use dark theme tokens from tailwind.config.ts
+- **Spacing**: Consistent scale (4, 8, 16, 24, 32px)
+- **Typography**: Clear hierarchy with proper font weights
+
+## Accessibility
+- Semantic HTML (header, nav, main, section, article, footer)
+- ARIA labels for interactive elements
+- Keyboard navigation support
+- Focus states on all interactive elements
+- Alt text for all images
+- Color contrast ratios meet WCAG AA standards
+
+## Code Quality
+- **TypeScript strict mode** enabled
+- **ESLint** configured for Next.js
+- Proper prop types and interfaces
+- Meaningful variable names
+- Comments for complex logic only
+- DRY principle (extract reusable components)
+
+## Git Workflow
+- Clear, descriptive commit messages
+- Feature branches for new work
+- Keep commits focused and atomic
+- Update TODO.md as you complete tasks
+
+## Documentation
+- README.md: Project overview
+- TODO.md: Task tracking
+- docs/SETUP.md: Setup instructions
+- docs/QUICK_REFERENCE.md: Common patterns and commands
+- docs/CONTENT_MIGRATION.md: WordPress content migration guide
+
+## Common Pitfalls to Avoid
+❌ Don't use 'use client' unnecessarily - Server Components are faster
+❌ Don't forget to add `key` props in mapped components
+❌ Don't inline large animations - use variants
+❌ Don't hardcode content - fetch from Sanity
+❌ Don't skip image optimization
+❌ Don't ignore loading states
+❌ Don't forget error boundaries
+
+## When Suggesting Code
+✅ Use Server Components by default
+✅ Add proper TypeScript types
+✅ Include error handling
+✅ Add loading states
+✅ Make it responsive (mobile-first)
+✅ Add meaningful comments
+✅ Follow the project's file structure
+✅ Use existing utility functions from lib/
+✅ Match the dark theme aesthetic
+✅ Consider accessibility
+
+## Helpful Context
+- This is a personal portfolio showcasing Johannes Wild's work
+- Single-page application with smooth scroll sections
+- Dark theme with modern, clean design
+- German language (English translation planned for future)
+- Designed for developers/technical audience
+- Performance and UX are top priorities
+
+
+

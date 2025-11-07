@@ -1,0 +1,618 @@
+# Frontend-Specific Rules - Johannes Wild Portfolio
+
+## Next.js 14 App Router Patterns
+
+### File Structure
+```
+app/
+├── layout.tsx          # Root layout (metadata, fonts, providers)
+├── page.tsx           # Home page (single-page portfolio)
+├── globals.css        # Global styles & Tailwind imports
+└── template.tsx       # (Optional) Page transition wrapper
+
+components/
+├── sections/          # Page sections
+│   ├── HeroSection.tsx
+│   ├── AboutSection.tsx
+│   ├── SkillsSection.tsx
+│   ├── ExperienceSection.tsx
+│   ├── ProjectsSection.tsx
+│   └── ContactSection.tsx
+├── ui/                # Reusable UI components
+│   ├── Button.tsx
+│   ├── Card.tsx
+│   ├── SkillBar.tsx
+│   └── SectionTitle.tsx
+└── layout/            # Layout components
+    ├── Header.tsx
+    ├── Footer.tsx
+    └── Navigation.tsx
+
+lib/
+├── sanity.ts          # Sanity client & queries
+├── utils.ts           # Helper functions
+└── types.ts           # TypeScript types
+```
+
+### Server vs Client Components
+
+**Use Server Components (default) for:**
+- Layout structure
+- Data fetching from Sanity
+- Static content rendering
+- SEO-critical content
+
+**Use Client Components ('use client') for:**
+- Animations (Framer Motion)
+- Interactive elements (forms, buttons with state)
+- Event handlers (onClick, onChange, etc.)
+- Hooks (useState, useEffect, useReducedMotion, etc.)
+- Browser-only APIs
+
+### Example Server Component (Data Fetching)
+```typescript
+// app/page.tsx
+import { client, queries } from '@/lib/sanity';
+import HeroSection from '@/components/sections/HeroSection';
+
+export default async function Home() {
+  // Fetch data on the server
+  const profile = await client.fetch(queries.profile);
+  const projects = await client.fetch(queries.projects);
+  const skills = await client.fetch(queries.skills);
+  const experience = await client.fetch(queries.experience);
+
+  return (
+    <main className="relative">
+      <HeroSection profile={profile} />
+      {/* Pass data to client components as props */}
+    </main>
+  );
+}
+```
+
+### Example Client Component (Animations)
+```typescript
+// components/sections/HeroSection.tsx
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
+
+interface HeroSectionProps {
+  profile: {
+    name: string;
+    tagline: string;
+    heroImage: any;
+  };
+}
+
+export default function HeroSection({ profile }: HeroSectionProps) {
+  return (
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="min-h-screen flex items-center justify-center"
+    >
+      <div className="container mx-auto px-4">
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-5xl md:text-7xl font-bold text-dark-text-primary"
+        >
+          {profile.name}
+        </motion.h1>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-xl md:text-2xl text-dark-text-secondary mt-4"
+        >
+          {profile.tagline}
+        </motion.p>
+      </div>
+    </motion.section>
+  );
+}
+```
+
+## Framer Motion Patterns for Portfolio
+
+### 1. Hero Section with Typewriter Effect
+```typescript
+'use client';
+
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { useEffect } from 'react';
+
+export default function TypewriterText({ text }: { text: string }) {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+  const displayText = useTransform(rounded, (latest) => text.slice(0, latest));
+
+  useEffect(() => {
+    const controls = animate(count, text.length, {
+      type: "tween",
+      duration: 2,
+      ease: "easeInOut",
+    });
+    return controls.stop;
+  }, []);
+
+  return <motion.span>{displayText}</motion.span>;
+}
+```
+
+### 2. Skills Section with Progress Bars
+```typescript
+'use client';
+
+import { motion } from 'framer-motion';
+
+interface Skill {
+  name: string;
+  level: number; // 0-100
+  category: string;
+}
+
+export default function SkillBar({ skill }: { skill: Skill }) {
+  return (
+    <div className="mb-4">
+      <div className="flex justify-between mb-1">
+        <span className="text-dark-text-primary">{skill.name}</span>
+        <span className="text-dark-text-secondary">{skill.level}%</span>
+      </div>
+      <div className="h-2 bg-dark-surface rounded-full overflow-hidden">
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: `${skill.level}%` }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+          className="h-full bg-gradient-to-r from-dark-accent-primary to-dark-accent-secondary"
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+### 3. Projects Grid with Hover Effects
+```typescript
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
+
+export default function ProjectCard({ project }: { project: any }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="bg-dark-surface border border-dark-border rounded-lg overflow-hidden"
+    >
+      <div className="relative h-48 overflow-hidden">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Image
+            src={urlFor(project.image).width(600).height(400).url()}
+            alt={project.title}
+            width={600}
+            height={400}
+            className="object-cover"
+          />
+        </motion.div>
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-dark-text-primary mb-2">
+          {project.title}
+        </h3>
+        <p className="text-dark-text-secondary mb-4">
+          {project.description}
+        </p>
+        <div className="flex gap-2 flex-wrap">
+          {project.technologies.map((tech: string) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-dark-bg text-dark-text-secondary text-sm rounded-full"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+```
+
+### 4. Timeline Animation (Experience)
+```typescript
+'use client';
+
+import { motion } from 'framer-motion';
+
+const timelineVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
+export default function ExperienceTimeline({ experiences }: { experiences: any[] }) {
+  return (
+    <motion.div
+      variants={timelineVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      className="relative"
+    >
+      {/* Vertical line */}
+      <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-dark-border" />
+      
+      {experiences.map((exp) => (
+        <motion.div
+          key={exp._id}
+          variants={itemVariants}
+          className="relative pl-20 pb-12"
+        >
+          {/* Timeline dot */}
+          <div className="absolute left-6 w-5 h-5 rounded-full bg-dark-accent-primary border-4 border-dark-bg" />
+          
+          <div className="bg-dark-surface border border-dark-border rounded-lg p-6">
+            <h3 className="text-xl font-bold text-dark-text-primary">
+              {exp.title}
+            </h3>
+            <p className="text-dark-accent-primary">{exp.company}</p>
+            <p className="text-dark-text-secondary text-sm mt-1">
+              {exp.startDate} - {exp.current ? 'Present' : exp.endDate}
+            </p>
+            <p className="text-dark-text-secondary mt-4">
+              {exp.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+```
+
+### 5. Smooth Scroll to Section
+```typescript
+'use client';
+
+import { motion } from 'framer-motion';
+
+export default function Navigation() {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  };
+
+  const navItems = ['about', 'skills', 'experience', 'projects', 'contact'];
+
+  return (
+    <nav className="fixed top-0 w-full bg-dark-bg/80 backdrop-blur-md z-50 border-b border-dark-border">
+      <ul className="flex gap-6 justify-center py-4">
+        {navItems.map((item, index) => (
+          <motion.li
+            key={item}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <button
+              onClick={() => scrollToSection(item)}
+              className="text-dark-text-secondary hover:text-dark-accent-primary transition-colors capitalize"
+            >
+              {item}
+            </button>
+          </motion.li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+```
+
+## Sanity Client Patterns
+
+### Type-Safe GROQ Queries
+```typescript
+// lib/sanity.ts
+import { createClient } from "next-sanity";
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: "2024-01-01",
+  useCdn: false,
+});
+
+// Define types
+export interface Profile {
+  _id: string;
+  name: string;
+  tagline: string;
+  heroImage: any;
+  bio: string;
+  email: string;
+  socialLinks?: {
+    github?: string;
+    linkedin?: string;
+    twitter?: string;
+  };
+}
+
+export interface Project {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description: string;
+  image: any;
+  technologies: string[];
+  projectUrl?: string;
+  githubUrl?: string;
+  featured: boolean;
+}
+
+// Queries
+export const queries = {
+  profile: `*[_type == "profile"][0]{
+    _id, name, tagline, heroImage, bio, email, socialLinks
+  }`,
+  
+  projects: `*[_type == "project"] | order(featured desc, order asc){
+    _id, title, slug, description, image, technologies, projectUrl, githubUrl, featured
+  }`,
+  
+  skills: `*[_type == "skill"] | order(order asc){
+    _id, category, skills, order
+  }`,
+  
+  experience: `*[_type == "experience"] | order(startDate desc){
+    _id, title, company, location, startDate, endDate, current, description, technologies
+  }`,
+};
+
+// Fetch functions with type safety
+export async function getProfile(): Promise<Profile> {
+  return client.fetch(queries.profile);
+}
+
+export async function getProjects(): Promise<Project[]> {
+  return client.fetch(queries.projects);
+}
+```
+
+## Tailwind CSS Patterns
+
+### Dark Theme Utilities
+```typescript
+// Use predefined dark theme colors
+<div className="bg-dark-bg text-dark-text-primary">
+  <h1 className="text-dark-text-primary">Heading</h1>
+  <p className="text-dark-text-secondary">Body text</p>
+  <span className="text-dark-text-muted">Muted text</span>
+  <button className="bg-dark-accent-primary hover:bg-blue-600">
+    Click me
+  </button>
+</div>
+```
+
+### Responsive Grid
+```typescript
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {/* Grid items */}
+</div>
+```
+
+### Section Spacing
+```typescript
+<section className="py-20 px-4 md:px-8 lg:px-12">
+  <div className="max-w-6xl mx-auto">
+    {/* Content */}
+  </div>
+</section>
+```
+
+## TypeScript Best Practices
+
+### Component Props
+```typescript
+// Always define prop interfaces
+interface ButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  variant?: 'primary' | 'secondary';
+  disabled?: boolean;
+  className?: string;
+}
+
+export default function Button({ 
+  children, 
+  onClick, 
+  variant = 'primary',
+  disabled = false,
+  className = '' 
+}: ButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${baseStyles} ${variantStyles[variant]} ${className}`}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### Sanity Types
+```typescript
+// Define types matching Sanity schemas
+interface SanityImage {
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+}
+
+interface Skill {
+  _id: string;
+  category: string;
+  skills: Array<{
+    name: string;
+    level: number;
+  }>;
+  order: number;
+}
+```
+
+## Performance Optimization
+
+### Image Loading Priority
+```typescript
+// Hero images get priority
+<Image
+  src={imageUrl}
+  alt="Hero"
+  priority
+  width={1200}
+  height={800}
+/>
+
+// Below-fold images lazy load
+<Image
+  src={imageUrl}
+  alt="Project"
+  loading="lazy"
+  width={600}
+  height={400}
+/>
+```
+
+### Dynamic Imports
+```typescript
+// Lazy load heavy components
+import dynamic from 'next/dynamic';
+
+const HeavyChart = dynamic(() => import('@/components/HeavyChart'), {
+  loading: () => <Skeleton className="h-64" />,
+  ssr: false, // Disable SSR if needed
+});
+```
+
+### Reduced Motion
+```typescript
+'use client';
+
+import { useReducedMotion } from 'framer-motion';
+
+export default function AnimatedComponent() {
+  const shouldReduceMotion = useReducedMotion();
+  
+  return (
+    <motion.div
+      animate={shouldReduceMotion ? { opacity: 1 } : { 
+        opacity: 1, 
+        y: [0, -10, 0],
+        transition: { repeat: Infinity, duration: 2 }
+      }}
+    >
+      Accessible animation
+    </motion.div>
+  );
+}
+```
+
+## Common Component Patterns
+
+### Loading State
+```typescript
+export default function LoadingSection() {
+  return (
+    <div className="animate-pulse">
+      <div className="h-8 bg-dark-surface rounded w-1/2 mb-4" />
+      <div className="h-4 bg-dark-surface rounded w-3/4 mb-2" />
+      <div className="h-4 bg-dark-surface rounded w-2/3" />
+    </div>
+  );
+}
+```
+
+### Error Boundary Pattern
+```typescript
+'use client';
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      <h2 className="text-2xl font-bold text-dark-text-primary mb-4">
+        Something went wrong!
+      </h2>
+      <button
+        onClick={reset}
+        className="px-6 py-3 bg-dark-accent-primary rounded-lg"
+      >
+        Try again
+      </button>
+    </div>
+  );
+}
+```
+
+## Testing Approach
+- Manual testing during development
+- Test responsive breakpoints (mobile, tablet, desktop)
+- Test animations with reduced motion enabled
+- Test with slow network (throttling)
+- Check accessibility with keyboard navigation
+- Validate content from Sanity renders correctly
+
+## When Writing Components
+✅ Use TypeScript for all components
+✅ Add JSDoc comments for complex logic
+✅ Make components responsive by default
+✅ Include error states and loading states
+✅ Use semantic HTML elements
+✅ Add proper ARIA labels
+✅ Test with keyboard navigation
+✅ Respect prefers-reduced-motion
+✅ Optimize images with next/image
+✅ Keep components focused (single responsibility)
+
+
+
