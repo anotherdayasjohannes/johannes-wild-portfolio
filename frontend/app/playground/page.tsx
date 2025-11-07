@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
   Button,
   Heading,
@@ -25,6 +26,44 @@ import {
 } from '@/lib/animations';
 
 export default function PlaygroundPage() {
+  // State for AutoAnimate demo
+  const [skills, setSkills] = useState([
+    { id: 1, name: 'React & Next.js', level: 6, color: '#42628C' as const },
+    { id: 2, name: 'TypeScript', level: 5, color: '#5A7FB8' as const },
+    { id: 3, name: 'Tailwind CSS', level: 6, color: '#3A5374' as const },
+    { id: 4, name: 'Motion One', level: 5, color: '#6B8CAF' as const },
+  ]);
+
+  const addSkill = () => {
+    const newSkills = [
+      'Node.js',
+      'GraphQL',
+      'PostgreSQL',
+      'Docker',
+      'AWS',
+    ];
+    const randomSkill = newSkills[Math.floor(Math.random() * newSkills.length)];
+    const randomLevel = Math.floor(Math.random() * 3) + 4;
+    const colors = ['#42628C', '#5A7FB8', '#3A5374', '#6B8CAF'] as const;
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    setSkills([...skills, {
+      id: Date.now(),
+      name: randomSkill,
+      level: randomLevel,
+      color: randomColor,
+    }]);
+  };
+
+  const removeSkill = () => {
+    if (skills.length > 0) {
+      setSkills(skills.slice(0, -1));
+    }
+  };
+
+  const shuffleSkills = () => {
+    setSkills([...skills].sort(() => Math.random() - 0.5));
+  };
   return (
     <div className="min-h-screen bg-[#0D0D0D]">
       {/* Header */}
@@ -211,14 +250,41 @@ export default function PlaygroundPage() {
             <Card variant="glass" padding="lg" className="max-w-2xl mx-auto">
               <Heading level="h5" className="mb-4">Skill Bars with Auto Animation</Heading>
               <Text color="secondary" variant="small" className="mb-6">
-                The list automatically animates when items are added, removed, or reordered. No configuration needed!
+                Click the buttons below to add, remove, or shuffle items. Watch them animate automatically!
               </Text>
+              
+              {/* Control Buttons */}
+              <div className="flex gap-3 mb-6 flex-wrap">
+                <Button variant="primary" size="sm" onClick={addSkill}>
+                  ➕ Add Skill
+                </Button>
+                <Button variant="secondary" size="sm" onClick={removeSkill} disabled={skills.length === 0}>
+                  ➖ Remove Last
+                </Button>
+                <Button variant="ghost" size="sm" onClick={shuffleSkills}>
+                  🔀 Shuffle
+                </Button>
+              </div>
+
+              {/* AutoAnimated List */}
               <AutoAnimate className="space-y-4">
-                <SkillBar name="React & Next.js" level={6} maxLevel={6} color="blue" animated={false} />
-                <SkillBar name="TypeScript" level={5} maxLevel={6} color="purple" animated={false} />
-                <SkillBar name="Tailwind CSS" level={6} maxLevel={6} color="green" animated={false} />
-                <SkillBar name="Motion One" level={5} maxLevel={6} color="pink" animated={false} />
+                {skills.map((skill) => (
+                  <SkillBar 
+                    key={skill.id}
+                    name={skill.name} 
+                    level={skill.level} 
+                    maxLevel={6} 
+                    color={skill.color}
+                    animated={false}
+                  />
+                ))}
               </AutoAnimate>
+              
+              {skills.length === 0 && (
+                <Text color="secondary" className="text-center py-8">
+                  No skills yet. Click "Add Skill" to see the animation!
+                </Text>
+              )}
             </Card>
           </div>
 
