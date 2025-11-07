@@ -29,12 +29,12 @@ export const SkillBar = ({
     }
   }, [percentage, animated]);
 
-  // Color variants using Adobe Color palette
+  // Color variants using Adobe Color palette variations
   const colors = {
     blue: 'bg-[#42628C]',      // Brand blue (UI/UX-3)
-    green: 'bg-[#10B981]',     // Keep green for variety
-    purple: 'bg-[#8B5CF6]',    // Keep purple for variety
-    pink: 'bg-[#EC4899]',      // Keep pink for variety
+    green: 'bg-[#5A7FB8]',     // Lighter brand blue variant
+    purple: 'bg-[#3A5374]',    // Darker blue variant
+    pink: 'bg-[#6B8CAF]',      // Mid-tone blue variant
   };
 
   return (

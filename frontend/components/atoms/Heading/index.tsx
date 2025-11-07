@@ -56,7 +56,7 @@ export const Heading = ({
   };
 
   const gradientStyle = gradient
-    ? 'bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent'
+    ? 'bg-gradient-to-r from-[#5A7FB8] via-[#42628C] to-[#253B59] bg-clip-text text-transparent'
     : '';
 
   return (
