@@ -14,6 +14,7 @@ import {
   Logo,
   GlassCard,
   Header,
+  Hero,
   Footer,
 } from '@/components';
 import {
@@ -84,6 +85,28 @@ export default function PlaygroundPage() {
           </Text>
         </div>
       </Section>
+
+      {/* Hero Section Showcase */}
+      <div className="relative">
+        <div className="absolute top-4 right-4 z-50">
+          <Card variant="glass" padding="sm">
+            <Text variant="small" color="secondary">👇 Scroll to see more</Text>
+          </Card>
+        </div>
+        <Hero
+          headline="Building Digital Experiences That Matter"
+          tagline="Full-Stack Developer & Digital Strategist specializing in React, Next.js, and modern web technologies"
+          primaryCTA={{ label: 'View Projects', href: '#projects' }}
+          secondaryCTA={{ label: 'Get in Touch', href: '#contact' }}
+          imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
+          imageAlt="Professional Portrait"
+          stats={[
+            { value: '6+', label: 'Years Experience' },
+            { value: '50+', label: 'Projects Completed' },
+            { value: '25+', label: 'Happy Clients' },
+          ]}
+        />
+      </div>
 
       {/* Animations */}
       <Section spacing="lg">
