@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Johannes Wild - Portfolio",
@@ -23,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={`${inter.variable} antialiased`}>
+    <html lang="de" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className="antialiased font-sans">
         {/* Border lines - matching current design */}
         <div className="fixed top-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
         <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
