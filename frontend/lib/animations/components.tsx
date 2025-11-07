@@ -30,12 +30,12 @@ export const FadeIn: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.fadeIn,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -52,12 +52,12 @@ export const SlideUp: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.slideUp,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -74,12 +74,12 @@ export const SlideDown: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.slideDown,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -96,12 +96,12 @@ export const SlideInLeft: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.slideInLeft,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -118,12 +118,12 @@ export const SlideInRight: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.slideInRight,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -140,12 +140,12 @@ export const Scale: React.FC<AnimationWrapperProps> = ({
   const ref = useAnimateOnScroll({
     ...animationPresets.scale,
     delay,
-  }) as any;
+  });
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -163,12 +163,12 @@ export const Stagger: React.FC<StaggerProps> = ({
   staggerDelay = 0.1,
   as: Component = 'div',
 }) => {
-  const ref = useStagger(animationPresets.fadeIn, staggerDelay) as any;
+  const ref = useStagger(animationPresets.fadeIn, staggerDelay);
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 
@@ -197,10 +197,10 @@ export const AutoAnimate: React.FC<AutoAnimateProps> = ({
     easing,
   });
 
-  return (
-    <Component ref={parent as any} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref: parent, className },
+    children
   );
 };
 
@@ -214,12 +214,12 @@ export const OnMount: React.FC<AnimationWrapperProps> = ({
   delay = 0,
   as: Component = 'div',
 }) => {
-  const ref = useAnimateOnMount(animationPresets.fadeIn, delay) as any;
+  const ref = useAnimateOnMount(animationPresets.fadeIn, delay);
 
-  return (
-    <Component ref={ref} className={className}>
-      {children}
-    </Component>
+  return React.createElement(
+    Component,
+    { ref, className },
+    children
   );
 };
 

@@ -42,10 +42,11 @@ export const useAnimateOnScroll = (
   useEffect(() => {
     if (!ref.current) return;
 
+    const element = ref.current;
     const controls = inView(
-      ref.current,
-      ({ target }) => {
-        animate(target, animation);
+      element,
+      () => {
+        animate(element, animation);
       },
       {
         amount: options?.amount || 0.3,
@@ -78,7 +79,7 @@ export const useScrollProgress = (
       animate(ref.current, animation),
       {
         target: ref.current,
-        offset: options?.offset || ['start end', 'end start'],
+        offset: options?.offset || ['start end', 'end start'] as any,
       }
     );
 
@@ -104,8 +105,9 @@ export const useStagger = (
   useEffect(() => {
     if (!ref.current) return;
 
-    const controls = inView(ref.current, ({ target }) => {
-      const children = Array.from(target.children) as HTMLElement[];
+    const element = ref.current;
+    const controls = inView(element, () => {
+      const children = Array.from(element.children) as HTMLElement[];
       animate(
         children,
         animation,

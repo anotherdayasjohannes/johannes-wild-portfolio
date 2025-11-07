@@ -16,20 +16,20 @@ export const Logo = ({
       width={width}
       height={height}
       priority
-      className={`transition-opacity duration-200 hover:opacity-80 ${className}`}
+      className="transition-opacity duration-200 hover:opacity-80"
     />
   );
 
   // If href is provided, wrap in Link
   if (href) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className={className}>
         {logoImage}
       </Link>
     );
   }
 
   // Otherwise just return the image
-  return <div {...props}>{logoImage}</div>;
+  return <div className={className} {...props}>{logoImage}</div>;
 };
 

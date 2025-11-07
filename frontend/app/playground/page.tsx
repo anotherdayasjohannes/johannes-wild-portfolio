@@ -177,25 +177,25 @@ export default function PlaygroundPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Card variant="elevated" padding="md">
                   <div className="text-center">
-                    <Text variant="h4" className="text-3xl mb-2">🎨</Text>
+                    <Heading level="h4" className="text-3xl mb-2">🎨</Heading>
                     <Text variant="small">Item 1</Text>
                   </div>
                 </Card>
                 <Card variant="elevated" padding="md">
                   <div className="text-center">
-                    <Text variant="h4" className="text-3xl mb-2">⚡</Text>
+                    <Heading level="h4" className="text-3xl mb-2">⚡</Heading>
                     <Text variant="small">Item 2</Text>
                   </div>
                 </Card>
                 <Card variant="elevated" padding="md">
                   <div className="text-center">
-                    <Text variant="h4" className="text-3xl mb-2">🚀</Text>
+                    <Heading level="h4" className="text-3xl mb-2">🚀</Heading>
                     <Text variant="small">Item 3</Text>
                   </div>
                 </Card>
                 <Card variant="elevated" padding="md">
                   <div className="text-center">
-                    <Text variant="h4" className="text-3xl mb-2">✨</Text>
+                    <Heading level="h4" className="text-3xl mb-2">✨</Heading>
                     <Text variant="small">Item 4</Text>
                   </div>
                 </Card>

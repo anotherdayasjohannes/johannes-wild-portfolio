@@ -62,7 +62,7 @@ export const Heading = ({
   return (
     <Component
       className={`
-        ${sizes[actualSize]}
+        ${sizes[actualSize as keyof typeof sizes]}
         ${!gradient ? colors[color] : ''}
         ${weights[weight]}
         ${gradientStyle}

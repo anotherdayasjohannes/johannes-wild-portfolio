@@ -73,8 +73,8 @@ export const animateOnScroll = (
 ) => {
   return inView(
     selector,
-    ({ target }) => {
-      animate(target, animation);
+    (entry: any) => {
+      animate(entry.target, animation);
     },
     {
       amount: options?.amount || 0.3,
@@ -90,8 +90,8 @@ export const animateStagger = (
   animation: any = animationPresets.fadeIn,
   staggerDelay: number = 0.1
 ) => {
-  return inView(selector, ({ target }) => {
-    const children = Array.from(target.children);
+  return inView(selector, (entry: any) => {
+    const children = Array.from(entry.target.children);
     animate(
       children,
       animation,
@@ -115,7 +115,7 @@ export const animateOnScrollProgress = (
     animate(selector, animation),
     {
       target: options?.target,
-      offset: options?.offset || ['start end', 'end start'],
+      offset: options?.offset || ['start end', 'end start'] as any,
     }
   );
 };
