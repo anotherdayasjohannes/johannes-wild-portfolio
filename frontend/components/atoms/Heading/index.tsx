@@ -1,0 +1,79 @@
+import { HeadingProps } from './types';
+
+export const Heading = ({
+  level = 'h2',
+  size,
+  color = 'primary',
+  weight = 'bold',
+  gradient = false,
+  children,
+  className = '',
+  ...props
+}: HeadingProps) => {
+  const Component = level;
+
+  // Default size based on level if not specified
+  const defaultSizes = {
+    h1: '5xl',
+    h2: '4xl',
+    h3: '3xl',
+    h4: '2xl',
+    h5: 'xl',
+    h6: 'lg',
+  };
+
+  const actualSize = size || defaultSizes[level];
+
+  // Size styles
+  const sizes = {
+    xs: 'text-xs',
+    sm: 'text-sm',
+    md: 'text-base',
+    lg: 'text-lg',
+    xl: 'text-xl',
+    '2xl': 'text-2xl',
+    '3xl': 'text-3xl',
+    '4xl': 'text-4xl md:text-5xl',
+    '5xl': 'text-5xl md:text-6xl',
+    '6xl': 'text-6xl md:text-7xl',
+    '7xl': 'text-7xl md:text-8xl',
+  };
+
+  // Color styles
+  const colors = {
+    primary: 'text-gray-50',
+    secondary: 'text-gray-300',
+    accent: 'text-blue-400',
+  };
+
+  // Weight styles
+  const weights = {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+    extrabold: 'font-extrabold',
+  };
+
+  const gradientStyle = gradient
+    ? 'bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent'
+    : '';
+
+  return (
+    <Component
+      className={`
+        ${sizes[actualSize]}
+        ${!gradient ? colors[color] : ''}
+        ${weights[weight]}
+        ${gradientStyle}
+        leading-tight
+        tracking-tight
+        ${className}
+      `.trim().replace(/\s+/g, ' ')}
+      {...props}
+    >
+      {children}
+    </Component>
+  );
+};
+

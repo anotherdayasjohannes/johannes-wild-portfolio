@@ -1,15 +1,27 @@
 # Johannes Wild - Personal Portfolio
 
-Modern portfolio site built with Next.js, Sanity CMS, and deployed on Vercel.
+Modern portfolio site built with Next.js, Sanity CMS, and a professional Atomic Design system.
 
 ## 🏗️ Project Structure
 
 ```
 johannes-wild-portfolio/
-├── frontend/          # Next.js application
+├── frontend/          # Next.js application with design system
 ├── studio/           # Sanity Studio CMS
 └── docs/             # Documentation
 ```
+
+## 🎨 Design System
+
+This project features a professional **Atomic Design** system:
+
+- **Design Tokens** - Colors, typography, spacing, shadows
+- **Atoms** - Button, Text, Heading, Container, Link
+- **Molecules** - Card, SkillBar, SocialLink
+- **Organisms** - Complex components (coming soon)
+- **Templates** - Section wrapper and layouts
+
+👉 **View Components**: http://localhost:3100/playground (when running)
 
 ## 🚀 Quick Start
 
@@ -95,6 +107,24 @@ npm run dev
 - **Animations**: Framer Motion
 - **Forms**: React Hook Form + Sanity Forms
 
+## 📚 Documentation
+
+- **[Quick Start](docs/QUICKSTART.md)** - Get started in 5 minutes
+- **[Component Docs](docs/COMPONENTS.md)** - Complete component reference
+- **[Design System](DESIGN_SYSTEM.md)** - Architecture overview
+- **[Progress Report](PROGRESS.md)** - What's been built
+- **[Setup Guide](docs/SETUP.md)** - Initial setup instructions
+- **[Codespaces Guide](CODESPACES_SETUP.md)** - Cloud development setup
+
+## 🎮 Playground
+
+Interactive component showcase at `/playground`:
+```bash
+# Make sure dev server is running
+cd frontend && npm run dev
+# Visit: http://localhost:3100/playground
+```
+
 ## 📝 Notes
 
-Keep it simple first, make it cool later! 🚀
+Professional design system built with Atomic Design methodology! 🚀
