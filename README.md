@@ -133,6 +133,7 @@ npm run dev
 ## 📚 Documentation
 
 ### 🎯 **Start Here**
+- **[DEVELOPMENT WORKFLOW](DEVELOPMENT_WORKFLOW.md)** ⭐⭐⭐ - **How to access your apps (Codespaces workflow)**
 - **[SESSION SUMMARY](SESSION_SUMMARY.md)** ⭐ - What we built today (Nov 7, 2025)
 - **[NEXT STEPS](NEXT_STEPS.md)** ⭐ - Roadmap for completion
 
@@ -142,7 +143,7 @@ npm run dev
 - **[Animation System](docs/ANIMATIONS.md)** - Motion One + AutoAnimate guide
 - **[Design System](DESIGN_SYSTEM.md)** - Atomic Design architecture
 - **[Color Palette](COLOR_PALETTE.md)** - Adobe Color branding
-- **[Codespaces Guide](CODESPACES_SETUP.md)** - Cloud development setup
+- **[Codespaces Setup](CODESPACES_SETUP.md)** - Initial cloud setup guide
 
 ## 🎮 Playground
 
