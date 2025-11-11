@@ -1,9 +1,12 @@
-import { useTranslations } from 'next-intl';
+'use client';
+
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/atoms';
 
 export default function NotFound() {
-  const t = useTranslations();
+  const params = useParams();
+  const locale = (params?.locale as string) || 'en';
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark-bg">
@@ -16,7 +19,7 @@ export default function NotFound() {
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="pt-4">
-          <Button variant="primary" size="lg" href="/">
+          <Button variant="primary" size="lg" href={`/${locale}`}>
             Go Home
           </Button>
         </div>
