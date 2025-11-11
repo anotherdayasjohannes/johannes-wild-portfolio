@@ -1,18 +1,12 @@
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
+export default function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-bg">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-dark-text-primary">
-          Hello from {locale}!
+    <div className="min-h-screen flex items-center justify-center" style={{ background: '#0D0D0D' }}>
+      <div className="text-center" style={{ color: '#F2F2F2' }}>
+        <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+          Hello World!
         </h1>
-        <p className="mt-4 text-dark-text-secondary">
-          If you can see this, the route is working!
+        <p style={{ marginTop: '1rem', color: '#9CA3AF' }}>
+          Testing basic rendering
         </p>
       </div>
     </div>
