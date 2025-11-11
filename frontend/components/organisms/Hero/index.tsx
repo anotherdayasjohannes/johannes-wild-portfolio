@@ -73,12 +73,8 @@ export const Hero = ({
       {/* Subtle gradient for depth */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-surface/30 to-dark-bg" />
 
-      {/* Content Container with Grid Structure */}
+      {/* Content Container */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 py-32">
-        {/* Visual grid markers (left and right edges) */}
-        <div className="absolute left-8 lg:left-16 top-32 bottom-32 w-px bg-white/5" />
-        <div className="absolute right-8 lg:right-16 top-32 bottom-32 w-px bg-white/5" />
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
           {/* Left Column - Image (Clean, Consistent with Design System) */}
