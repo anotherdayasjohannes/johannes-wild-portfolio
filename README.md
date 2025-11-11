@@ -64,12 +64,26 @@ SANITY_API_TOKEN=your_token
 ```
 
 3. **Run Development**
+
+**For GitHub Codespaces (Recommended):**
 ```bash
-# Terminal 1 - Frontend (http://localhost:3000)
+# Terminal 1 - Frontend (Codespaces will forward port 3100)
 cd frontend
 npm run dev
 
-# Terminal 2 - Sanity Studio (http://localhost:3333)
+# Terminal 2 - Sanity Studio (Codespaces will forward port 3444)
+cd studio
+npm run dev
+```
+**Access via:** Your Codespaces forwarded port URLs (click "Ports" tab)
+
+**For Local Development:**
+```bash
+# Terminal 1 - Frontend (http://localhost:3100)
+cd frontend
+npm run dev
+
+# Terminal 2 - Sanity Studio (http://localhost:3444)
 cd studio
 npm run dev
 ```
@@ -133,8 +147,14 @@ npm run dev
 ## 🎮 Playground
 
 Interactive component showcase at `/playground`:
+
+**In GitHub Codespaces:**
+1. Run `cd frontend && npm run dev`
+2. Open your forwarded port URL (Ports tab → port 3100)
+3. Navigate to `/playground`
+
+**Local Development:**
 ```bash
-# Make sure dev server is running
 cd frontend && npm run dev
 # Visit: http://localhost:3100/playground
 ```

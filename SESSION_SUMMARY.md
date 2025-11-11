@@ -267,11 +267,11 @@ johannes-wild-portfolio/
 
 ## 🔗 Quick Links
 
-- **Playground**: `/playground`
-- **Demo Page**: `/demo-page`
+- **Playground**: `/playground` (Your Codespaces port 3100 URL)
+- **Demo Page**: `/demo-page` (Your Codespaces port 3100 URL)
 - **Documentation**: `/docs/INDEX.md`
 - **GitHub**: [anotherdayasjohannes/johannes-wild-portfolio](https://github.com/anotherdayasjohannes/johannes-wild-portfolio)
-- **Sanity Studio**: `http://localhost:3444` (or port 3444 in Codespaces)
+- **Sanity Studio**: Your Codespaces port 3444 URL
 
 ---
 

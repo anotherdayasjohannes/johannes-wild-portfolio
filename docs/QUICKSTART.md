@@ -139,9 +139,14 @@ export function SocialLinks() {
 
 See all components in action:
 
+**In GitHub Codespaces:**
+1. Ensure frontend dev server is running (`npm run dev` in `frontend/`)
+2. Click the "Ports" tab in Codespaces
+3. Open the forwarded URL for port 3100
+4. Navigate to `/playground`
+
+**Local Development:**
 ```bash
-# Your servers should be running
-# Frontend: http://localhost:3100
 # Visit: http://localhost:3100/playground
 ```
 
@@ -260,7 +265,8 @@ The playground shows:
 ## 📚 Next Steps
 
 1. **Explore the Playground**
-   - http://localhost:3100/playground
+   - **Codespaces**: Open port 3100 forwarded URL → `/playground`
+   - **Local**: http://localhost:3100/playground
    - See all components and variations
 
 2. **Read Full Documentation**
@@ -274,7 +280,9 @@ The playground shows:
    - Compose components together
 
 4. **Connect to Sanity**
-   - Add content in Studio (port 3444)
+   - **Codespaces**: Open port 3444 forwarded URL
+   - **Local**: http://localhost:3444
+   - Add content in Studio
    - Fetch with GROQ queries
    - Display in your components
 

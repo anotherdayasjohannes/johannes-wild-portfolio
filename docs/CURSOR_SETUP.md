@@ -193,6 +193,12 @@ cd studio && npm run dev
 ```
 
 ### URLs:
+**In GitHub Codespaces (Recommended):**
+- **Frontend**: Your Codespaces forwarded port 3100 URL
+- **Sanity Studio**: Your Codespaces forwarded port 3444 URL
+- Access via "Ports" tab in Codespaces
+
+**Local Development:**
 - **Frontend**: http://localhost:3100
 - **Sanity Studio**: http://localhost:3444
 
