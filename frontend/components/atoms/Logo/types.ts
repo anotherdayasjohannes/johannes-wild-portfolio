@@ -6,3 +6,5 @@ export interface LogoProps extends HTMLAttributes<HTMLDivElement> {
   href?: string; // Optional link (usually to homepage)
 }
 
+
+

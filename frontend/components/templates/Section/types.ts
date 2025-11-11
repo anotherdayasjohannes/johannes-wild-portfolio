@@ -7,3 +7,5 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
   background?: 'primary' | 'secondary' | 'transparent';
 }
 
+
+

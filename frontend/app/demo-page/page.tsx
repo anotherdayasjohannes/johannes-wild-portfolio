@@ -13,16 +13,16 @@ export default function DemoPage() {
 
       {/* Hero - Full screen */}
       <Hero
-        headline="Strategic Thinker. Digital Leader."
-        tagline="Transforming complexity into clarity through analytical thinking and structured execution"
-        primaryCTA={{ label: 'Learn More', href: '#about' }}
-        secondaryCTA={{ label: 'Contact', href: '#contact' }}
+        name="Johannes Wild"
+        rotatingTitles={['Strategic Thinker', 'Digital Leader', 'Brand Builder', 'Innovation Driver']}
+        tagline="Helping brands stand out in the digital era through analytical thinking and structured execution."
+        primaryCTA={{ label: "Let's work together", href: '#contact' }}
         imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
         imageAlt="Professional Portrait"
         stats={[
           { value: '15+', label: 'Years Leadership' },
+          { value: '50+', label: 'Projects Delivered' },
           { value: 'Global', label: 'Experience' },
-          { value: 'Strategic', label: 'Approach' },
         ]}
       />
 
@@ -39,4 +39,6 @@ export default function DemoPage() {
     </>
   );
 }
+
+
 

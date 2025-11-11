@@ -1,6 +1,7 @@
 export interface HeroProps {
-  headline: string;
-  tagline: string;
+  name?: string;
+  rotatingTitles?: string[];
+  tagline?: string;
   primaryCTA?: {
     label: string;
     href: string;
@@ -18,4 +19,6 @@ export interface HeroProps {
   }[];
   className?: string;
 }
+
+
 

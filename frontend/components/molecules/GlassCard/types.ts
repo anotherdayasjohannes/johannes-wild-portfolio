@@ -7,3 +7,5 @@ export interface GlassCardProps extends HTMLAttributes<HTMLDivElement> {
   intensity?: 'subtle' | 'medium' | 'strong'; // Glass effect intensity
 }
 
+
+

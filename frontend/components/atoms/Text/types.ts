@@ -14,3 +14,5 @@ export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
   as?: 'p' | 'span' | 'div';
 }
 
+
+
