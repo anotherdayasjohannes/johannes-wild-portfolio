@@ -81,12 +81,12 @@ export const Hero = ({
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
-          {/* Left Column - Image (Clean, No Effects) */}
+          {/* Left Column - Image (Clean, Consistent with Design System) */}
           {imageUrl && (
             <div className="lg:col-span-5">
               <FadeIn>
                 <div className="relative">
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden rounded-lg">
                     <div className="relative aspect-square">
                       <Image
                         src={imageUrl}
