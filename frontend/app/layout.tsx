@@ -1,12 +1,18 @@
 /**
- * Root layout required by Next.js
- * The actual layout with HTML structure is in [locale]/layout.tsx
+ * Root layout - provides basic HTML structure
+ * Locale-specific content is in [locale]/layout.tsx
  */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <html suppressHydrationWarning>
+      <body>
+        {children}
+      </body>
+    </html>
+  );
 }
 

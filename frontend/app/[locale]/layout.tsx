@@ -86,18 +86,16 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="antialiased font-sans">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* Border lines - bottom and sides only */}
-          <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
-          <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
-          <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
-          
-          {children}
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <div lang={locale} className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans min-h-screen`}>
+        {/* Border lines - bottom and sides only */}
+        <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
+        <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
+        <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
+        
+        {children}
+      </div>
+    </NextIntlClientProvider>
   );
 }
 
