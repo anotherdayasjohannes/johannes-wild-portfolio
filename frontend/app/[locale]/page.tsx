@@ -13,11 +13,11 @@ export default async function HomePage({
     <div className="min-h-screen">
       <Header
         logo={{
-          src: '/images/logo.svg',
-          alt: 'Johannes Wild Logo',
-          href: '/',
+          href: `/${locale}`,
+          width: 180,
+          height: 50,
         }}
-        navigation={[
+        navLinks={[
           { label: t('nav.about'), href: `/${locale}/about` },
           { label: t('nav.experience'), href: `/${locale}/experience` },
           { label: t('nav.contact'), href: `/${locale}/contact` },
