@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Button, Text } from '@/components/atoms';
+import { Button, Text, Heading, Container } from '@/components/atoms';
 import { HeroProps } from './types';
 import { FadeIn, SlideUp } from '@/lib/animations';
 
@@ -48,7 +48,7 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <section
-      className={`relative min-h-screen flex items-center justify-center bg-[#0A0E1A] ${className}`}
+      className={`relative min-h-screen flex items-center justify-center bg-dark-bg ${className}`}
     >
       {/* Subtle grid overlay for structure */}
       <div 
@@ -71,7 +71,7 @@ export const Hero = ({
       />
       
       {/* Subtle gradient for depth */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0A0E1A] via-[#1A2A40]/30 to-[#0A0E1A]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-surface/30 to-dark-bg" />
 
       {/* Content Container with Grid Structure */}
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 lg:px-16 py-32">
@@ -87,8 +87,8 @@ export const Hero = ({
               <FadeIn>
                 <div className="relative group">
                   {/* Frame accent - always visible, stronger on hover */}
-                  <div className="absolute -left-6 top-0 w-px h-full bg-[#42628C]/30 group-hover:bg-[#42628C] transition-colors duration-500" />
-                  <div className="absolute -left-6 top-0 w-16 h-px bg-[#42628C]/30 group-hover:bg-[#42628C] transition-colors duration-500" />
+                  <div className="absolute -left-6 top-0 w-px h-full bg-brand-primary/30 group-hover:bg-brand-primary transition-colors duration-500" />
+                  <div className="absolute -left-6 top-0 w-16 h-px bg-brand-primary/30 group-hover:bg-brand-primary transition-colors duration-500" />
                   
                   <div className="relative overflow-hidden">
                     <div className="relative aspect-square">
@@ -106,61 +106,74 @@ export const Hero = ({
             </div>
           )}
 
-          {/* Right Column - Text Content (Structured, Refined) */}
+          {/* Right Column - Text Content (Using Atoms) */}
           <div className={`space-y-12 ${imageUrl ? 'lg:col-span-7' : 'lg:col-span-12 mx-auto max-w-5xl'}`}>
             
-            {/* Rotating Title - Structured Eyebrow */}
+            {/* Rotating Title - Using Text Atom */}
             <FadeIn>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-px bg-[#42628C]" />
-                <div className="text-xs text-[#42628C] font-mono tracking-[0.25em] uppercase">
+                <div className="w-8 h-px bg-brand-primary" />
+                <Text variant="caption" className="font-mono tracking-[0.25em] uppercase text-brand-primary">
                   <RotatingText phrases={rotatingTitles} />
-                </div>
+                </Text>
               </div>
             </FadeIn>
 
-            {/* Value Proposition - THE HERO ELEMENT */}
+            {/* Value Proposition - Using Heading Atom */}
             <FadeIn>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.15] tracking-tight max-w-4xl">
+              <Heading 
+                level="h1" 
+                size="4xl"
+                weight="bold"
+                className="max-w-4xl"
+              >
                 {tagline}
-              </h1>
+              </Heading>
             </FadeIn>
 
-            {/* Name - Refined Supporting Info */}
+            {/* Name - Using Heading Atom */}
             <SlideUp delay={0.2}>
-              <div className="text-2xl text-white/60 font-light tracking-wide">
+              <Heading 
+                level="h2" 
+                size="2xl"
+                weight="light"
+                color="secondary"
+              >
                 {name}
-              </div>
+              </Heading>
             </SlideUp>
 
-            {/* Optional Stats - Structured Grid Layout */}
+            {/* Optional Stats - Using Text Atoms */}
             {stats && stats.length > 0 && (
               <SlideUp delay={0.3}>
-                <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10 max-w-2xl">
+                <div className="grid grid-cols-3 gap-8 pt-8 border-t border-dark-border max-w-2xl">
                   {stats.map((stat, index) => (
                     <div key={index} className="flex flex-col gap-2">
-                      <span className="text-4xl md:text-5xl font-bold text-white tabular-nums">
+                      <Text variant="display" weight="bold" className="tabular-nums">
                         {stat.value}
-                      </span>
-                      <span className="text-xs text-white/40 uppercase tracking-wider">
+                      </Text>
+                      <Text variant="caption" color="tertiary" className="uppercase tracking-wider">
                         {stat.label}
-                      </span>
+                      </Text>
                     </div>
                   ))}
                 </div>
               </SlideUp>
             )}
 
-            {/* CTA - Refined Button */}
+            {/* CTA - Using Button Atom */}
             <SlideUp delay={0.4}>
               <div className="pt-4">
                 {primaryCTA && (
-                  <button
-                    className="group relative px-10 py-4 text-base font-medium text-black bg-white hover:bg-[#42628C] hover:text-white transition-all duration-300 border border-white/10"
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    href={primaryCTA.href}
+                    className="group"
                   >
-                    <span className="relative z-10">{primaryCTA.label}</span>
+                    {primaryCTA.label}
                     <span className="ml-2 inline-block group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
+                  </Button>
                 )}
               </div>
             </SlideUp>
@@ -168,12 +181,14 @@ export const Hero = ({
         </div>
       </div>
 
-      {/* Scroll Indicator - Refined */}
+      {/* Scroll Indicator - Using Text Atom */}
       {showScrollIndicator && (
         <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-10">
           <div className="flex flex-col items-center gap-2 opacity-30 hover:opacity-70 transition-opacity cursor-pointer">
-            <span className="text-[10px] text-white/40 uppercase tracking-widest">Scroll</span>
-            <div className="w-px h-12 bg-gradient-to-b from-white/20 via-white/10 to-transparent" />
+            <Text variant="caption" color="tertiary" className="uppercase tracking-widest text-[10px]">
+              Scroll
+            </Text>
+            <div className="w-px h-12 bg-gradient-to-b from-dark-text-primary/20 via-dark-text-primary/10 to-transparent" />
           </div>
         </div>
       )}
