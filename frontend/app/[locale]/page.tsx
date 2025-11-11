@@ -48,23 +48,16 @@ export default async function HomePage({
       />
 
       <Footer
+        companyName="Johannes Wild"
         tagline={t('footer.tagline')}
-        sections={[
-          {
-            title: t('footer.quickLinks'),
-            links: [
-              { label: t('nav.about'), href: `/${locale}/about` },
-              { label: t('nav.experience'), href: `/${locale}/experience` },
-              { label: t('nav.contact'), href: `/${locale}/contact` },
-            ],
-          },
-        ]}
-        bottomLinks={[
+        footerLinks={[
+          { label: t('nav.about'), href: `/${locale}/about` },
+          { label: t('nav.experience'), href: `/${locale}/experience` },
+          { label: t('nav.contact'), href: `/${locale}/contact` },
           { label: t('footer.privacy'), href: `/${locale}/privacy` },
           { label: t('footer.terms'), href: `/${locale}/terms` },
           { label: t('footer.imprint'), href: `/${locale}/imprint` },
         ]}
-        copyright={`© ${new Date().getFullYear()} Johannes Wild. ${t('footer.copyright')}`}
       />
     </div>
   );
