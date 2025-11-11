@@ -1,100 +1,25 @@
 {
   "nav": {
-    "home": "Start",
     "about": "Über mich",
-    "experience": "Berufserfahrung",
-    "skills": "Kompetenzen",
     "projects": "Projekte",
-    "testimonials": "Testimonials",
+    "skills": "Fähigkeiten",
     "contact": "Kontakt"
   },
+  "cta": {
+    "getInTouch": "Kontakt aufnehmen",
+    "letsWorkTogether": "Lass uns zusammenarbeiten"
+  },
   "hero": {
-    "eyebrow": {
+    "tagline": "Marken helfen, sich im digitalen Zeitalter durch analytisches Denken und strukturierte Umsetzung abzuheben.",
+    "rotatingTitles": {
       "strategicThinker": "Strategischer Denker",
       "digitalLeader": "Digitaler Leader",
       "brandBuilder": "Markenentwickler",
       "innovationDriver": "Innovationstreiber"
     },
-    "tagline": "Marken helfen, sich im digitalen Zeitalter durch analytisches Denken und strukturierte Umsetzung zu differenzieren.",
-    "cta": {
-      "primary": "Kontakt aufnehmen",
-      "secondary": "Projekte ansehen"
-    },
-    "stats": {
-      "yearsLeadership": "Jahre Führung",
-      "projectsDelivered": "Projekte umgesetzt",
-      "globalExperience": "Internationale Erfahrung"
-    }
-  },
-  "about": {
-    "title": "Über mich",
-    "downloadCV": "Lebenslauf herunterladen",
-    "contact": "Kontakt aufnehmen",
-    "keyFacts": {
-      "title": "Eckdaten",
-      "birthplace": "Geburtsort",
-      "age": "Alter",
-      "nationality": "Staatsangehörigkeit",
-      "maritalStatus": "Familienstand",
-      "children": "Kinder",
-      "location": "Wohnort"
-    }
-  },
-  "experience": {
-    "title": "Berufserfahrung",
-    "current": "heute",
-    "responsibilities": "Hauptaufgaben"
-  },
-  "skills": {
-    "title": "Kompetenzen & Expertise",
-    "categories": {
-      "soft": "Soft Skills",
-      "languages": "Sprachen",
-      "technical": "Technische Fähigkeiten"
-    }
-  },
-  "testimonials": {
-    "title": "Testimonials",
-    "role": "Position"
-  },
-  "contact": {
-    "title": "Kontakt",
-    "subtitle": "Ich freue mich über Anfragen zu neuen Projekten, kreativen Ideen oder Möglichkeiten zur Zusammenarbeit.",
-    "form": {
-      "name": "Name",
-      "email": "E-Mail",
-      "message": "Nachricht",
-      "submit": "Nachricht senden",
-      "sending": "Wird gesendet...",
-      "success": "Nachricht erfolgreich gesendet!",
-      "error": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
-    },
-    "info": {
-      "phone": "Telefon",
-      "email": "E-Mail",
-      "address": "Adresse"
-    }
+    "scrollIndicator": "Scrollen"
   },
   "footer": {
-    "tagline": "Digitale Erlebnisse mit Leidenschaft und Präzision entwickeln",
-    "quickLinks": "Schnellzugriff",
-    "getInTouch": "Kontakt",
-    "openToDiscuss": "Ich freue mich über Anfragen zu neuen Projekten, kreativen Ideen oder Möglichkeiten zur Zusammenarbeit.",
-    "copyright": "Alle Rechte vorbehalten.",
-    "privacy": "Datenschutz-Erklärung",
-    "terms": "Nutzungsbedingungen",
-    "imprint": "Impressum"
-  },
-  "common": {
-    "readMore": "Mehr lesen",
-    "learnMore": "Mehr erfahren",
-    "viewAll": "Alle anzeigen",
-    "back": "Zurück",
-    "next": "Weiter",
-    "previous": "Zurück",
-    "close": "Schließen",
-    "open": "Öffnen",
-    "loading": "Lädt..."
+    "rights": "Alle Rechte vorbehalten."
   }
 }
-

@@ -1,100 +1,25 @@
 {
   "nav": {
-    "home": "Home",
     "about": "About",
-    "experience": "Experience",
-    "skills": "Skills",
     "projects": "Projects",
-    "testimonials": "Testimonials",
+    "skills": "Skills",
     "contact": "Contact"
   },
+  "cta": {
+    "getInTouch": "Get in Touch",
+    "letsWorkTogether": "Let's work together"
+  },
   "hero": {
-    "eyebrow": {
+    "tagline": "Helping brands stand out in the digital era through analytical thinking and structured execution.",
+    "rotatingTitles": {
       "strategicThinker": "Strategic Thinker",
       "digitalLeader": "Digital Leader",
       "brandBuilder": "Brand Builder",
       "innovationDriver": "Innovation Driver"
     },
-    "tagline": "Helping brands stand out in the digital era through analytical thinking and structured execution.",
-    "cta": {
-      "primary": "Let's work together",
-      "secondary": "View my work"
-    },
-    "stats": {
-      "yearsLeadership": "Years Leadership",
-      "projectsDelivered": "Projects Delivered",
-      "globalExperience": "Global Experience"
-    }
-  },
-  "about": {
-    "title": "About Me",
-    "downloadCV": "Download CV",
-    "contact": "Get in Touch",
-    "keyFacts": {
-      "title": "Key Facts",
-      "birthplace": "Birthplace",
-      "age": "Age",
-      "nationality": "Nationality",
-      "maritalStatus": "Marital Status",
-      "children": "Children",
-      "location": "Location"
-    }
-  },
-  "experience": {
-    "title": "Work Experience",
-    "current": "Present",
-    "responsibilities": "Key Responsibilities"
-  },
-  "skills": {
-    "title": "Skills & Expertise",
-    "categories": {
-      "soft": "Soft Skills",
-      "languages": "Languages",
-      "technical": "Technical Skills"
-    }
-  },
-  "testimonials": {
-    "title": "What People Say",
-    "role": "Role"
-  },
-  "contact": {
-    "title": "Get in Touch",
-    "subtitle": "I'm always open to discussing new projects, creative ideas, or opportunities.",
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "submit": "Send Message",
-      "sending": "Sending...",
-      "success": "Message sent successfully!",
-      "error": "Something went wrong. Please try again."
-    },
-    "info": {
-      "phone": "Phone",
-      "email": "Email",
-      "address": "Address"
-    }
+    "scrollIndicator": "Scroll"
   },
   "footer": {
-    "tagline": "Building digital experiences with passion and precision",
-    "quickLinks": "Quick Links",
-    "getInTouch": "Get in Touch",
-    "openToDiscuss": "I'm always open to discussing new projects, creative ideas, or opportunities.",
-    "copyright": "All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "imprint": "Imprint"
-  },
-  "common": {
-    "readMore": "Read more",
-    "learnMore": "Learn more",
-    "viewAll": "View all",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "close": "Close",
-    "open": "Open",
-    "loading": "Loading..."
+    "rights": "All rights reserved."
   }
 }
-
