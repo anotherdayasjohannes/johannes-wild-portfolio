@@ -48,37 +48,39 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <section
-      className={`relative min-h-screen flex items-center justify-center bg-[#1A2A40] ${className}`}
+      className={`relative min-h-screen flex items-center justify-center bg-black ${className}`}
     >
       {/* Subtle grain texture overlay */}
       <div 
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
         }}
       />
 
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#1A2A40] via-[#253B59]/50 to-[#1A2A40]" />
-
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-6 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
           
-          {/* Left Column - Image (Minimal, Editorial) */}
+          {/* Left Column - Image (Stark, Bold) */}
           {imageUrl && (
             <div className="lg:col-span-5">
               <FadeIn>
-                <div className="relative">
-                  <div className="relative rounded-lg overflow-hidden shadow-2xl">
+                <div className="relative group">
+                  {/* Accent line on hover */}
+                  <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#42628C] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" />
+                  
+                  <div className="relative overflow-hidden">
                     <div className="relative aspect-square">
                       <Image
                         src={imageUrl}
                         alt={imageAlt}
                         fill
-                        className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                        className="object-cover grayscale contrast-125 hover:grayscale-0 hover:contrast-100 transition-all duration-700"
                         priority
                       />
+                      {/* Subtle overlay for more contrast */}
+                      <div className="absolute inset-0 bg-black/10 mix-blend-multiply" />
                     </div>
                   </div>
                 </div>
@@ -86,45 +88,38 @@ export const Hero = ({
             </div>
           )}
 
-          {/* Right Column - Text Content (Editorial Style) */}
-          <div className={`space-y-10 ${imageUrl ? 'lg:col-span-7' : 'lg:col-span-12 mx-auto max-w-4xl'}`}>
+          {/* Right Column - Text Content (Value First, Identity Second) */}
+          <div className={`space-y-10 ${imageUrl ? 'lg:col-span-7' : 'lg:col-span-12 mx-auto max-w-5xl'}`}>
             
-            {/* Eyebrow - Rotating Title */}
+            {/* Value Proposition - THE HERO ELEMENT */}
             <FadeIn>
-              <div className="text-[#D1D5DB] text-sm font-light tracking-wide uppercase mb-4">
-                <RotatingText phrases={rotatingTitles} />
-              </div>
-            </FadeIn>
-
-            {/* Name with Signature Dash (Dennis Style) */}
-            <FadeIn>
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-[#F2F2F2] leading-none tracking-tight">
-                {name}
-                <span className="text-[#42628C]">—</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight max-w-4xl">
+                {tagline}
               </h1>
             </FadeIn>
 
-            {/* Tagline - Clear, Editorial */}
+            {/* Name + Rotating Title - Supporting Info */}
             <SlideUp delay={0.2}>
-              <Text
-                variant="large"
-                color="secondary"
-                className="text-xl md:text-2xl leading-relaxed max-w-2xl font-light"
-              >
-                {tagline}
-              </Text>
+              <div className="flex flex-col gap-2">
+                <div className="text-2xl md:text-3xl text-white/70 font-light">
+                  {name}
+                </div>
+                <div className="text-sm text-[#42628C] font-mono tracking-[0.2em] uppercase">
+                  <RotatingText phrases={rotatingTitles} />
+                </div>
+              </div>
             </SlideUp>
 
-            {/* Optional Stats - Editorial/Magazine Style */}
+            {/* Optional Stats - Inline, Clean, High Contrast */}
             {stats && stats.length > 0 && (
               <SlideUp delay={0.3}>
-                <div className="flex flex-wrap gap-x-16 gap-y-6 pt-6 border-t border-[#253B59]/50">
+                <div className="flex flex-wrap items-center gap-x-12 gap-y-4 pt-8">
                   {stats.map((stat, index) => (
-                    <div key={index} className="flex items-baseline gap-3">
-                      <span className="text-4xl font-light text-[#F2F2F2] tabular-nums">
+                    <div key={index} className="flex items-baseline gap-2">
+                      <span className="text-5xl font-bold text-white tabular-nums">
                         {stat.value}
                       </span>
-                      <span className="text-sm text-[#9CA3AF] uppercase tracking-wider">
+                      <span className="text-base text-white/50 uppercase tracking-wide">
                         {stat.label}
                       </span>
                     </div>
@@ -133,26 +128,15 @@ export const Hero = ({
               </SlideUp>
             )}
 
-            {/* CTAs - Minimal & Intentional */}
+            {/* CTA - Single, Bold */}
             <SlideUp delay={0.4}>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div className="pt-6">
                 {primaryCTA && (
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    href={primaryCTA.href}
+                  <button
+                    className="group relative px-8 py-4 text-lg font-medium text-black bg-white hover:bg-[#42628C] hover:text-white transition-all duration-300 overflow-hidden"
                   >
-                    {primaryCTA.label}
-                  </Button>
-                )}
-                {secondaryCTA && (
-                  <Button
-                    variant="ghost"
-                    size="lg"
-                    href={secondaryCTA.href}
-                  >
-                    {secondaryCTA.label}
-                  </Button>
+                    <span className="relative z-10">{primaryCTA.label}</span>
+                  </button>
                 )}
               </div>
             </SlideUp>
@@ -160,12 +144,11 @@ export const Hero = ({
         </div>
       </div>
 
-      {/* Scroll Indicator - Ultra Subtle */}
+      {/* Scroll Indicator - Minimal */}
       {showScrollIndicator && (
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center gap-2 opacity-30 hover:opacity-60 transition-opacity cursor-pointer">
-            <span className="text-xs text-[#9CA3AF] uppercase tracking-widest mb-2">Scroll</span>
-            <div className="w-px h-12 bg-gradient-to-b from-[#F2F2F2]/20 via-[#F2F2F2]/40 to-transparent" />
+          <div className="flex flex-col items-center gap-3 opacity-40 hover:opacity-100 transition-opacity cursor-pointer">
+            <div className="w-px h-16 bg-gradient-to-b from-white/40 via-white/20 to-transparent" />
           </div>
         </div>
       )}
