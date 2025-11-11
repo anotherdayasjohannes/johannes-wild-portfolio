@@ -87,14 +87,14 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <div lang={locale} className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans min-h-screen`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans min-h-screen`}>
         {/* Border lines - bottom and sides only */}
         <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
         <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
         <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
         
         {children}
-      </div>
+      </body>
     </NextIntlClientProvider>
   );
 }
