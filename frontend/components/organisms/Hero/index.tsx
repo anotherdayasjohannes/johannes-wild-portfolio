@@ -81,22 +81,18 @@ export const Hero = ({
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
-          {/* Left Column - Image (Refined, Structured) */}
+          {/* Left Column - Image (Clean, No Effects) */}
           {imageUrl && (
             <div className="lg:col-span-5">
               <FadeIn>
-                <div className="relative group">
-                  {/* Frame accent - always visible, stronger on hover */}
-                  <div className="absolute -left-6 top-0 w-px h-full bg-brand-primary/30 group-hover:bg-brand-primary transition-colors duration-500" />
-                  <div className="absolute -left-6 top-0 w-16 h-px bg-brand-primary/30 group-hover:bg-brand-primary transition-colors duration-500" />
-                  
+                <div className="relative">
                   <div className="relative overflow-hidden">
                     <div className="relative aspect-square">
                       <Image
                         src={imageUrl}
                         alt={imageAlt}
                         fill
-                        className="object-cover grayscale contrast-110 hover:grayscale-0 hover:contrast-100 transition-all duration-700"
+                        className="object-cover grayscale"
                         priority
                       />
                     </div>

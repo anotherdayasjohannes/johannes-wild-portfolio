@@ -24,8 +24,7 @@ export default function RootLayout({
   return (
     <html lang="de" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="antialiased font-sans">
-        {/* Border lines - matching current design */}
-        <div className="fixed top-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
+        {/* Border lines - bottom and sides only */}
         <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
         <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
         <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
