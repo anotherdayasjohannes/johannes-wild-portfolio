@@ -1,25 +1,34 @@
 {
   "nav": {
     "about": "Über mich",
+    "experience": "Erfahrung",
     "projects": "Projekte",
     "skills": "Fähigkeiten",
     "contact": "Kontakt"
   },
-  "cta": {
-    "getInTouch": "Kontakt aufnehmen",
-    "letsWorkTogether": "Lass uns zusammenarbeiten"
-  },
   "hero": {
     "tagline": "Marken helfen, sich im digitalen Zeitalter durch analytisches Denken und strukturierte Umsetzung abzuheben.",
-    "rotatingTitles": {
+    "eyebrow": {
       "strategicThinker": "Strategischer Denker",
       "digitalLeader": "Digitaler Leader",
       "brandBuilder": "Markenentwickler",
       "innovationDriver": "Innovationstreiber"
     },
-    "scrollIndicator": "Scrollen"
+    "cta": {
+      "primary": "Lass uns zusammenarbeiten"
+    },
+    "stats": {
+      "yearsLeadership": "Jahre Führungserfahrung",
+      "projectsDelivered": "Projekte umgesetzt",
+      "globalExperience": "Kontinente"
+    }
   },
   "footer": {
-    "rights": "Alle Rechte vorbehalten."
+    "tagline": "Digitale Exzellenz aufbauen, ein Projekt nach dem anderen.",
+    "quickLinks": "Schnellzugriff",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "imprint": "Impressum",
+    "copyright": "Alle Rechte vorbehalten."
   }
 }
