@@ -1,8 +1,13 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Header, Hero, Footer } from '@/components/organisms';
 
-export default function HomePage() {
-  const t = useTranslations();
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <div className="min-h-screen">
@@ -13,9 +18,9 @@ export default function HomePage() {
           href: '/',
         }}
         navigation={[
-          { label: t('nav.about'), href: '/about' },
-          { label: t('nav.experience'), href: '/experience' },
-          { label: t('nav.contact'), href: '/contact' },
+          { label: t('nav.about'), href: `/${locale}/about` },
+          { label: t('nav.experience'), href: `/${locale}/experience` },
+          { label: t('nav.contact'), href: `/${locale}/contact` },
         ]}
       />
 
@@ -30,7 +35,7 @@ export default function HomePage() {
         tagline={t('hero.tagline')}
         primaryCTA={{
           label: t('hero.cta.primary'),
-          href: '/contact',
+          href: `/${locale}/contact`,
         }}
         imageUrl="/images/johannes-wild-profile.jpg"
         imageAlt="Johannes Wild"
@@ -48,16 +53,16 @@ export default function HomePage() {
           {
             title: t('footer.quickLinks'),
             links: [
-              { label: t('nav.about'), href: '/about' },
-              { label: t('nav.experience'), href: '/experience' },
-              { label: t('nav.contact'), href: '/contact' },
+              { label: t('nav.about'), href: `/${locale}/about` },
+              { label: t('nav.experience'), href: `/${locale}/experience` },
+              { label: t('nav.contact'), href: `/${locale}/contact` },
             ],
           },
         ]}
         bottomLinks={[
-          { label: t('footer.privacy'), href: '/privacy' },
-          { label: t('footer.terms'), href: '/terms' },
-          { label: t('footer.imprint'), href: '/imprint' },
+          { label: t('footer.privacy'), href: `/${locale}/privacy` },
+          { label: t('footer.terms'), href: `/${locale}/terms` },
+          { label: t('footer.imprint'), href: `/${locale}/imprint` },
         ]}
         copyright={`© ${new Date().getFullYear()} Johannes Wild. ${t('footer.copyright')}`}
       />
