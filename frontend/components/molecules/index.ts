@@ -15,3 +15,6 @@ export type { SocialLinkProps, SocialPlatform } from './SocialLink/types';
 export { GlassCard } from './GlassCard';
 export type { GlassCardProps } from './GlassCard/types';
 
+export { LanguageSwitcher } from './LanguageSwitcher';
+export type { LanguageSwitcherProps } from './LanguageSwitcher/types';
+

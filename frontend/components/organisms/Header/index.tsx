@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { Logo, Link, Button } from '@/components/atoms';
+import { LanguageSwitcher } from '@/components/molecules';
 import { HeaderProps } from './types';
 
 export const Header = ({
@@ -14,8 +16,11 @@ export const Header = ({
   ],
   sticky = true,
   transparent = false,
+  showLanguageSwitcher = true,
   className = '',
 }: HeaderProps) => {
+  const params = useParams();
+  const locale = (params?.locale as string) || 'en';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -74,6 +79,9 @@ export const Header = ({
             <Button variant="primary" size="sm" href="#contact">
               Get in Touch
             </Button>
+            {showLanguageSwitcher && (
+              <LanguageSwitcher currentLocale={locale} />
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -114,6 +122,11 @@ export const Header = ({
               <Button variant="primary" size="md" href="#contact" className="w-full">
                 Get in Touch
               </Button>
+              {showLanguageSwitcher && (
+                <div className="pt-4 border-t border-white/10">
+                  <LanguageSwitcher currentLocale={locale} />
+                </div>
+              )}
             </div>
           </div>
         )}

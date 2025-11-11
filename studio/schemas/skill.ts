@@ -1,60 +1,88 @@
-import {defineField, defineType} from 'sanity'
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'skill',
-  title: 'Skills',
+  title: 'Skill',
   type: 'document',
   fields: [
-    defineField({
+    {
+      name: 'name',
+      title: 'Skill Name',
+      type: 'localeString',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'category',
       title: 'Category',
       type: 'string',
-      description: 'e.g. "Frontend", "Backend", "Tools", etc.',
+      options: {
+        list: [
+          { title: 'Soft Skills', value: 'soft' },
+          { title: 'Languages', value: 'language' },
+          { title: 'Technical', value: 'technical' },
+        ],
+        layout: 'radio',
+      },
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'skills',
-      title: 'Skills',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'name',
-              title: 'Skill Name',
-              type: 'string',
-              validation: (Rule: any) => Rule.required(),
-            },
-            {
-              name: 'level',
-              title: 'Proficiency Level',
-              type: 'number',
-              description: 'Percentage (0-100)',
-              validation: (Rule: any) => Rule.required().min(0).max(100),
-            },
-            {
-              name: 'icon',
-              title: 'Icon Name',
-              type: 'string',
-              description: 'Optional: Icon identifier (e.g. react-icons name)',
-            },
-          ],
-        },
-      ],
-    }),
-    defineField({
+    },
+    {
+      name: 'level',
+      title: 'Level',
+      type: 'number',
+      description: 'Skill level from 1-6 (or percentage 0-100 for languages)',
+      validation: (Rule) => Rule.required().min(0).max(100),
+    },
+    {
+      name: 'color',
+      title: 'Color',
+      type: 'string',
+      description: 'Color for the skill bar (blue, green, purple, pink)',
+      options: {
+        list: [
+          { title: 'Blue', value: 'blue' },
+          { title: 'Green', value: 'green' },
+          { title: 'Purple', value: 'purple' },
+          { title: 'Pink', value: 'pink' },
+        ],
+      },
+      initialValue: 'blue',
+    },
+    {
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description: 'Order in which this category appears',
-    }),
+      description: 'Order within category',
+      validation: (Rule) => Rule.required().min(0),
+    },
   ],
   orderings: [
     {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{field: 'order', direction: 'asc'}],
+      title: 'Category & Order',
+      name: 'categoryOrder',
+      by: [
+        { field: 'category', direction: 'asc' },
+        { field: 'order', direction: 'asc' },
+      ],
     },
   ],
-})
+  preview: {
+    select: {
+      nameEn: 'name.en',
+      nameDe: 'name.de',
+      category: 'category',
+      level: 'level',
+    },
+    prepare({ nameEn, nameDe, category, level }) {
+      const name = nameEn || nameDe;
+      const categoryMap: Record<string, string> = {
+        soft: 'Soft Skill',
+        language: 'Language',
+        technical: 'Technical',
+      };
+      return {
+        title: name,
+        subtitle: `${categoryMap[category]} - Level ${level}`,
+      };
+    },
+  },
+});

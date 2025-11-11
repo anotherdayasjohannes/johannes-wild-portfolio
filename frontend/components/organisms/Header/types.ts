@@ -12,6 +12,7 @@ export interface HeaderProps {
   navLinks?: NavLink[];
   sticky?: boolean;
   transparent?: boolean;
+  showLanguageSwitcher?: boolean;
   className?: string;
 }
 

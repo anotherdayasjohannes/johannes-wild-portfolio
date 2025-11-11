@@ -1,85 +1,109 @@
-import {defineField, defineType} from 'sanity'
+import { defineType } from 'sanity';
 
 export default defineType({
   name: 'experience',
-  title: 'Experience',
+  title: 'Work Experience',
   type: 'document',
   fields: [
-    defineField({
-      name: 'title',
-      title: 'Job Title',
-      type: 'string',
+    {
+      name: 'position',
+      title: 'Position',
+      type: 'localeString',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'company',
       title: 'Company',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+    },
+    {
       name: 'location',
       title: 'Location',
       type: 'string',
-    }),
-    defineField({
+    },
+    {
       name: 'startDate',
       title: 'Start Date',
       type: 'date',
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
+      options: {
+        dateFormat: 'YYYY-MM',
+      },
+    },
+    {
       name: 'endDate',
       title: 'End Date',
       type: 'date',
-      description: 'Leave empty if currently working here',
-    }),
-    defineField({
+      description: 'Leave empty if current position',
+      options: {
+        dateFormat: 'YYYY-MM',
+      },
+    },
+    {
       name: 'current',
       title: 'Current Position',
       type: 'boolean',
-      description: 'Check if this is your current position',
       initialValue: false,
-    }),
-    defineField({
+    },
+    {
       name: 'description',
       title: 'Description',
-      type: 'array',
-      of: [{type: 'block'}],
-      description: 'Job responsibilities and achievements',
-    }),
-    defineField({
-      name: 'technologies',
-      title: 'Technologies Used',
-      type: 'array',
-      of: [{type: 'string'}],
-      description: 'Technologies, tools, or skills used in this role',
-    }),
-    defineField({
-      name: 'companyUrl',
-      title: 'Company Website',
-      type: 'url',
-    }),
+      type: 'object',
+      fields: [
+        {
+          name: 'de',
+          title: 'German',
+          type: 'array',
+          of: [{ type: 'string' }],
+          description: 'List of responsibilities in German',
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'array',
+          of: [{ type: 'string' }],
+          description: 'List of responsibilities in English',
+        },
+      ],
+    },
+    {
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Lower numbers appear first (most recent should be 0)',
+      validation: (Rule) => Rule.required().min(0),
+    },
+  ],
+  orderings: [
+    {
+      title: 'Display Order',
+      name: 'orderAsc',
+      by: [{ field: 'order', direction: 'asc' }],
+    },
+    {
+      title: 'Start Date, New',
+      name: 'startDateDesc',
+      by: [{ field: 'startDate', direction: 'desc' }],
+    },
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'company',
-      date: 'startDate',
+      positionEn: 'position.en',
+      positionDe: 'position.de',
+      company: 'company',
+      startDate: 'startDate',
+      endDate: 'endDate',
+      current: 'current',
     },
-    prepare(selection) {
-      const {title, subtitle, date} = selection
+    prepare({ positionEn, positionDe, company, startDate, endDate, current }) {
+      const position = positionEn || positionDe;
+      const start = new Date(startDate).getFullYear();
+      const end = current ? 'Present' : endDate ? new Date(endDate).getFullYear() : '';
       return {
-        title: title,
-        subtitle: `${subtitle} - ${new Date(date).getFullYear()}`,
-      }
+        title: `${position} at ${company}`,
+        subtitle: `${start} - ${end}`,
+      };
     },
   },
-  orderings: [
-    {
-      title: 'Start Date, New to Old',
-      name: 'startDateDesc',
-      by: [{field: 'startDate', direction: 'desc'}],
-    },
-  ],
-})
+});

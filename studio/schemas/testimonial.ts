@@ -26,8 +26,7 @@ export default defineType({
     defineField({
       name: 'quote',
       title: 'Quote',
-      type: 'text',
-      rows: 4,
+      type: 'localeText',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

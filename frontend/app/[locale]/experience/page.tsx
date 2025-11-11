@@ -1,0 +1,106 @@
+import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
+import type { Metadata } from 'next';
+import { Header, ExperienceTimeline, Footer } from '@/components/organisms';
+import { fetchSanity, experiencesQuery } from '@/lib/sanity';
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Promise<{ locale: string }> 
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://johanneswild.com';
+  
+  return {
+    title: `${t('experience.title')} - Johannes Wild`,
+    description: t('experience.title'),
+    alternates: {
+      canonical: `${baseUrl}/${locale}/experience`,
+      languages: {
+        'de': `${baseUrl}/de/experience`,
+        'en': `${baseUrl}/en/experience`,
+        'x-default': `${baseUrl}/en/experience`,
+      },
+    },
+    openGraph: {
+      url: `${baseUrl}/${locale}/experience`,
+    },
+  };
+}
+
+async function getExperienceData(locale: string) {
+  try {
+    const data = await fetchSanity(experiencesQuery, { locale });
+    return data;
+  } catch (error) {
+    console.error('Error fetching experience data:', error);
+    return [];
+  }
+}
+
+export default async function ExperiencePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
+  const experiences = await getExperienceData(locale);
+
+  return (
+    <div className="min-h-screen">
+      <Header
+        logo={{
+          src: '/images/logo.svg',
+          alt: 'Johannes Wild Logo',
+          href: `/${locale}`,
+        }}
+        navigation={[
+          { label: t('nav.about'), href: `/${locale}/about` },
+          { label: t('nav.experience'), href: `/${locale}/experience` },
+          { label: t('nav.contact'), href: `/${locale}/contact` },
+        ]}
+      />
+
+      {experiences && experiences.length > 0 ? (
+        <ExperienceTimeline
+          title={t('experience.title')}
+          experiences={experiences}
+          currentLabel={t('experience.current')}
+        />
+      ) : (
+        <section className="py-24">
+          <div className="container mx-auto px-8 lg:px-16">
+            <h2 className="text-4xl font-bold mb-8">{t('experience.title')}</h2>
+            <p className="text-dark-text-secondary">
+              Content is being prepared. Please add experience entries in Sanity Studio.
+            </p>
+          </div>
+        </section>
+      )}
+
+      <Footer
+        tagline={t('footer.tagline')}
+        sections={[
+          {
+            title: t('footer.quickLinks'),
+            links: [
+              { label: t('nav.about'), href: `/${locale}/about` },
+              { label: t('nav.experience'), href: `/${locale}/experience` },
+              { label: t('nav.contact'), href: `/${locale}/contact` },
+            ],
+          },
+        ]}
+        bottomLinks={[
+          { label: t('footer.privacy'), href: `/${locale}/privacy` },
+          { label: t('footer.terms'), href: `/${locale}/terms` },
+          { label: t('footer.imprint'), href: `/${locale}/imprint` },
+        ]}
+        copyright={`© ${new Date().getFullYear()} Johannes Wild. ${t('footer.copyright')}`}
+      />
+    </div>
+  );
+}
+
