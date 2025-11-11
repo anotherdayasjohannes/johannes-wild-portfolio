@@ -21,6 +21,7 @@ export const config = {
   // - _next (Next.js internals)
   // - _vercel (Vercel internals)
   // - Files with extensions (e.g. favicon.ico)
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  // - Test/demo pages (playground, demo-page, test-animations)
+  matcher: ['/((?!api|_next|_vercel|playground|demo-page|test-animations|.*\\..*).*)']
 };
 
