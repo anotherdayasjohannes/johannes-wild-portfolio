@@ -1,12 +1,15 @@
 import "../globals.css";
 
-export default function LocaleLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+  params: { locale: string };
+};
+
+export default function LocaleLayout({ children, params }: Props) {
+  const { locale } = params;
+  
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
         {children}
       </body>
