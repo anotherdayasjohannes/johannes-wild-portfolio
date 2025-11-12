@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { locales } from '@/i18n';
 import "../globals.css";
 
 type Props = {
@@ -7,9 +8,24 @@ type Props = {
   params: { locale: string };
 };
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = params;
-  const messages = await getMessages({ locale });
+  
+  // Validate locale
+  if (!locales.includes(locale as any)) {
+    notFound();
+  }
+  
+  let messages;
+  try {
+    messages = (await import(`@/messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
   
   return (
     <html lang={locale}>
