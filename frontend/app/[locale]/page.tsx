@@ -1,12 +1,15 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function HomePage() {
-  const params = useParams();
-  const locale = params.locale as string;
+  const locale = useLocale();
   const t = useTranslations();
+
+  // Debug: log what we're getting
+  console.log('Current locale:', locale);
+  console.log('nav.about translation:', t('nav.about'));
+  console.log('hero.tagline translation:', t('hero.tagline'));
 
   return (
     <div style={{ minHeight: '100vh', background: '#0D0D0D', color: '#F2F2F2', padding: '2rem' }}>
