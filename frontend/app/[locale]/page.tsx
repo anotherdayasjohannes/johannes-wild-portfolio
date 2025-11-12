@@ -1,13 +1,13 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Header, Hero, Footer } from '@/components/organisms';
 
 type Props = {
   params: { locale: string };
 };
 
-export default function HomePage({ params }: Props) {
+export default async function HomePage({ params }: Props) {
   const { locale } = params;
-  const t = useTranslations();
+  const t = await getTranslations({ locale });
 
   return (
     <div className="min-h-screen">
