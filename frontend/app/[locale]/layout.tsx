@@ -1,6 +1,6 @@
-import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/lib/locales';
+import { LocaleProvider } from '@/components/providers/LocaleProvider';
 import "../globals.css";
 
 type Props = {
@@ -26,9 +26,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html lang={locale}>
       <body style={{ margin: 0, padding: 0 }}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
+        <LocaleProvider locale={locale} messages={messages}>
           {children}
-        </NextIntlClientProvider>
+        </LocaleProvider>
       </body>
     </html>
   );

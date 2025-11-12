@@ -1,13 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from '@/components/providers/LocaleProvider';
 
 type Props = {
   params: { locale: string };
 };
 
-export default function HomePage({ params }: Props) {
-  const { locale } = params;
+export default function HomePage({ params: _ }: Props) {
+  const { locale } = useLocale();
   const t = useTranslations();
 
   return (
