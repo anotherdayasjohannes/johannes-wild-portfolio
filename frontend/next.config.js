@@ -1,8 +1,3 @@
-const withNextIntl = require('next-intl/plugin')(
-  // Specify the path to your i18n config file
-  './i18n.ts'
-);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -19,4 +14,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextIntl(nextConfig);
+module.exports = nextConfig;
