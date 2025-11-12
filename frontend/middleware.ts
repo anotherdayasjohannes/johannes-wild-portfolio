@@ -2,8 +2,14 @@ import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './i18n/config';
 
 export default createMiddleware({
-  locales,
-  defaultLocale
+  // A list of all locales that are supported
+  locales: ['en', 'de'],
+  
+  // Used when no locale matches
+  defaultLocale: 'en',
+  
+  // Always show the locale in the URL
+  localePrefix: 'always'
 });
 
 export const config = {
