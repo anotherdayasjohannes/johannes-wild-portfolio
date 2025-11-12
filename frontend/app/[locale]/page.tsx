@@ -1,20 +1,64 @@
+import { useTranslations } from 'next-intl';
+import { Header, Hero, Footer } from '@/components/organisms';
+
 type Props = {
   params: { locale: string };
 };
 
 export default function HomePage({ params }: Props) {
   const { locale } = params;
-  
+  const t = useTranslations();
+
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: '#0D0D0D' }}>
-      <div className="text-center" style={{ color: '#F2F2F2' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-          Hello from {locale}!
-        </h1>
-        <p style={{ marginTop: '1rem', color: '#9CA3AF' }}>
-          Route is working correctly
-        </p>
-      </div>
+    <div className="min-h-screen">
+      <Header
+        logo={{
+          href: `/${locale}`,
+          width: 180,
+          height: 50,
+        }}
+        navLinks={[
+          { label: t('nav.about'), href: `/${locale}/about` },
+          { label: t('nav.experience'), href: `/${locale}/experience` },
+          { label: t('nav.contact'), href: `/${locale}/contact` },
+        ]}
+      />
+
+      <Hero
+        name="Johannes Wild"
+        rotatingTitles={[
+          t('hero.eyebrow.strategicThinker'),
+          t('hero.eyebrow.digitalLeader'),
+          t('hero.eyebrow.brandBuilder'),
+          t('hero.eyebrow.innovationDriver'),
+        ]}
+        tagline={t('hero.tagline')}
+        primaryCTA={{
+          label: t('hero.cta.primary'),
+          href: `/${locale}/contact`,
+        }}
+        imageUrl="/images/johannes-wild-profile.jpg"
+        imageAlt="Johannes Wild"
+        showScrollIndicator
+        stats={[
+          { value: '15+', label: t('hero.stats.yearsLeadership') },
+          { value: '50+', label: t('hero.stats.projectsDelivered') },
+          { value: '3', label: t('hero.stats.globalExperience') },
+        ]}
+      />
+
+      <Footer
+        companyName="Johannes Wild"
+        tagline={t('footer.tagline')}
+        footerLinks={[
+          { label: t('nav.about'), href: `/${locale}/about` },
+          { label: t('nav.experience'), href: `/${locale}/experience` },
+          { label: t('nav.contact'), href: `/${locale}/contact` },
+          { label: t('footer.privacy'), href: `/${locale}/privacy` },
+          { label: t('footer.terms'), href: `/${locale}/terms` },
+          { label: t('footer.imprint'), href: `/${locale}/imprint` },
+        ]}
+      />
     </div>
   );
 }
