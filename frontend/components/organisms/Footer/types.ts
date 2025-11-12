@@ -14,10 +14,12 @@ export interface FooterSocial {
 export interface FooterProps {
   companyName?: string;
   tagline?: string;
+  quickLinksLabel?: string;
   socialLinks?: FooterSocial[];
   footerLinks?: FooterLink[];
   showNewsletter?: boolean;
   className?: string;
+  copyright?: string;
 }
 
 

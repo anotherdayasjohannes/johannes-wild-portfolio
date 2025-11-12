@@ -10,6 +10,7 @@ export interface HeaderProps {
     height?: number;
   };
   navLinks?: NavLink[];
+  ctaLabel?: string;
   sticky?: boolean;
   transparent?: boolean;
   showLanguageSwitcher?: boolean;

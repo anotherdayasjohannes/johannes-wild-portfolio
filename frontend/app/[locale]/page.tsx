@@ -40,6 +40,7 @@ export default function HomePage() {
       <Header
         logo={{ href: `/${locale}`, width: 180, height: 50 }}
         navLinks={navLinks}
+        ctaLabel={t('nav.getInTouch')}
         sticky={true}
         transparent={true}
         showLanguageSwitcher={true}
@@ -65,6 +66,7 @@ export default function HomePage() {
       <Footer
         footerLinks={footerLinks}
         tagline={t('footer.tagline')}
+        quickLinksLabel={t('footer.quickLinks')}
         copyright={`© ${new Date().getFullYear()} Johannes Wild. ${t('footer.copyright')}`}
       />
     </>

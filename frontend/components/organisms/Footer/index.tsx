@@ -7,6 +7,7 @@ import { FooterProps } from './types';
 export const Footer = ({
   companyName = 'Johannes Wild',
   tagline = 'Building digital experiences with passion and precision',
+  quickLinksLabel = 'Quick Links',
   socialLinks = [
     { platform: 'github', href: 'https://github.com/yourusername', label: 'GitHub' },
     { platform: 'linkedin', href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn' },
@@ -53,7 +54,7 @@ export const Footer = ({
           {/* Quick Links */}
           <div>
             <Heading level="h5" className="mb-4">
-              Quick Links
+              {quickLinksLabel}
             </Heading>
             <div className="flex flex-col space-y-3">
               <Link href="#about" variant="default" className="text-[#D1D5DB] hover:text-[#5A7FB8]">

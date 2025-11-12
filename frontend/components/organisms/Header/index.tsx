@@ -14,6 +14,7 @@ export const Header = ({
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ],
+  ctaLabel = 'Get in Touch',
   sticky = true,
   transparent = false,
   showLanguageSwitcher = true,
@@ -77,7 +78,7 @@ export const Header = ({
               </Link>
             ))}
             <Button variant="primary" size="sm" href="#contact">
-              Get in Touch
+              {ctaLabel}
             </Button>
             {showLanguageSwitcher && (
               <LanguageSwitcher currentLocale={locale} />
@@ -120,7 +121,7 @@ export const Header = ({
                 </Link>
               ))}
               <Button variant="primary" size="md" href="#contact" className="w-full">
-                Get in Touch
+                {ctaLabel}
               </Button>
               {showLanguageSwitcher && (
                 <div className="pt-4 border-t border-white/10">
