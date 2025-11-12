@@ -1,3 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import "../globals.css";
 
 type Props = {
@@ -5,13 +7,16 @@ type Props = {
   params: { locale: string };
 };
 
-export default function LocaleLayout({ children, params }: Props) {
+export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = params;
+  const messages = await getMessages({ locale });
   
   return (
     <html lang={locale}>
       <body style={{ margin: 0, padding: 0 }}>
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
