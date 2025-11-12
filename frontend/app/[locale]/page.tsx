@@ -1,23 +1,20 @@
-import { getTranslations } from 'next-intl/server';
-
 type Props = {
   params: { locale: string };
 };
 
-export default async function HomePage({ params }: Props) {
+export default function HomePage({ params }: Props) {
   const { locale } = params;
-  const t = await getTranslations({ locale });
 
   return (
-    <div className="min-h-screen bg-dark-bg text-dark-text-primary p-8">
-      <h1 className="text-4xl font-bold mb-4">
+    <div style={{ minHeight: '100vh', background: '#0D0D0D', color: '#F2F2F2', padding: '2rem' }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
         {locale === 'en' ? 'Welcome' : 'Willkommen'}
       </h1>
-      <p className="text-xl mb-2">
-        Translation test: {t('nav.about')}
+      <p style={{ fontSize: '1.25rem' }}>
+        Current locale: {locale}
       </p>
-      <p className="text-lg">
-        Hero tagline: {t('hero.tagline')}
+      <p style={{ marginTop: '1rem' }}>
+        Routing is working! ✅
       </p>
     </div>
   );
