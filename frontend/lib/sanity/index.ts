@@ -1,16 +1,37 @@
-/**
- * Sanity CMS utilities and queries
- */
+// Export Sanity client and utilities
+export { client, previewClient, urlFor } from './client';
 
-export { client, fetchSanity } from './client';
+// Export types
+export type {
+  LocaleString,
+  LocaleText,
+  LocaleStringArray,
+  SanityImage,
+  SiteSettings,
+  Navigation,
+  Hero,
+  Footer,
+  About,
+  Experience,
+  Skill,
+  Project,
+} from './types';
+
 export {
-  aboutQuery,
-  experiencesQuery,
-  skillsQuery,
-  skillsByCategoryQuery,
-  testimonialsQuery,
-  interestsQuery,
-  projectsQuery,
-  projectByIdQuery,
-} from './queries';
+  getLocalizedString,
+  getLocalizedText,
+  getLocalizedStringArray,
+} from './types';
 
+// Export queries
+export {
+  getSiteSettings,
+  getNavigation,
+  getHero,
+  getFooter,
+  getAbout,
+  getExperiences,
+  getSkills,
+  getProjects,
+  getPageData,
+} from './queries';

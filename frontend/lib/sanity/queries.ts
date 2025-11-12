@@ -1,149 +1,204 @@
-import { groq } from 'next-sanity';
+import { client } from './client';
+import type {
+  SiteSettings,
+  Navigation,
+  Hero,
+  Footer,
+  About,
+  Experience,
+  Skill,
+  Project,
+} from './types';
 
-/**
- * GROQ queries for all content types with locale support
- * Queries automatically extract the correct language field based on the locale parameter
- */
+// Site Settings Query
+export async function getSiteSettings(): Promise<SiteSettings | null> {
+  const query = `*[_type == "siteSettings"][0]{
+    _id,
+    _type,
+    companyName,
+    tagline,
+    copyright,
+    socialLinks[] | order(order asc) {
+      platform,
+      url,
+      label,
+      order
+    },
+    contactEmail
+  }`;
 
-/**
- * Get About content
- * @param locale - 'en' or 'de'
- */
-export const aboutQuery = groq`
-  *[_type == "about"][0] {
-    "title": title[$locale],
-    "bio": bio[$locale],
-    profileImage {
+  return client.fetch(query);
+}
+
+// Navigation Query
+export async function getNavigation(name: string = 'Main Navigation'): Promise<Navigation | null> {
+  const query = `*[_type == "navigation" && name == $name][0]{
+    _id,
+    _type,
+    name,
+    items[] | order(order asc) {
+      label,
+      href,
+      order
+    },
+    ctaLabel
+  }`;
+
+  return client.fetch(query, { name });
+}
+
+// Hero Query
+export async function getHero(): Promise<Hero | null> {
+  const query = `*[_type == "hero"][0]{
+    _id,
+    _type,
+    name,
+    rotatingTitles,
+    tagline,
+    primaryCTA,
+    secondaryCTA,
+    heroImage{
       asset->{
         _id,
         url
       },
-      alt
+      hotspot
     },
-    keyFacts[] {
-      "label": label[$locale],
-      "value": value[$locale],
+    imageAlt,
+    stats[] | order(order asc) {
+      value,
+      label,
       order
-    } | order(order asc),
-    "cvUrl": cvFile[$locale].asset->url
-  }
-`;
+    }
+  }`;
 
-/**
- * Get all work experiences
- * @param locale - 'en' or 'de'
- */
-export const experiencesQuery = groq`
-  *[_type == "experience"] | order(order asc) {
-    "position": position[$locale],
+  return client.fetch(query);
+}
+
+// Footer Query
+export async function getFooter(): Promise<Footer | null> {
+  const query = `*[_type == "footer"][0]{
+    _id,
+    _type,
+    quickLinksLabel,
+    quickLinks[] | order(order asc) {
+      label,
+      href,
+      order
+    },
+    legalLinks[] | order(order asc) {
+      label,
+      href,
+      order
+    },
+    getInTouchLabel,
+    getInTouchText
+  }`;
+
+  return client.fetch(query);
+}
+
+// About Query
+export async function getAbout(): Promise<About | null> {
+  const query = `*[_type == "about"][0]{
+    _id,
+    _type,
+    title,
+    bio,
+    profileImage{
+      asset->{
+        _id,
+        url
+      },
+      hotspot
+    },
+    keyFacts[] | order(order asc) {
+      label,
+      value,
+      order
+    },
+    cvFile
+  }`;
+
+  return client.fetch(query);
+}
+
+// Experience Query
+export async function getExperiences(): Promise<Experience[]> {
+  const query = `*[_type == "experience"] | order(order asc) {
+    _id,
+    _type,
+    position,
     company,
     location,
     startDate,
     endDate,
     current,
-    "description": description[$locale],
+    description,
     order
-  }
-`;
+  }`;
 
-/**
- * Get skills by category
- * @param locale - 'en' or 'de'
- * @param category - Optional filter: 'soft', 'language', or 'technical'
- */
-export const skillsQuery = groq`
-  *[_type == "skill"] | order(category asc, order asc) {
-    "name": name[$locale],
-    category,
-    level,
-    color,
-    order
-  }
-`;
+  return client.fetch(query);
+}
 
-export const skillsByCategoryQuery = groq`
-  *[_type == "skill" && category == $category] | order(order asc) {
-    "name": name[$locale],
-    category,
-    level,
-    color,
-    order
-  }
-`;
-
-/**
- * Get all testimonials
- * @param locale - 'en' or 'de'
- */
-export const testimonialsQuery = groq`
-  *[_type == "testimonial"] | order(order asc) {
+// Skills Query
+export async function getSkills(): Promise<Skill[]> {
+  const query = `*[_type == "skill"] | order(category asc, order asc) {
+    _id,
+    _type,
     name,
-    position,
-    company,
-    "quote": quote[$locale],
-    image {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
+    category,
+    level,
+    color,
     order
-  }
-`;
+  }`;
 
-/**
- * Get all personal interests
- * @param locale - 'en' or 'de'
- */
-export const interestsQuery = groq`
-  *[_type == "interest"] | order(order asc) {
-    "title": title[$locale],
-    "description": description[$locale],
-    icon,
-    order
-  }
-`;
+  return client.fetch(query);
+}
 
-/**
- * Get all projects (existing schema)
- */
-export const projectsQuery = groq`
-  *[_type == "project"] | order(order asc) {
+// Projects Query
+export async function getProjects(): Promise<Project[]> {
+  const query = `*[_type == "project"] | order(order asc) {
     _id,
+    _type,
     title,
     description,
-    image {
+    image{
       asset->{
         _id,
         url
       },
-      alt
+      hotspot
     },
-    technologies,
+    tags,
     link,
     order
-  }
-`;
+  }`;
 
-/**
- * Get a single project by ID
- */
-export const projectByIdQuery = groq`
-  *[_type == "project" && _id == $id][0] {
-    _id,
-    title,
-    description,
-    image {
-      asset->{
-        _id,
-        url
-      },
-      alt
-    },
-    technologies,
-    link,
-    order
-  }
-`;
+  return client.fetch(query);
+}
 
+// Fetch all page data at once for better performance
+export async function getPageData() {
+  const [siteSettings, navigation, hero, footer, about, experiences, skills, projects] = await Promise.all([
+    getSiteSettings(),
+    getNavigation(),
+    getHero(),
+    getFooter(),
+    getAbout(),
+    getExperiences(),
+    getSkills(),
+    getProjects(),
+  ]);
+
+  return {
+    siteSettings,
+    navigation,
+    hero,
+    footer,
+    about,
+    experiences,
+    skills,
+    projects,
+  };
+}
