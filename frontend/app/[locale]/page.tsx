@@ -1,34 +1,73 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import { Header } from '@/components/organisms/Header';
+import { Hero } from '@/components/organisms/Hero';
+import { Footer } from '@/components/organisms/Footer';
 
 export default function HomePage() {
   const locale = useLocale();
   const t = useTranslations();
 
-  // Debug: log what we're getting
-  console.log('Current locale:', locale);
-  console.log('nav.about translation:', t('nav.about'));
-  console.log('hero.tagline translation:', t('hero.tagline'));
+  // Prepare navigation links with translations
+  const navLinks = [
+    { label: t('nav.about'), href: `/${locale}#about` },
+    { label: t('nav.experience'), href: `/${locale}#experience` },
+    { label: t('nav.projects'), href: `/${locale}#projects` },
+    { label: t('nav.skills'), href: `/${locale}#skills` },
+    { label: t('nav.contact'), href: `/${locale}#contact` },
+  ];
+
+  // Prepare rotating titles for Hero
+  const rotatingTitles = [
+    t('hero.eyebrow.strategicThinker'),
+    t('hero.eyebrow.digitalLeader'),
+    t('hero.eyebrow.brandBuilder'),
+    t('hero.eyebrow.innovationDriver'),
+  ];
+
+  // Prepare footer links
+  const footerLinks = [
+    { label: t('nav.about'), href: `/${locale}#about` },
+    { label: t('nav.experience'), href: `/${locale}#experience` },
+    { label: t('nav.projects'), href: `/${locale}#projects` },
+    { label: t('nav.skills'), href: `/${locale}#skills` },
+    { label: t('nav.contact'), href: `/${locale}#contact` },
+  ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0D0D0D', color: '#F2F2F2', padding: '2rem' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-        {locale === 'en' ? 'Welcome' : 'Willkommen'}
-      </h1>
-      <p style={{ fontSize: '1.25rem' }}>
-        Current locale: {locale}
-      </p>
-      <p style={{ marginTop: '1rem' }}>
-        Routing is working! ✅
-      </p>
-      <p style={{ marginTop: '1rem', color: '#5A7FB8' }}>
-        Translation test: {t('nav.about')}
-      </p>
-      <p style={{ marginTop: '0.5rem', color: '#5A7FB8' }}>
-        Hero tagline: {t('hero.tagline')}
-      </p>
-    </div>
+    <>
+      <Header
+        logo={{ href: `/${locale}`, width: 180, height: 50 }}
+        navLinks={navLinks}
+        sticky={true}
+        transparent={true}
+        showLanguageSwitcher={true}
+      />
+      
+      <Hero
+        name="Johannes Wild"
+        rotatingTitles={rotatingTitles}
+        tagline={t('hero.tagline')}
+        primaryCTA={{ 
+          label: t('hero.cta.primary'), 
+          href: `/${locale}#contact` 
+        }}
+        imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop"
+        imageAlt="Johannes Wild"
+        stats={[
+          { value: '10+', label: t('hero.stats.yearsLeadership') },
+          { value: '50+', label: t('hero.stats.projectsDelivered') },
+          { value: '3', label: t('hero.stats.globalExperience') },
+        ]}
+      />
+
+      <Footer
+        footerLinks={footerLinks}
+        tagline={t('footer.tagline')}
+        copyright={`© ${new Date().getFullYear()} Johannes Wild. ${t('footer.copyright')}`}
+      />
+    </>
   );
 }
 
