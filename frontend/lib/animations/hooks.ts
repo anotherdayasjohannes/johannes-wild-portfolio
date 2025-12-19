@@ -129,7 +129,7 @@ export const useStagger = (
         keyframes,
         {
           ...animOptions,
-          delay: (index) => index * staggerDelay,
+          delay: (index: number) => index * staggerDelay,
         }
       );
     });

@@ -9,7 +9,7 @@ import {
   useCallback,
   ReactNode,
 } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 /**
  * Lenis instance type
@@ -60,7 +60,6 @@ interface LenisProviderProps {
     easing?: (t: number) => number;
     orientation?: 'vertical' | 'horizontal';
     smoothWheel?: boolean;
-    smoothTouch?: boolean;
     touchMultiplier?: number;
   };
 }
@@ -85,10 +84,9 @@ export function LenisProvider({ children, options = {} }: LenisProviderProps) {
   useEffect(() => {
     const lenisInstance = new Lenis({
       duration: options.duration ?? 1.2,
-      easing: options.easing ?? ((t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
+      easing: options.easing ?? ((t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))),
       orientation: options.orientation ?? 'vertical',
       smoothWheel: options.smoothWheel ?? true,
-      smoothTouch: options.smoothTouch ?? false, // Disable on touch for native feel
       touchMultiplier: options.touchMultiplier ?? 2,
     });
 
@@ -111,7 +109,7 @@ export function LenisProvider({ children, options = {} }: LenisProviderProps) {
       lenisInstance.destroy();
       lenisRef.current = null;
     };
-  }, [options.duration, options.easing, options.orientation, options.smoothWheel, options.smoothTouch, options.touchMultiplier]);
+  }, [options.duration, options.easing, options.orientation, options.smoothWheel, options.touchMultiplier]);
 
   // Handle anchor links
   useEffect(() => {

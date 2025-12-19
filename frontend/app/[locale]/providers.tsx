@@ -23,7 +23,6 @@ export function Providers({ children }: ProvidersProps) {
       options={{
         duration: 1.2,
         smoothWheel: true,
-        smoothTouch: false, // Native feel on mobile
       }}
     >
       <GSAPProvider>
