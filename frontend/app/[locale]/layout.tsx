@@ -6,6 +6,9 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "../globals.css";
 
+// Polish upgrade providers
+import { Providers } from './providers';
+
 type Props = {
   children: React.ReactNode;
   params: { locale: string };
@@ -32,12 +35,14 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans min-h-screen`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* Border lines - bottom and sides only */}
-          <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
-          <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
-          <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
-          
-          {children}
+          <Providers>
+            {/* Border lines - bottom and sides only */}
+            <div className="fixed bottom-0 left-0 right-0 h-[2px] bg-dark-border z-50" />
+            <div className="fixed top-0 left-0 bottom-0 w-[2px] bg-dark-border z-50" />
+            <div className="fixed top-0 right-0 bottom-0 w-[2px] bg-dark-border z-50" />
+            
+            {children}
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>
