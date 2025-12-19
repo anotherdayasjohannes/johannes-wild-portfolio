@@ -40,3 +40,8 @@ When clicked, switches the locale by:
 
 Example: `/en/about` → `/de/about`
 
+
+
+
+
+

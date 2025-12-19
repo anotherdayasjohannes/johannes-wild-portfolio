@@ -67,3 +67,8 @@ The form currently simulates submission. To implement actual email sending:
 - Focus border: `border-brand-primary`
 - Status colors: green/red with opacity
 
+
+
+
+
+
