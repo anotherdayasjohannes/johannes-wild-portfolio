@@ -93,8 +93,13 @@ export const fallbackHero: Hero = {
     label: { de: 'Lass uns zusammenarbeiten', en: "Let's Work Together" },
     href: '#contact',
   },
-  // @ts-expect-error - intentionally null for fallback to use default image URL
-  heroImage: null,
+  heroImage: {
+    _type: 'image',
+    asset: {
+      _ref: 'fallback',
+      _type: 'reference',
+    },
+  },
   imageAlt: {
     de: 'Johannes Wild',
     en: 'Johannes Wild',

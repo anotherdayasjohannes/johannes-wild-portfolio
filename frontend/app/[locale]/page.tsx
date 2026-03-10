@@ -1,19 +1,16 @@
 import { Header } from '@/components/organisms/Header';
 import { Hero } from '@/components/organisms/Hero';
 import { Footer } from '@/components/organisms/Footer';
-// Direct imports to bypass barrel export issues
 import {
   getSiteSettings,
   getNavigation,
   getHero,
   getFooter,
-} from '@/lib/sanity/queries';
-import {
   getLocalizedString,
   getLocalizedText,
   getLocalizedStringArray,
-} from '@/lib/sanity/types';
-import { urlFor } from '@/lib/sanity/client';
+  urlFor,
+} from '@/lib/sanity';
 import {
   fallbackSiteSettings,
   fallbackNavigation,
