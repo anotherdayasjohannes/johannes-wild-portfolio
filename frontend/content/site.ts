@@ -6,9 +6,7 @@ export const site = {
   title: "Johannes Wild",
   description:
     "Johannes Wild. Advocacy, Aufbau und Beratung. Stationen, Stimmen und Kontakt.",
-  // TODO: Positionierung mit Johannes abstimmen (offene Entscheidung im Proposal).
-  positioning:
-    "Leitet Advocacy und Beratung bei iFixit. Baut Marken, Teams und Werkzeuge, die Bestand haben.",
+  positioning: "Übernimmt Verantwortung. Gestaltet Lösungen.",
   email: "johannes.wild@me.com",
   linkedin: "https://www.linkedin.com/in/johanneswild",
   linkedinLabel: "linkedin.com/in/johanneswild",
@@ -20,7 +18,7 @@ export const site = {
 export const nav: NavItem[] = [
   { label: "Über mich", href: "/#ueber-mich" },
   { label: "Stationen", href: "/#stationen" },
-  { label: "Projekt", href: "/trainer-abrechnung" },
+  { label: "Projekte", href: "/#projekte" },
 ];
 
 export const footerLinks: NavItem[] = [
@@ -28,6 +26,7 @@ export const footerLinks: NavItem[] = [
   { label: "Datenschutz", href: "/datenschutz" },
 ];
 
+// Paths are relative to public/. Prefix with asset() from lib/paths when rendering.
 export const photos = {
   heroDesktop: {
     src: "/photos/0248_3lectrify.jpg",
