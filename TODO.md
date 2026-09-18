@@ -41,7 +41,7 @@ Phasen nach dem Restart-Proposal (Sep 2026), ergänzt um den Redesign-Durchgang 
 - [x] Impressum und Datenschutz an der Domain-Root, Redirects von `/johannes/…`
 - [x] `sitemap.ts`, `robots.ts`
 - [ ] LinkedIn-Slug `sandrawild` im eingeloggten Browser bestätigen
-- [ ] Einwilligung des Kollegen auf dem Über-mich-Foto (0050) bestätigen
+- [ ] Einwilligung der Kolleginnen und Kollegen auf dem Über-mich-Foto (0087) bestätigen
 
 ## Phase 3: Launch
 

@@ -68,8 +68,8 @@ export const photos = {
     height: 1600,
   },
   about: {
-    src: "/photos/0050_3lectrify.webp",
-    alt: "Johannes Wild im Gespräch mit einem Kollegen am Tisch, Laptop und Kaffee",
+    src: "/photos/0087_3lectrify.webp",
+    alt: "Johannes Wild in einer Besprechung mit Kolleginnen und Kollegen am Holztisch, Pläne und Laptops",
     width: 1400,
     height: 934,
   },
