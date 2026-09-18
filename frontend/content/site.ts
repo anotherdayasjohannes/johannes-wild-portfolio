@@ -11,7 +11,8 @@ export const site = {
   // Two sentences: the first reads grey, the second ink.
   claim: ["Übernimmt Verantwortung.", "Gestaltet Lösungen."] as const,
   positioning: "Übernimmt Verantwortung. Gestaltet Lösungen.",
-  roleLine: "Trainer, Berater, Mitgründer · Reichersbeuern",
+  roleLine: "Head of Digital & Marketing · Mitgründer · Reichersbeuern",
+  roleShort: "Head of Digital & Marketing · Mitgründer",
   focus: "Digital, Marketing, Aufbau",
   email: "johannes.wild@me.com",
   linkedin: "https://www.linkedin.com/in/johanneswild",

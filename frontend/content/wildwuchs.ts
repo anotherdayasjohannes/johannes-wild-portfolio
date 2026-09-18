@@ -18,7 +18,7 @@ export const wildwuchs = {
     label: "Dinge, die bleiben",
     items: [
       { thing: "Musik und Hifi", detail: "Vinyl, Roon, Buchardt" },
-      { thing: "Outdoor-Enthusiast", detail: "Trailrunning, Skifahren, MTB" },
+      { thing: "Outdoor-Enthusiast", detail: "Trailrunning, MTB, Skitrainer beim SCR" },
       { thing: "Familie und Freunde", detail: null },
       { thing: "Heimat", detail: "Reichersbeuern, Oberbayern" },
     ],

@@ -14,7 +14,7 @@ export const trainerTool = {
     height: 875,
   } satisfies Photo,
   description: [
-    "Die SCR Trainer-Abrechnung ist eine Progressive Web App für die Trainerinnen und Trainer des Skiclub Reichersbeuern. Sie ersetzt Zettel und Tabellen am Saisonende.",
+    "Die SCR Trainer-Abrechnung ist eine Progressive Web App für die Trainerinnen und Trainer des Skiclub Reichersbeuern. Sie ersetzt Zettel und Tabellen am Saisonende. Ich bin dort selbst Trainer und habe die App aus eigenem Bedarf gebaut.",
     "Trainingsstunden und Auslagen werden im Laufe der Saison erfasst. Am Ende erzeugt die App die Stundenabrechnung nach § 3 Nr. 26 EStG (Übungsleiterpauschale) und die Unkostenabrechnung als druckfertiges Dokument oder PDF.",
     "Die App läuft vollständig im Browser und funktioniert offline. Es gibt keinen Server, kein Konto und keinen Login.",
   ],
