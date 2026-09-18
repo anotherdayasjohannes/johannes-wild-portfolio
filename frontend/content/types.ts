@@ -23,6 +23,19 @@ export type Testimonial = {
   role: string;
 };
 
+export type Project = {
+  slug: string;
+  title: string;
+  client: string;
+  year: string;
+  role: string;
+  summary: string;
+  tags: string[];
+  /** Internal route or external URL. */
+  url?: string;
+  image?: Photo;
+};
+
 export type AccordionEntry = {
   title: string;
   body: string[];

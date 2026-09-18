@@ -7,11 +7,14 @@ import { FadeUp } from "@/components/motion/FadeUp";
 import { Section } from "@/components/ui/Section";
 import { HairlineList } from "@/components/ui/HairlineList";
 import { Pill } from "@/components/ui/Pill";
+import { ProjectCard } from "@/components/ui/ProjectCard";
 import { about } from "@/content/about";
+import { projects, projectsLabel } from "@/content/projects";
 import { photos, site } from "@/content/site";
 import { stations, stationsLabel } from "@/content/stations";
 import { testimonials, testimonialsLabel } from "@/content/testimonials";
 import { trainerTool } from "@/content/trainer-abrechnung";
+import { asset } from "@/lib/paths";
 
 export default function HomePage() {
   return (
@@ -38,7 +41,7 @@ export default function HomePage() {
             <FadeUp className="md:col-span-4 md:col-start-9">
               <div className="relative aspect-portrait overflow-hidden">
                 <Image
-                  src={photos.about.src}
+                  src={asset(photos.about.src)}
                   alt={photos.about.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"
@@ -55,6 +58,18 @@ export default function HomePage() {
           </FadeUp>
         </Section>
 
+        <Section id="projekte" label={projectsLabel}>
+          <ul className="grid gap-x-5 gap-y-16 md:grid-cols-2">
+            {projects.map((project) => (
+              <li key={project.slug}>
+                <FadeUp>
+                  <ProjectCard project={project} />
+                </FadeUp>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
         <Section id="stimmen" label={testimonialsLabel}>
           <FadeUp>
             <Testimonials items={testimonials} />
@@ -67,7 +82,7 @@ export default function HomePage() {
               <Link href={trainerTool.href} className="group block">
                 <div className="relative aspect-portrait overflow-hidden">
                   <Image
-                    src={photos.project.src}
+                    src={asset(photos.project.src)}
                     alt={photos.project.alt}
                     fill
                     sizes="(min-width: 768px) 40vw, 100vw"
