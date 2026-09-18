@@ -21,6 +21,7 @@ export const site = {
   github: "https://github.com/anotherdayasjohannes",
   location: "Reichersbeuern, Oberbayern",
   photoCredit: "Fotos: Bernhard Huber",
+  photoCreditUrl: "https://bernhardhuber.com/",
   contactLead: "Sprechen wir über Ihr Vorhaben.",
   copyrightYear: new Date().getFullYear(),
 };

@@ -49,4 +49,6 @@ export type LegalSection = {
   paragraphs: string[];
   /** Optional bullet list rendered after the paragraphs. */
   items?: string[];
+  /** Optional external link rendered as the last line. */
+  link?: { label: string; href: string };
 };

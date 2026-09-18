@@ -51,7 +51,9 @@ export function Footer() {
           © {site.copyrightYear} {site.name}
         </span>
         <span>
-          {site.photoCredit}
+          <a href={site.photoCreditUrl} className="u" target="_blank" rel="noopener noreferrer">
+            {site.photoCredit}
+          </a>
           {fontCredit ? ` · ${fontCredit}` : ""}
         </span>
       </div>

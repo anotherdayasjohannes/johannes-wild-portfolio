@@ -62,8 +62,9 @@ export const impressum = {
     {
       heading: "Bildnachweis",
       paragraphs: [
-        "Fotografien: Bernhard Huber, bernhardhuber.com. Die Nutzung auf dieser Website erfolgt mit Lizenz des Fotografen.",
+        "Fotografien: Bernhard Huber. Die Nutzung auf dieser Website erfolgt mit Lizenz des Fotografen.",
       ],
+      link: { label: "bernhardhuber.com", href: "https://bernhardhuber.com/" },
     },
     {
       heading: "Haftung für Inhalte",

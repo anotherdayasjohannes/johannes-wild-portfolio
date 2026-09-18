@@ -37,6 +37,18 @@ export function LegalPage({ label, title, intro, sections, updated }: LegalPageP
                       ))}
                     </ul>
                   ) : null}
+                  {section.link ? (
+                    <p>
+                      <a
+                        href={section.link.href}
+                        className="u case"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {section.link.label} <span aria-hidden>→</span>
+                      </a>
+                    </p>
+                  ) : null}
                 </div>
               </section>
             ))}
