@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SplitText } from "@/components/motion/SplitText";
 import { fadeUpAt, heroScale } from "@/components/motion/variants";
 import type { Photo } from "@/content/types";
+import { asset } from "@/lib/paths";
 
 type HeroProps = {
   name: string;
@@ -25,13 +26,13 @@ export function Hero({ name, positioning, desktop, mobile }: HeroProps) {
     ...common,
     width: desktop.width,
     height: desktop.height,
-    src: desktop.src,
+    src: asset(desktop.src),
   });
   const { props: mobileProps } = getImageProps({
     ...common,
     width: mobile.width,
     height: mobile.height,
-    src: mobile.src,
+    src: asset(mobile.src),
   });
 
   return (

@@ -1,15 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/content/site";
+import { canonical, SITE_ORIGIN } from "@/lib/paths";
 import { instrumentSerif, switzer } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
     default: site.title,
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  alternates: { canonical: canonical("/") },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    siteName: site.name,
+    url: canonical("/"),
+  },
 };
 
 export const viewport: Viewport = {

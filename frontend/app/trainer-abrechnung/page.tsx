@@ -7,10 +7,13 @@ import { Pill } from "@/components/ui/Pill";
 import { Section } from "@/components/ui/Section";
 import { site } from "@/content/site";
 import { trainerTool } from "@/content/trainer-abrechnung";
+import { canonical } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: trainerTool.name,
   description: trainerTool.tagline,
+  alternates: { canonical: canonical("/trainer-abrechnung") },
+  openGraph: { url: canonical("/trainer-abrechnung") },
 };
 
 export default function TrainerAbrechnungPage() {
