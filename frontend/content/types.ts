@@ -11,7 +11,10 @@ export type Photo = {
 };
 
 export type Station = {
+  /** "2020 – 2025" or "2025 – heute"; "heute" marks a current station. */
   period: string;
+  /** Years not yet confirmed; rendered muted until they are. */
+  periodUncertain?: boolean;
   role: string;
   org: string;
   summary?: string;

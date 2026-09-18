@@ -14,6 +14,8 @@ export function Stations({ items }: StationsProps) {
     <Stagger as="ol" className="px-gutter text-body">
       {items.map((item, i) => {
         const current = /heute/i.test(item.period);
+        const [start, end] = item.period.split(" – ");
+        const muted = item.periodUncertain ? "opacity-60" : "";
         return (
           <StaggerItem
             as="li"
@@ -23,12 +25,14 @@ export function Stations({ items }: StationsProps) {
             <span className="solid col-span-2 text-lead font-normal leading-tight text-orange md:col-span-1">
               {i + 1}
             </span>
-            <span
-              className={`tnum col-span-10 pt-1 leading-tight md:col-span-2 ${
-                current ? "font-medium text-orange-text" : "text-ink-2"
-              }`}
-            >
-              {item.period}
+            <span className="tnum col-span-10 pt-1 leading-tight text-ink-2 md:col-span-2">
+              <span className={muted}>{start}</span>
+              {end ? (
+                <>
+                  {" – "}
+                  <span className={current ? "font-medium text-orange-text" : muted}>{end}</span>
+                </>
+              ) : null}
             </span>
             <div className="col-span-12 md:col-span-3">
               <h3 className="font-normal">{item.role}</h3>
