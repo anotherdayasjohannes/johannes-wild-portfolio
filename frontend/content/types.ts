@@ -44,4 +44,6 @@ export type AccordionEntry = {
 export type LegalSection = {
   heading: string;
   paragraphs: string[];
+  /** Optional bullet list rendered after the paragraphs. */
+  items?: string[];
 };

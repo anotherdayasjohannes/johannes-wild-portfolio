@@ -22,7 +22,8 @@ Phasen nach dem Restart-Proposal (Sep 2026).
 - [x] Nutzungsrechte der Fotos für das Web bestätigt, Credit bleibt
 - [x] „(Projekte)“-Raster mit `content/projects.ts` (zwei Seed-Einträge)
 - [ ] Projekte aus dem Inventar eintragen, Platzhalterkarte ersetzen, Bilder ergänzen
-- [ ] Impressum und Datenschutz vervollständigen (TODO-Marker in `content/legal.ts`), juristisch prüfen
+- [x] Impressum und Datenschutzerklärung als vollständige Entwürfe (`content/legal.ts`)
+- [ ] Impressum und Datenschutzerklärung juristisch prüfen lassen
 - [ ] App-Adresse der Trainer-Abrechnung eintragen (`content/trainer-abrechnung.ts`)
 - [ ] Screenshots der Trainer-App auf der Projektseite
 - [ ] Testimonials: Freigabe der drei Zitate einholen

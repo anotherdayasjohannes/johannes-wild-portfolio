@@ -5,7 +5,6 @@ import { canonical } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: datenschutz.title,
-  robots: { index: false },
   alternates: { canonical: canonical("/datenschutz") },
 };
 

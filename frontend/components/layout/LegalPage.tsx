@@ -7,37 +7,42 @@ type LegalPageProps = {
   title: string;
   intro: string;
   sections: LegalSection[];
+  updated?: string;
 };
 
-const TODO_PATTERN = /^\[TODO:.*\]$/;
-
-export function LegalPage({ label, title, intro, sections }: LegalPageProps) {
+export function LegalPage({ label, title, intro, sections, updated }: LegalPageProps) {
   return (
     <>
       <Header />
       <main>
         <PageIntro label={label} title={title} lead={intro} />
         <div className="px-gutter pb-30 md:pb-40">
-          <dl className="border-t border-line">
+          <div className="border-t border-line">
             {sections.map((section) => (
-              <div
+              <section
                 key={section.heading}
-                className="grid gap-3 border-b border-line py-6 md:grid-cols-12 md:gap-5 md:py-8"
+                className="grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-5 md:py-12"
               >
-                <dt className="text-body font-medium md:col-span-4">{section.heading}</dt>
-                <dd className="grid gap-2 text-body md:col-span-6 md:col-start-6">
+                <h2 className="text-h2 md:col-span-5">{section.heading}</h2>
+                <div className="grid max-w-2xl gap-4 text-body text-fg/80 md:col-span-6 md:col-start-7">
                   {section.paragraphs.map((p) => (
-                    <p
-                      key={p}
-                      className={TODO_PATTERN.test(p) ? "text-muted" : "text-fg/80"}
-                    >
-                      {p}
-                    </p>
+                    <p key={p}>{p}</p>
                   ))}
-                </dd>
-              </div>
+                  {section.items ? (
+                    <ul className="grid gap-2">
+                      {section.items.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-fg" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </section>
             ))}
-          </dl>
+          </div>
+          {updated ? <p className="mt-6 text-meta text-muted">{updated}</p> : null}
         </div>
       </main>
     </>
