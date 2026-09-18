@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 import { PageIntro } from "@/components/layout/PageIntro";
 import { FadeUp } from "@/components/motion/FadeUp";
@@ -7,7 +8,7 @@ import { Pill } from "@/components/ui/Pill";
 import { Section } from "@/components/ui/Section";
 import { site } from "@/content/site";
 import { trainerTool } from "@/content/trainer-abrechnung";
-import { canonical } from "@/lib/paths";
+import { asset, canonical } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: trainerTool.name,
@@ -27,6 +28,19 @@ export default function TrainerAbrechnungPage() {
           lead={trainerTool.tagline}
         />
 
+        <FadeUp className="px-gutter pb-16 md:pb-30">
+          <div className="relative aspect-video overflow-hidden border border-line">
+            <Image
+              src={asset(trainerTool.screenshot.src)}
+              alt={trainerTool.screenshot.alt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-top"
+            />
+          </div>
+        </FadeUp>
+
         <Section label="Was die App macht">
           <div className="grid gap-10 md:grid-cols-12 md:gap-5">
             <FadeUp className="md:col-span-7">
@@ -37,14 +51,10 @@ export default function TrainerAbrechnungPage() {
                   </p>
                 ))}
               </div>
-              <div className="mt-10 flex flex-wrap gap-4">
-                {trainerTool.appUrl ? (
-                  <Pill href={trainerTool.appUrl}>App öffnen</Pill>
-                ) : (
-                  <p className="text-caption text-muted">
-                    Die öffentliche App-Adresse folgt.
-                  </p>
-                )}
+              <div className="mt-10">
+                <Pill href={trainerTool.appUrl} external>
+                  App öffnen
+                </Pill>
               </div>
             </FadeUp>
             <FadeUp className="md:col-span-4 md:col-start-9">

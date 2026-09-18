@@ -1,16 +1,18 @@
-import type { AccordionEntry } from "./types";
+import type { AccordionEntry, Photo } from "./types";
 
 export const trainerTool = {
   label: "Projekt",
   name: "SCR Trainer-Abrechnung",
   tagline: "Stunden- und Unkostenabrechnung in einer App. Auf dem Gerät, offline.",
-  teaser:
-    "Eine kleine Web-App für die Trainerinnen und Trainer des Skiclub Reichersbeuern. Sie erzeugt die Stundenabrechnung nach § 3 Nr. 26 EStG und die Unkostenabrechnung als Druck oder PDF. Die Daten bleiben auf dem Gerät.",
   href: "/trainer-abrechnung",
-  ctaLabel: "Zur Projektseite",
-  // TODO: URL der installierten App eintragen, sobald sie öffentlich erreichbar ist.
-  appUrl: null as string | null,
+  appUrl: "https://scr-trainer-abrechnung.vercel.app",
   repoUrl: "https://github.com/anotherdayasjohannes/scr-trainer-abrechnung",
+  screenshot: {
+    src: "/projects/scr-trainer-abrechnung.webp",
+    alt: "Übersicht der SCR Trainer-Abrechnung: Saison, Stunden, Unkosten und Trainingsliste",
+    width: 1400,
+    height: 875,
+  } satisfies Photo,
   description: [
     "Die SCR Trainer-Abrechnung ist eine Progressive Web App für die Trainerinnen und Trainer des Skiclub Reichersbeuern. Sie ersetzt Zettel und Tabellen am Saisonende.",
     "Trainingsstunden und Auslagen werden im Laufe der Saison erfasst. Am Ende erzeugt die App die Stundenabrechnung nach § 3 Nr. 26 EStG (Übungsleiterpauschale) und die Unkostenabrechnung als druckfertiges Dokument oder PDF.",

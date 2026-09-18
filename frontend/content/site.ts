@@ -46,10 +46,4 @@ export const photos = {
     width: 1600,
     height: 1067,
   },
-  project: {
-    src: "/photos/0042_3lectrify.jpg",
-    alt: "Hände mit Notizbuch am Tisch",
-    width: 1600,
-    height: 1067,
-  },
 } satisfies Record<string, Photo>;

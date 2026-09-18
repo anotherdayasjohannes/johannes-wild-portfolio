@@ -39,7 +39,7 @@ Produktiv: `https://wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`)
 
 ## Inhalte pflegen
 
-Alle Texte liegen in `frontend/content/*.ts`. Offene Punkte sind dort mit `TODO` markiert (Projekt-Inventar, App-Adresse).
+Alle Texte liegen in `frontend/content/*.ts`. Offene Punkte sind dort mit `TODO` markiert (z. B. Sitemap, OG-Bild).
 
 ## Status
 

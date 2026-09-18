@@ -21,11 +21,11 @@ Phasen nach dem Restart-Proposal (Sep 2026).
 - [x] Positionierungszeile unter dem Namen („Übernimmt Verantwortung. Gestaltet Lösungen.“)
 - [x] Nutzungsrechte der Fotos für das Web bestätigt, Credit bleibt
 - [x] „(Projekte)“-Raster mit `content/projects.ts` (zwei Seed-Einträge)
-- [ ] Projekte aus dem Inventar eintragen, Platzhalterkarte ersetzen, Bilder ergänzen
+- [x] Acht Projekte aus dem Inventar mit Screenshots (WebP) eingetragen
 - [x] Impressum und Datenschutzerklärung als vollständige Entwürfe (`content/legal.ts`)
 - [ ] Impressum und Datenschutzerklärung juristisch prüfen lassen
-- [ ] App-Adresse der Trainer-Abrechnung eintragen (`content/trainer-abrechnung.ts`)
-- [ ] Screenshots der Trainer-App auf der Projektseite
+- [x] App-Adresse der Trainer-Abrechnung eingetragen
+- [x] Screenshot der Trainer-App auf der Projektseite
 - [ ] Testimonials: Freigabe der drei Zitate einholen
 - [ ] Favicon und Open-Graph-Bild
 - [ ] Sitemap und robots unter `/johannes`
