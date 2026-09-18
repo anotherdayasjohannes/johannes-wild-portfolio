@@ -2,59 +2,76 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./content/**/*.{ts,tsx}",
   ],
+  corePlugins: {
+    container: false,
+  },
   theme: {
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      bg: "var(--bg)",
+      fg: "var(--fg)",
+      muted: "var(--muted)",
+      line: "var(--line)",
+      surface: "var(--surface)",
+      overlay: "var(--overlay)",
+      "on-photo": "var(--on-photo)",
+      black: "#0a0a0a",
+      white: "#ffffff",
+    },
+    borderRadius: {
+      none: "0",
+      DEFAULT: "0",
+      full: "9999px",
+    },
+    boxShadow: {
+      none: "none",
+    },
+    fontFamily: {
+      sans: ["var(--font-switzer)", "system-ui", "sans-serif"],
+      serif: ["var(--font-instrument-serif)", "Georgia", "serif"],
+    },
+    fontSize: {
+      display: [
+        "clamp(2.75rem, 6vw, 4.5rem)",
+        { lineHeight: "0.85", letterSpacing: "-0.04em", fontWeight: "400" },
+      ],
+      quote: [
+        "clamp(1.75rem, 4vw, 3.625rem)",
+        { lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "400" },
+      ],
+      h2: [
+        "clamp(2rem, 3.2vw, 2.5rem)",
+        { lineHeight: "1", letterSpacing: "-0.03em", fontWeight: "500" },
+      ],
+      lead: [
+        "clamp(1.375rem, 2.2vw, 1.625rem)",
+        { lineHeight: "1.15", letterSpacing: "-0.03em", fontWeight: "400" },
+      ],
+      body: ["1.125rem", { lineHeight: "1.4", letterSpacing: "0" }],
+      caption: ["0.9375rem", { lineHeight: "1.25", letterSpacing: "-0.02em" }],
+      meta: ["0.875rem", { lineHeight: "1.17", letterSpacing: "-0.02em" }],
+      label: [
+        "0.8125rem",
+        { lineHeight: "1.17", letterSpacing: "0.02em", fontWeight: "500" },
+      ],
+    },
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        // Adobe Color Palette - UI/UX Theme
-        brand: {
-          primary: "#42628C",    // UI/UX-3 - Main brand
-          secondary: "#253B59",  // UI/UX-2 - Supporting
-          accent: "#5A7FB8",     // Lighter variant
-        },
-        dark: {
-          bg: "#0D0D0D",         // UI/UX-5 - Main background
-          surface: "#1A2A40",    // UI/UX-1 - Cards
-          elevated: "#253B59",   // UI/UX-2 - Elevated
-          border: "#253B59",     // UI/UX-2 - Borders
-          text: {
-            primary: "#F2F2F2",  // UI/UX-4
-            secondary: "#D1D5DB",
-            muted: "#9CA3AF",
-          },
-          accent: {
-            primary: "#42628C",  // UI/UX-3
-            secondary: "#5A7FB8",
-          }
-        }
+      spacing: {
+        gutter: "20px",
+        30: "7.5rem",
+        40: "10rem",
+        55: "13.75rem",
       },
-      fontFamily: {
-        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-geist-mono)', 'monospace'],
+      aspectRatio: {
+        portrait: "4 / 5",
       },
-      animation: {
-        'fade-in': 'fadeIn 0.6s ease-in-out',
-        'slide-up': 'slideUp 0.6s ease-out',
-        'slide-in': 'slideIn 0.6s ease-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        slideIn: {
-          '0%': { transform: 'translateX(-20px)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' },
-        },
+      transitionTimingFunction: {
+        out: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

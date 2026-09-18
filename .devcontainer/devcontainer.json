@@ -8,27 +8,22 @@
     }
   },
   
-  "forwardPorts": [3100, 3444],
+  "forwardPorts": [3100],
   "portsAttributes": {
     "3100": {
       "label": "Frontend (Next.js)",
       "onAutoForward": "notify"
-    },
-    "3444": {
-      "label": "Sanity Studio",
-      "onAutoForward": "notify"
     }
   },
   
-  "postCreateCommand": "cd frontend && npm install && cd ../studio && npm install",
+  "postCreateCommand": "cd frontend && npm install",
   
   "customizations": {
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "bradlc.vscode-tailwindcss",
-        "sanity-io.vscode-sanity"
+        "bradlc.vscode-tailwindcss"
       ],
       "settings": {
         "editor.formatOnSave": true,

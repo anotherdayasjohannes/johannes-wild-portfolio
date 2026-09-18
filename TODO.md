@@ -1,210 +1,46 @@
-# TODO - Johannes Wild Portfolio
+# TODO
 
-Track progress and coordinate between Claude (planning/architecture) and Cursor (implementation).
+Phasen nach dem Restart-Proposal (Sep 2026).
 
-## 🎯 Current Sprint: Foundation Setup
+## Phase 1: Fundament
 
-### ✅ Completed
-- [x] Project structure created
-- [x] README documentation
+- [x] Alten `frontend/`- und `studio/`-Stand sowie veraltete Zusammenfassungen entfernen
+- [x] Neues Scaffold: Next.js 14.2, App Router, TypeScript strict, Tailwind, ESLint, Port 3100
+- [x] Design-Tokens als CSS-Variablen (warm hell, dunkle Variante vorbereitet)
+- [x] Switzer self-hosted, Instrument Serif für das Zitat
+- [x] Motion-Primitive: SplitText, FadeUp, Hero-Scale, Varianten mit `useReducedMotion`
+- [x] Komponenten: Header, Hero, SectionLabel, HairlineList, Quote, Accordion, Footer
+- [x] Hero mit echtem Foto (Desktop/Mobile-Quelle)
+- [ ] Vercel-Preview-Deployment einrichten
 
-### 🏗️ In Progress
-- [ ] Initialize Next.js with TypeScript
-- [ ] Initialize Sanity Studio
-- [ ] Create Git repository
+## Phase 2: Inhalt
 
-### 📋 Next Up
-- [ ] Configure Tailwind CSS
-- [ ] Set up Sanity schemas
-- [ ] Create basic layout components
+- [x] Startseite mit Texten aus dem WordPress-Export (Über mich, Stationen, Stimmen, Kontakt)
+- [x] Projektseite `/trainer-abrechnung` (Beschreibung, Installation als PWA, Datenschutz, Kontakt)
+- [x] `/impressum` und `/datenschutz` als Struktur
+- [x] Positionierungszeile unter dem Namen („Übernimmt Verantwortung. Gestaltet Lösungen.“)
+- [x] Nutzungsrechte der Fotos für das Web bestätigt, Credit bleibt
+- [x] „(Projekte)“-Raster mit `content/projects.ts` (zwei Seed-Einträge)
+- [x] Acht Projekte aus dem Inventar mit Screenshots (WebP) eingetragen
+- [x] Impressum und Datenschutzerklärung als vollständige Entwürfe (`content/legal.ts`)
+- [ ] Impressum und Datenschutzerklärung juristisch prüfen lassen
+- [x] App-Adresse der Trainer-Abrechnung eingetragen
+- [x] Screenshot der Trainer-App auf der Projektseite
+- [ ] Testimonials: Freigabe der drei Zitate einholen
+- [ ] Favicon und Open-Graph-Bild
+- [ ] Sitemap und robots unter `/johannes`
 
----
+## Phase 3: Launch
 
-## Phase 1: Foundation (Week 1-2)
+- [x] Domain entschieden: `wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`), `basePath` gesetzt
+- [ ] `wirwilden.de` auf Vercel zeigen lassen; Redirect `/` → `/johannes` entfernen, sobald eine Familien-Startseite existiert
+- [ ] Falls Fallback: DNS bei netcup auf Vercel umstellen, UCS-Portal nach `ucs.wilderserver.de`
+- [ ] WordPress-Container in Univention entfernen
+- [ ] GoDaddy-Hosting für `wirwilden.de` kündigen, Mail und Hochzeits-Redirect behalten
+- [ ] Zugänglichkeits- und Performance-Check (Lighthouse)
 
-### Frontend Setup
-- [ ] Initialize Next.js 14 with App Router
-- [ ] Configure TypeScript
-- [ ] Set up Tailwind CSS
-- [ ] Install dependencies:
-  - [ ] @sanity/client
-  - [ ] framer-motion
-  - [ ] react-hook-form
-  - [ ] next-sanity
-  - [ ] @portabletext/react
-- [ ] Create basic layout structure
-- [ ] Set up dark theme configuration
-- [ ] Configure fonts (similar to current site)
+## Später
 
-### Sanity Studio Setup
-- [ ] Initialize Sanity project
-- [ ] Create schemas:
-  - [ ] siteSettings (singleton)
-  - [ ] profile (singleton)
-  - [ ] skills
-  - [ ] experience
-  - [ ] projects
-  - [ ] testimonials (optional)
-- [ ] Configure Sanity Vision plugin
-- [ ] Set up image handling
-
-### Git & Deployment
-- [ ] Initialize Git repository
-- [ ] Create `.gitignore`
-- [ ] First commit with base structure
-- [ ] Connect to GitHub
-- [ ] Link to Vercel
-- [ ] Set up environment variables
-
----
-
-## Phase 2: Content & Components (Week 2-3)
-
-### Components to Build
-- [ ] Layout
-  - [ ] Header/Navigation
-  - [ ] Footer
-  - [ ] PageWrapper (with border lines)
-- [ ] Sections
-  - [ ] HeroSection (with photo)
-  - [ ] AboutSection
-  - [ ] MotivationSection
-  - [ ] SkillsSection (with progress bars)
-  - [ ] ExperienceTimeline
-  - [ ] ProjectsGrid
-  - [ ] ContactSection
-- [ ] UI Components
-  - [ ] Button
-  - [ ] Card
-  - [ ] SkillBar
-  - [ ] SectionTitle
-  - [ ] ContactForm
-
-### Content Migration
-- [ ] Extract content from WordPress HTML
-- [ ] Structure content for Sanity
-- [ ] Import profile information
-- [ ] Import skills data
-- [ ] Import experience entries
-- [ ] Import project descriptions
-- [ ] Migrate images
-- [ ] Set up contact form handling
-
-### Sanity Integration
-- [ ] Create Sanity client utility
-- [ ] Write GROQ queries
-- [ ] Implement data fetching
-- [ ] Add loading states
-- [ ] Test content updates
-
----
-
-## Phase 3: Polish & Launch (Week 3-4)
-
-### Styling & Animations
-- [ ] Replicate dark theme aesthetic
-- [ ] Add smooth scroll behavior
-- [ ] Implement scroll-triggered animations
-- [ ] Add hover effects
-- [ ] Optimize for mobile
-- [ ] Add loading animations
-- [ ] Implement typing animation (for hero)
-
-### Features
-- [ ] Contact form submission
-- [ ] Form validation
-- [ ] Success/error messages
-- [ ] Social media links
-- [ ] Download CV functionality (optional)
-- [ ] Language toggle DE/EN (future)
-
-### SEO & Performance
-- [ ] Meta tags configuration
-- [ ] Open Graph tags
-- [ ] Sitemap generation
-- [ ] Image optimization
-- [ ] Performance audit
-- [ ] Accessibility audit
-- [ ] Analytics setup (GA4)
-
-### Deployment
-- [ ] Test production build
-- [ ] Deploy to Vercel
-- [ ] Configure custom domain
-- [ ] Set up SSL
-- [ ] Test on multiple devices
-- [ ] Final review
-
----
-
-## Phase 4: Make It Cool 😎 (Ongoing)
-
-### Future Enhancements
-- [ ] Particle/glitch effects on hero
-- [ ] Interactive skill visualization
-- [ ] Project hover effects
-- [ ] Parallax scrolling
-- [ ] Custom cursor
-- [ ] Dark/light theme toggle
-- [ ] Blog functionality
-- [ ] Case studies section
-- [ ] Testimonials slider
-- [ ] Easter eggs 🥚
-
----
-
-## 📝 Notes & Decisions
-
-### Technology Decisions
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **CMS**: Sanity.io
-- **Hosting**: Vercel
-- **Animations**: Framer Motion
-
-### Design Decisions
-- Keep initial version close to current design (dark theme, clean layout)
-- Focus on performance and simplicity first
-- Add "cool" features incrementally
-
-### Content Structure
-- Single-page application (same as current)
-- Sections: Hero, About, Motivation, Skills, Experience, Projects, Contact
-- German language (English translation later)
-
----
-
-## 🤝 Collaboration Notes
-
-### When to use Claude:
-- Planning new features
-- Schema design
-- Architecture decisions
-- Code reviews
-- Complex problem solving
-
-### When to use Cursor:
-- Component implementation
-- Styling and CSS
-- Bug fixing
-- Refactoring
-- Quick iterations
-
-### Communication:
-- Update this TODO.md as you complete tasks
-- Add notes/questions in the relevant section
-- Mark blockers with ⚠️
-- Mark urgent items with 🔥
-
----
-
-## ⚠️ Blockers & Questions
-
-None yet! Let's build! 🚀
-
----
-
-## 🎉 Wins & Milestones
-
-- Project structure created! ✨
+- [ ] Dunkles Theme aktivierbar machen (Variablen liegen bereit)
+- [ ] Englische Fassung
+- [ ] Sanity (Projekt `6bj2fvps`) nur, falls Pflege ohne Code nötig wird
