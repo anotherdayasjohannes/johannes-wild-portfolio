@@ -14,7 +14,15 @@ export const metadata: Metadata = {
   title: trainerTool.name,
   description: trainerTool.tagline,
   alternates: { canonical: canonical("/trainer-abrechnung") },
-  openGraph: { url: canonical("/trainer-abrechnung") },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    siteName: site.name,
+    title: trainerTool.name,
+    description: trainerTool.tagline,
+    url: canonical("/trainer-abrechnung"),
+  },
+  twitter: { card: "summary_large_image", title: trainerTool.name, description: trainerTool.tagline },
 };
 
 export default function TrainerAbrechnungPage() {

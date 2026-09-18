@@ -1,3 +1,5 @@
+import { site } from "./site";
+
 export type FamilyLink = { label: string; href: string };
 
 export type FamilyMember = {
@@ -42,7 +44,7 @@ export const family = {
       color: "orange",
       href: "/johannes",
       head: "wirwilden.de/johannes",
-      sub: "Trainer, Berater, Mitgründer",
+      sub: site.roleShort,
       portrait: { src: "/photos/family/johannes.webp", alt: "Johannes Wild, Porträt" },
     },
     // Children: first names only, no photos, no details, no sub-pages.
