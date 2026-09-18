@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { family } from "@/content/family";
 import { rootCanonical, SITE_ORIGIN } from "@/lib/paths";
 import { sans } from "./fonts";
@@ -38,7 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={sans.variable}>
-      <body className="flex min-h-svh flex-col">{children}</body>
+      <body className="flex min-h-svh flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
