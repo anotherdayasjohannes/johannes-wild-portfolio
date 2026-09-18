@@ -12,7 +12,7 @@ export const site = {
   claim: ["Übernimmt Verantwortung.", "Gestaltet Lösungen."] as const,
   positioning: "Übernimmt Verantwortung. Gestaltet Lösungen.",
   roleLine: "Trainer, Berater, Mitgründer · Reichersbeuern",
-  focus: "Advocacy, Aufbau, Beratung",
+  focus: "Digital, Marketing, Aufbau",
   email: "johannes.wild@me.com",
   linkedin: "https://www.linkedin.com/in/johanneswild",
   linkedinLabel: "linkedin.com/in/johanneswild",
