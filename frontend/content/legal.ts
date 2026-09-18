@@ -113,7 +113,7 @@ export const datenschutz = {
     {
       heading: "2. Überblick",
       paragraphs: [
-        "Diese Website ist ein privates, nicht kommerzielles Angebot. Sie setzt keine Cookies, verwendet keine Analyse-, Tracking- oder Werbedienste und bindet keine Inhalte von Drittanbietern ein, die beim Aufruf Daten übertragen. Personenbezogene Daten fallen nur in dem Umfang an, der für den technischen Betrieb notwendig ist, sowie dann, wenn Sie selbst Kontakt aufnehmen.",
+        "Diese Website ist ein privates, nicht kommerzielles Angebot. Sie setzt keine Cookies und verwendet keine Werbedienste und keine Social-Media-Plugins. Zur Reichweitenmessung kommt Vercel Web Analytics zum Einsatz, das ohne Cookies und ohne seitenübergreifendes Tracking arbeitet (Abschnitt 4). Personenbezogene Daten fallen nur in dem Umfang an, der für den technischen Betrieb und diese Messung notwendig ist, sowie dann, wenn Sie selbst Kontakt aufnehmen.",
       ],
     },
     {
@@ -149,9 +149,12 @@ export const datenschutz = {
       ],
     },
     {
-      heading: "4. Cookies und Analyse",
+      heading: "4. Cookies und Reichweitenmessung",
       paragraphs: [
-        "Diese Website setzt keine Cookies. Es kommen keine Webanalyse-Dienste, kein Tracking, keine Werbenetzwerke und keine Social-Media-Plugins zum Einsatz. Ein Einwilligungsbanner ist deshalb nicht erforderlich.",
+        "Diese Website setzt keine Cookies. Es kommen keine Werbenetzwerke und keine Social-Media-Plugins zum Einsatz.",
+        `Zur Messung der Reichweite nutze ich Vercel Web Analytics des Hosters ${host.name}, ${host.address}. Der Dienst arbeitet ohne Cookies und ohne seitenübergreifendes Tracking. Erfasst werden aggregiert Seitenaufrufe, die aufgerufene Seite, der Referrer, das Herkunftsland sowie Geräteklasse, Betriebssystem und Browser. Zur Unterscheidung von Besuchen innerhalb eines Tages wird aus IP-Adresse und User Agent ein Hashwert gebildet, der nach 24 Stunden verworfen wird. Die IP-Adresse selbst wird nicht gespeichert, es werden keine Profile einzelner Personen angelegt.`,
+        "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt darin zu erfahren, ob und wie die Seiten genutzt werden. Die Verarbeitung erfolgt im Rahmen der Auftragsverarbeitung mit dem Hoster (Abschnitt 3.2). Da keine Cookies gesetzt und keine personenbezogenen Profile gebildet werden, ist kein Einwilligungsbanner erforderlich.",
+        `Sie können der Verarbeitung nach Art. 21 DSGVO jederzeit widersprechen, formlos per E-Mail an ${legalContact.email}.`,
       ],
     },
     {
