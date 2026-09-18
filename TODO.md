@@ -35,10 +35,18 @@ Phasen nach dem Restart-Proposal (Sep 2026), ergänzt um den Redesign-Durchgang 
 - [ ] Weitere Live-Kacheln: Discogs (Token), Strava (OAuth), siehe Konzept
 - [ ] Namensspiel „Vertikal“ (WILD im linken Rand der Unterseiten), optional
 
+## Familienseite (Branch `family/vier-kacheln`)
+
+- [x] Konzept 1 „Vier Kacheln“ unter `/`, persönliche Seite nach `app/johannes/`, kein `basePath`
+- [x] Impressum und Datenschutz an der Domain-Root, Redirects von `/johannes/…`
+- [x] `sitemap.ts`, `robots.ts`
+- [ ] LinkedIn-Slug `sandrawild` im eingeloggten Browser bestätigen
+- [ ] Einwilligung des Kollegen auf dem Über-mich-Foto (0050) bestätigen
+
 ## Phase 3: Launch
 
-- [x] Domain entschieden: `wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`), `basePath` gesetzt
-- [ ] `wirwilden.de` auf Vercel zeigen lassen; Redirect `/` → `/johannes` entfernen, sobald eine Familien-Startseite existiert
+- [x] Domain entschieden: `wirwilden.de` (Familie) und `wirwilden.de/johannes`
+- [ ] `wirwilden.de` auf Vercel zeigen lassen (Domain im Projekt anlegen, DNS bei GoDaddy)
 - [ ] Vercel Deployment Protection für Produktion lockern oder Custom Domain anbinden
 - [ ] Falls Fallback: DNS bei netcup auf Vercel umstellen, UCS-Portal nach `ucs.wilderserver.de`
 - [ ] WordPress-Container in Univention entfernen
