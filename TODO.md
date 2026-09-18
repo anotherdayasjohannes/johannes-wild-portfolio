@@ -31,8 +31,9 @@ Phasen nach dem Restart-Proposal (Sep 2026).
 
 ## Phase 3: Launch
 
-- [ ] Domain entscheiden: `wilderserver.de` oder neue Brand-Domain
-- [ ] DNS bei netcup auf Vercel umstellen, UCS-Portal nach `ucs.wilderserver.de`
+- [x] Domain entschieden: `wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`), `basePath` gesetzt
+- [ ] `wirwilden.de` auf Vercel zeigen lassen; Redirect `/` → `/johannes` entfernen, sobald eine Familien-Startseite existiert
+- [ ] Falls Fallback: DNS bei netcup auf Vercel umstellen, UCS-Portal nach `ucs.wilderserver.de`
 - [ ] WordPress-Container in Univention entfernen
 - [ ] GoDaddy-Hosting für `wirwilden.de` kündigen, Mail und Hochzeits-Redirect behalten
 - [ ] Zugänglichkeits- und Performance-Check (Lighthouse)

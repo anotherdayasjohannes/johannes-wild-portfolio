@@ -17,7 +17,8 @@ Persönliche Website von Johannes Wild und Landing Page für die SCR Trainer-Abr
 frontend/
 ├── app/            # Routen: /, /trainer-abrechnung, /impressum, /datenschutz
 ├── components/     # layout/, sections/, ui/, motion/
-├── content/        # Texte, Stationen, Stimmen, Fotos, Rechtliches (TS)
+├── content/        # Texte, Stationen, Projekte, Stimmen, Fotos, Rechtliches (TS)
+├── lib/            # paths.ts: basePath, asset(), canonical()
 └── public/photos/  # Web-Previews der Porträts (Fotos: Bernhard Huber)
 docs/               # Ältere Projektdokumentation
 ```
@@ -38,7 +39,7 @@ Produktiv: `https://wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`)
 
 ## Inhalte pflegen
 
-Alle Texte liegen in `frontend/content/*.ts`. Offene Punkte sind dort mit `TODO` markiert (Positionierung, App-Adresse, Impressums- und Datenschutzangaben).
+Alle Texte liegen in `frontend/content/*.ts`. Offene Punkte sind dort mit `TODO` markiert (Projekt-Inventar, App-Adresse, Impressums- und Datenschutzangaben).
 
 ## Status
 
