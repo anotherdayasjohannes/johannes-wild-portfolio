@@ -16,11 +16,21 @@ export const site = {
   email: "johannes.wild@me.com",
   linkedin: "https://www.linkedin.com/in/johanneswild",
   linkedinLabel: "linkedin.com/in/johanneswild",
+  bluesky: "https://bsky.app/profile/johannesthewild.eurosky.social",
+  blueskyHandle: "@johannesthewild.eurosky.social",
+  github: "https://github.com/anotherdayasjohannes",
   location: "Reichersbeuern, Oberbayern",
   photoCredit: "Fotos: Bernhard Huber",
   contactLead: "Sprechen wir über Ihr Vorhaben.",
   copyrightYear: new Date().getFullYear(),
 };
+
+/** Rendered wherever the social links appear (footer Kontakt column). rel="me" for profile verification. */
+export const socials: NavItem[] = [
+  { label: "LinkedIn", href: site.linkedin },
+  { label: "Bluesky", href: site.bluesky },
+  { label: "GitHub", href: site.github },
+];
 
 export const family = {
   label: "wir Wilden",

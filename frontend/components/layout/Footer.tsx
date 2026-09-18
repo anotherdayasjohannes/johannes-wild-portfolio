@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerLinks, footerPages, site } from "@/content/site";
+import { footerLinks, footerPages, site, socials } from "@/content/site";
 import { fontCredit } from "@/app/fonts";
 import { ArrowLink } from "@/components/ui/ArrowLink";
 
@@ -28,9 +28,11 @@ export function Footer() {
       </FooterColumn>
 
       <FooterColumn title="Kontakt">
-        <a href={site.linkedin} className="u" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>
+        {socials.map((s) => (
+          <a key={s.href} href={s.href} className="u" target="_blank" rel="me noopener noreferrer">
+            {s.label}
+          </a>
+        ))}
         <a href={`mailto:${site.email}`} className="u">
           E-Mail
         </a>
