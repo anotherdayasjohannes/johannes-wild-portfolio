@@ -22,7 +22,7 @@ export const site = {
   location: "Reichersbeuern, Oberbayern",
   photoCredit: "Fotos: Bernhard Huber",
   photoCreditUrl: "https://bernhardhuber.com/",
-  contactLead: "Sprechen wir über Ihr Vorhaben.",
+  contactLead: "Kaffee? Gerne.",
   copyrightYear: new Date().getFullYear(),
 };
 
