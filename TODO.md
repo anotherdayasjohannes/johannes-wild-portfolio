@@ -18,14 +18,16 @@ Phasen nach dem Restart-Proposal (Sep 2026).
 - [x] Startseite mit Texten aus dem WordPress-Export (Über mich, Stationen, Stimmen, Kontakt)
 - [x] Projektseite `/trainer-abrechnung` (Beschreibung, Installation als PWA, Datenschutz, Kontakt)
 - [x] `/impressum` und `/datenschutz` als Struktur
-- [ ] Positionierungszeile unter dem Namen mit Johannes abstimmen (`content/site.ts`)
+- [x] Positionierungszeile unter dem Namen („Übernimmt Verantwortung. Gestaltet Lösungen.“)
+- [x] Nutzungsrechte der Fotos für das Web bestätigt, Credit bleibt
+- [x] „(Projekte)“-Raster mit `content/projects.ts` (zwei Seed-Einträge)
+- [ ] Projekte aus dem Inventar eintragen, Platzhalterkarte ersetzen, Bilder ergänzen
 - [ ] Impressum und Datenschutz vervollständigen (TODO-Marker in `content/legal.ts`), juristisch prüfen
 - [ ] App-Adresse der Trainer-Abrechnung eintragen (`content/trainer-abrechnung.ts`)
 - [ ] Screenshots der Trainer-App auf der Projektseite
 - [ ] Testimonials: Freigabe der drei Zitate einholen
-- [ ] Nutzungsrechte der Fotos für das Web mit Bernhard Huber bestätigen
 - [ ] Favicon und Open-Graph-Bild
-- [ ] `metadataBase`, Sitemap und robots, sobald die Domain feststeht
+- [ ] Sitemap und robots unter `/johannes`
 
 ## Phase 3: Launch
 

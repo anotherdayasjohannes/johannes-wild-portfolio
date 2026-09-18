@@ -17,7 +17,9 @@ frontend/
 ```
 
 ## Entwicklung
-- `cd frontend && npm run dev` startet auf http://localhost:3100 (nicht 3000)
+- `cd frontend && npm run dev` startet auf http://localhost:3100/johannes (Port 3100, `basePath: "/johannes"`)
+- Statische Assets immer über `asset()` aus `lib/paths.ts` einbinden; `next/image` und `getImageProps` stellen den `basePath` nicht voran. `next/link` tut es selbst.
+- Canonical-URLs über `canonical()` aus `lib/paths.ts`
 - `npm run lint` und `npm run build` müssen vor einem Commit grün sein
 
 ## Design

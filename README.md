@@ -32,7 +32,9 @@ npm run lint
 npm run build
 ```
 
-Port 3100 ist fest eingestellt, um Konflikte mit anderen Projekten zu vermeiden.
+Port 3100 ist fest eingestellt, um Konflikte mit anderen Projekten zu vermeiden. Die Seite läuft unter dem Pfad `/johannes` (`basePath` in `next.config.mjs`), lokal also unter http://localhost:3100/johannes. `/` leitet vorerst dorthin weiter.
+
+Produktiv: `https://wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`). Statische Bilder werden über `asset()` aus `lib/paths.ts` eingebunden, da `next/image` den `basePath` nicht selbst voranstellt.
 
 ## Inhalte pflegen
 
