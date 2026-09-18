@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Warm light theme (default). Photography carries the color, UI is two-tone. */
+:root {
+  --bg: #f5f0ed;
+  --fg: #0a0a0a;
+  --muted: #999999;
+  --line: rgba(0, 0, 0, 0.2);
+  --surface: #ffffff;
+  --overlay: rgba(0, 0, 0, 0.25);
+  --on-photo: #f5f0ed;
+}
+
+/* Dark counterpart: same rules, inverted. Switch with <html data-theme="dark">. */
+[data-theme="dark"] {
+  --bg: #0c0b0a;
+  --fg: #f5f0ed;
+  --muted: #8a8580;
+  --line: rgba(255, 255, 255, 0.2);
+  --surface: #151311;
+  --overlay: rgba(0, 0, 0, 0.35);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  color: var(--fg);
+  background: var(--bg);
+  font-family: var(--font-switzer), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Text link with a 1px underline that wipes in from the left on hover. */
+  .link-wipe {
+    position: relative;
+    display: inline-block;
+  }
+  .link-wipe::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.15em;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .link-wipe:hover::after,
+  .link-wipe:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Pill button: background wipes in from the left, arrow rotates. */
+  .pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 0.55em 1.1em;
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    line-height: 1;
+    transition: color 0.35s ease;
+  }
+  .pill::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    background: currentColor;
+    transform: translateX(-101%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pill:hover::before,
+  .pill:focus-visible::before {
+    transform: translateX(0);
+  }
+  .pill > .pill-arrow {
+    display: inline-block;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pill:hover > .pill-arrow,
+  .pill:focus-visible > .pill-arrow {
+    transform: rotate(-90deg);
+  }
+  .pill-on-fg:hover,
+  .pill-on-fg:focus-visible {
+    color: var(--bg);
+  }
+  .pill-on-fg:hover::before,
+  .pill-on-fg:focus-visible::before {
+    background: var(--fg);
+  }
+  .pill-on-photo:hover,
+  .pill-on-photo:focus-visible {
+    color: #0a0a0a;
+  }
+  .pill-on-photo:hover::before,
+  .pill-on-photo:focus-visible::before {
+    background: var(--on-photo);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-wipe::after,
+    .pill,
+    .pill::before,
+    .pill > .pill-arrow {
+      transition: none;
+    }
+  }
+}
