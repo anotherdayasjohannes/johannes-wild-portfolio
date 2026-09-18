@@ -62,8 +62,9 @@ export const impressum = {
     {
       heading: "Bildnachweis",
       paragraphs: [
-        "Fotografien: Bernhard Huber, bernhardhuber.com. Die Nutzung auf dieser Website erfolgt mit Lizenz des Fotografen.",
+        "Fotografien: Bernhard Huber. Die Nutzung auf dieser Website erfolgt mit Lizenz des Fotografen.",
       ],
+      link: { label: "bernhardhuber.com", href: "https://bernhardhuber.com/" },
     },
     {
       heading: "Haftung für Inhalte",
@@ -169,7 +170,7 @@ export const datenschutz = {
     {
       heading: "7. Externe Links",
       paragraphs: [
-        "Die Website verlinkt auf externe Angebote, insbesondere auf mein Profil bei LinkedIn (LinkedIn Ireland Unlimited Company) und auf Quellcode bei GitHub (GitHub, Inc.). Es handelt sich um einfache Verweise ohne eingebettete Inhalte. Beim Aufruf dieser Website werden keine Daten an diese Anbieter übertragen. Erst wenn Sie einem Link folgen, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.",
+        "Die Website verlinkt auf externe Angebote, insbesondere auf meine Profile bei LinkedIn (LinkedIn Ireland Unlimited Company) und Bluesky (Bluesky Social, PBC) sowie auf Quellcode bei GitHub (GitHub, Inc.). Es handelt sich um einfache Verweise ohne eingebettete Inhalte. Beim Aufruf dieser Website werden keine Daten an diese Anbieter übertragen. Erst wenn Sie einem Link folgen, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.",
       ],
     },
     {

@@ -4,7 +4,21 @@ export const stationsLabel = "Stationen";
 
 export const stations: Station[] = [
   {
-    period: "2020 – heute",
+    period: "2024 – heute",
+    role: "Head of Digital and Marketing",
+    org: "MOONICH GmbH",
+    summary:
+      "Digital, Marketing und E-Commerce für die Markengruppe. Corporate-Website „Brands for Atmosphere“ und die Markenwebsites HEATSCOPE, NEOZ, heatme, Regiestuhl und Heizstrahler-Direkt auf einem gemeinsamen Fundament. Shop-Migration von Shopware zu Shopify.",
+  },
+  {
+    period: "2024 – heute",
+    role: "Mitgründer, Marketing",
+    org: "3lectrify GmbH",
+    summary:
+      "Mitgründer eines Unternehmens für Gebäude-Elektrifizierung. Marke, Website und Design-System, Marketing und Vertriebsstruktur.",
+  },
+  {
+    period: "2020 – 2023",
     role: "Department Head Advocacy, Grants, Consulting",
     org: "iFixit GmbH",
     summary:

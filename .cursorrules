@@ -2,44 +2,50 @@
 
 ## Stack
 - Next.js 14.2 (App Router, React 18), TypeScript strict
-- Tailwind CSS 3.4, Theme über CSS-Variablen in `frontend/app/globals.css`
+- Tailwind CSS 3.4, Tokens als CSS-Variablen in `frontend/app/globals.css`
 - Framer Motion 11
-- Inhalte als typisierte Dateien in `frontend/content/*.ts`; kein CMS (Sanity nur bei echtem Bedarf, Projekt `6bj2fvps`)
-- Deployment: Vercel
+- Inhalte als typisierte Dateien in `frontend/content/*.ts`; kein CMS
+- Deployment: Vercel, Root Directory `frontend`, Framework Preset Next.js
 
 ## Struktur
 ```
 frontend/
-├── app/            # Routen, fonts.ts, globals.css
+├── app/            # Routen, fonts.ts (Weiche), fonts.hauss.ts, fonts.hanken.ts, globals.css
 ├── components/     # layout/, sections/, ui/, motion/
 ├── content/        # Texte und Daten mit Typen (types.ts)
-└── public/photos/  # Porträts (Fotos: Bernhard Huber)
+├── lib/            # paths.ts, wildwuchs/ (Server-Fetches)
+└── public/         # photos/, projects/
 ```
 
 ## Entwicklung
-- `cd frontend && npm run dev` startet auf http://localhost:3100/johannes (Port 3100, `basePath: "/johannes"`)
-- Statische Assets immer über `asset()` aus `lib/paths.ts` einbinden; `next/image` und `getImageProps` stellen den `basePath` nicht voran. `next/link` tut es selbst.
+- `cd frontend && npm run dev` startet auf http://localhost:3100/johannes (`basePath: "/johannes"`)
+- Statische Assets immer über `asset()` aus `lib/paths.ts`; `next/image` stellt den `basePath` nicht voran. `next/link` tut es selbst.
 - Canonical-URLs über `canonical()` aus `lib/paths.ts`
 - `npm run lint` und `npm run build` müssen vor einem Commit grün sein
 
-## Design
-- Warm helles Theme: `--bg #f5f0ed`, `--fg #0a0a0a`, `--muted #999`, `--line rgba(0,0,0,.2)`. Dunkle Variante über `data-theme="dark"` vorbereitet.
-- Fotografie ist die einzige Farbe. Kein Radius (Pill-Button ausgenommen), keine Schatten, 1px-Hairlines.
-- 20px Seitenrand (`px-gutter`), kein max-width-Container, großzügige vertikale Abstände.
-- Type-Scale in `tailwind.config.ts`: `text-display`, `text-quote`, `text-h2`, `text-lead`, `text-body`, `text-caption`, `text-meta`, `text-label`.
-- Kleine Labels in Klammern: `(Stationen)` über `SectionLabel`.
-- Schriften: Switzer (self-hosted, `app/fonts/`), Instrument Serif nur für das Zitat.
+## Schrift
+- `--font-sans` ist die einzige Referenz. Standard Hanken Grotesk (`app/fonts.hanken.ts`); At Haüss nur mit `SITE_FONT=hauss` und der Datei in `app/fonts/private/` (gitignored). Die Haüss-Datei nie committen, nie subsetten (EULA), siehe `app/fonts/LICENSE-NOTE.md`.
+- Gewichte: 300 Light für Statements und Karten-Titel, 350 Retina für Lesetext, 400 für Rollen, 500 für Labels, 600 nur für WILD, 100/800 nur im Wildwuchs-Titel.
+
+## Gestaltung („München 72“, dunkel „Anthrazit“)
+- Tokens: `bg`, `surface`, `ink`, `ink-2`, `line`, `pink`, `pink-text`, `orange`, `orange-text`, `signal`, `blue`, `blue-text`. Dunkle Werte unter `prefers-color-scheme: dark`, kein Toggle.
+- Farbe ist Information: Orange = Arbeit, Rosé = Persönliches, Grau = Verwaltung. Akzent nie im Fließtext oder auf Sätzen. Kleine Labels nur in den `-text`-Tönen; die hellen Töne ab 24 px oder als Ziffer.
+- Genau ein Signal-Element pro Seite: der orange Punkt hinter WILD (`text-signal`).
+- Raster: 12 Spalten, `gap-x-gutter` (30 px, mobil 15 px), `px-gutter`, keine max-width. Rhythmus: Hero-Leere, dann 30-px-Reihen, `mt-section` (140 px) zwischen Abschnitten, `mt-footer` (160 px) vor dem Footer. Kein gleichförmiges Section-Padding.
+- Type-Scale: `text-ui` 15, `text-body` 21, `text-lead` 34, `text-display`, `text-wild`. Zeilenhöhen `leading-tight/read/list`. Kein Uppercase außer dem JOHANNES-Label, kein Letterspacing unter 100 px.
+- OpenType: `tnum` auf Jahren und Zählern, `case` bei Pfeilen und Klammern, `solid` (ss02) auf Index-Ziffern.
+- Kein Radius, kein Schatten, keine Overlays auf Fotos. Kacheln über `.tile` (Haarlinie, Surface), Links über `.u` (einblendende Unterstreichung), Labels über `.marker`.
+- Fokusring Hellblau (`--blue`), Selection Rosé.
 
 ## Motion
-- Nur über Varianten aus `components/motion/variants.ts`; jede Animation prüft `useReducedMotion`.
-- Erlaubt: Wort-Rise-in im Hero (`SplitText`), Hero-Scale 1.1 → 1, Fade-up beim Scrollen (`FadeUp`), 3 % Bild-Zoom bei Hover, Underline-Wipe. Alles unter 0,7 s. Nichts darüber hinaus.
+- Nur über Varianten aus `components/motion/variants.ts`; `useReducedMotion` in jeder Komponente.
+- Erlaubt: WILD-Rise-in mit Gewichtsanlauf 100 → 600, `FadeUp`, `Stagger`/`StaggerItem` für Listen, 2 % Bild-Zoom über 2 s, Unterstreichung 0,3 s. Nichts darüber hinaus.
+
+## Wildwuchs
+- Statische Kacheln aus `content/wildwuchs.ts`. Live-Kacheln nur serverseitig (`lib/wildwuchs/*`), `revalidate`, Timeout 3 s, `null` bei Fehler → Kachel entfällt.
+- Env: `LASTFM_API_KEY`, `LASTFM_USER` (lokal `.env.local`, produktiv Vercel). Nie Schlüssel committen.
 
 ## Code
-- Server Components als Standard. `'use client'` nur, wo Motion oder State es verlangt.
-- Bilder über `next/image` mit `sizes`, `priority` nur im Hero. Keine gerundeten Ecken.
-- Texte ausschließlich aus `content/`, nicht in Komponenten hart kodieren.
-- Deutsche Texte, kurze Hauptsätze, keine Ausrufezeichen.
-- Semantisches HTML, sichtbare Fokus-Zustände, Alt-Texte, WCAG AA.
-
-## Offene Punkte
-- Siehe `TODO.md`. TODO-Marker in `content/` kennzeichnen fehlende Angaben.
+- Server Components als Standard. `'use client'` nur bei Motion oder State.
+- Texte ausschließlich aus `content/`. Deutsch, kurze Hauptsätze, keine Ausrufezeichen.
+- Semantisches HTML, Überschriften in Reihenfolge, Alt-Texte, WCAG AA.

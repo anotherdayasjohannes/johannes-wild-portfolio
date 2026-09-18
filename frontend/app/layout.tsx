@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/content/site";
 import { canonical, SITE_ORIGIN } from "@/lib/paths";
-import { instrumentSerif, switzer } from "./fonts";
+import { sans } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,7 +22,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f0ed",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f1f1ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#171615" },
+  ],
 };
 
 export default function RootLayout({
@@ -31,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className={`${switzer.variable} ${instrumentSerif.variable}`}>
-      <body className="min-h-svh flex flex-col">
+    <html lang="de" className={sans.variable}>
+      <body className="flex min-h-svh flex-col">
         <div className="flex-1">{children}</div>
         <Footer />
       </body>
