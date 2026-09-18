@@ -15,25 +15,24 @@ export function LegalPage({ label, title, intro, sections, updated }: LegalPageP
     <>
       <Header />
       <main>
-        <PageIntro label={label} title={title} lead={intro} />
-        <div className="px-gutter pb-30 md:pb-40">
+        <PageIntro label={label} tone="admin" title={title} lead={intro} hint={updated} />
+        <div className="mt-step px-gutter">
           <div className="border-t border-line">
             {sections.map((section) => (
               <section
                 key={section.heading}
-                className="grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-5 md:py-12"
+                className="grid grid-cols-12 gap-x-gutter gap-y-3 border-b border-line py-6 md:py-8"
               >
-                <h2 className="text-h2 md:col-span-5">{section.heading}</h2>
-                <div className="grid max-w-2xl gap-4 text-body text-fg/80 md:col-span-6 md:col-start-7">
+                <h2 className="col-span-12 text-body font-medium md:col-span-4">{section.heading}</h2>
+                <div className="col-span-12 grid max-w-[56ch] gap-3 text-body font-retina text-ink md:col-span-7 md:col-start-6">
                   {section.paragraphs.map((p) => (
                     <p key={p}>{p}</p>
                   ))}
                   {section.items ? (
-                    <ul className="grid gap-2">
+                    <ul className="grid gap-1.5 leading-list">
                       {section.items.map((item) => (
-                        <li key={item} className="flex gap-3">
-                          <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-fg" />
-                          <span>{item}</span>
+                        <li key={item} className="marker text-ink-2">
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -42,7 +41,6 @@ export function LegalPage({ label, title, intro, sections, updated }: LegalPageP
               </section>
             ))}
           </div>
-          {updated ? <p className="mt-6 text-meta text-muted">{updated}</p> : null}
         </div>
       </main>
     </>

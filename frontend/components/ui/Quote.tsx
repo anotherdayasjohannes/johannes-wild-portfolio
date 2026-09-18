@@ -5,16 +5,13 @@ type QuoteProps = {
   className?: string;
 };
 
-/** Large display quote in Instrument Serif with attribution. */
+/** Quote in Light 34, attribution as grey UI text. */
 export function Quote({ testimonial, className = "" }: QuoteProps) {
   return (
     <figure className={className}>
-      <blockquote className="font-serif text-quote text-fg">
-        „{testimonial.quote}“
-      </blockquote>
-      <figcaption className="mt-8 text-caption">
-        <span className="font-medium">{testimonial.name}</span>
-        <span className="text-muted"> · {testimonial.role}</span>
+      <blockquote className="max-w-[30ch] text-lead font-light">„{testimonial.quote}“</blockquote>
+      <figcaption className="mt-6 text-ui font-retina leading-list text-ink-2">
+        <span className="font-medium text-ink">{testimonial.name}</span> · {testimonial.role}
       </figcaption>
     </figure>
   );

@@ -7,15 +7,14 @@ import { easeOutExpo } from "@/components/motion/variants";
 
 type AccordionProps = {
   items: AccordionEntry[];
-  ordered?: boolean;
 };
 
-/** Hairline accordion. The plus icon is two 1px lines; one rotates to form a minus. */
-export function Accordion({ items, ordered = true }: AccordionProps) {
+/** Hairline accordion on the module. The plus is two 1px lines; the vertical one fades out when open. */
+export function Accordion({ items }: AccordionProps) {
   const [open, setOpen] = useState<number | null>(0);
   const reduceMotion = useReducedMotion();
   const baseId = useId();
-  const duration = reduceMotion ? 0 : 0.45;
+  const duration = reduceMotion ? 0 : 0.4;
 
   return (
     <div className="border-t border-line">
@@ -24,10 +23,7 @@ export function Accordion({ items, ordered = true }: AccordionProps) {
         const panelId = `${baseId}-panel-${i}`;
         const buttonId = `${baseId}-button-${i}`;
         return (
-          <div
-            key={item.title}
-            className={`border-b border-line ${isOpen ? "bg-bg" : "bg-surface"}`}
-          >
+          <div key={item.title} className="border-b border-line">
             <h3>
               <button
                 id={buttonId}
@@ -35,23 +31,16 @@ export function Accordion({ items, ordered = true }: AccordionProps) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex w-full items-center justify-between gap-5 py-5 text-left md:py-6"
+                className="grid w-full grid-cols-12 items-baseline gap-x-gutter py-4 text-left text-body md:py-5"
               >
-                <span className="flex items-baseline gap-4 text-lead">
-                  {ordered ? (
-                    <span className="text-label uppercase text-muted">
-                      ({String(i + 1).padStart(2, "0")})
-                    </span>
-                  ) : null}
-                  <span>{item.title}</span>
+                <span className="tnum col-span-2 text-ui font-medium text-orange-text md:col-span-1">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span
-                  className="relative h-4 w-4 shrink-0"
-                  aria-hidden
-                >
-                  <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-fg" />
+                <span className="col-span-9 font-normal md:col-span-10">{item.title}</span>
+                <span className="relative col-span-1 h-3.5 w-3.5 justify-self-end self-center" aria-hidden>
+                  <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-ink" />
                   <motion.span
-                    className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-fg"
+                    className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-ink"
                     animate={{ rotate: isOpen ? 90 : 0, opacity: isOpen ? 0 : 1 }}
                     transition={{ duration, ease: easeOutExpo }}
                   />
@@ -71,13 +60,15 @@ export function Accordion({ items, ordered = true }: AccordionProps) {
                   transition={{ duration, ease: easeOutExpo }}
                   className="overflow-hidden"
                 >
-                  <ol className="grid gap-3 pb-6 md:ml-[calc(2.75rem+1rem)] md:max-w-2xl">
-                    {item.body.map((line, j) => (
-                      <li key={j} className="flex gap-4 text-body">
-                        <span className="text-meta text-muted pt-1">{j + 1}</span>
-                        <span>{line}</span>
-                      </li>
-                    ))}
+                  <ol className="grid grid-cols-12 gap-x-gutter pb-6">
+                    <div className="col-span-12 grid max-w-[46ch] gap-2 text-body font-retina md:col-span-8 md:col-start-2">
+                      {item.body.map((line, j) => (
+                        <li key={j} className="grid grid-cols-[2ch_1fr] gap-3">
+                          <span className="tnum text-ink-2">{j + 1}</span>
+                          <span>{line}</span>
+                        </li>
+                      ))}
+                    </div>
                   </ol>
                 </motion.div>
               ) : null}
