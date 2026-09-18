@@ -1,7 +1,32 @@
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const haussFile = path.join(here, "app/fonts/private/AtHaussVARVF.woff2");
+const useHauss = process.env.SITE_FONT === "hauss" && existsSync(haussFile);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // The site lives under wirwilden.de/johannes (fallback wilderserver.de/johannes).
   basePath: "/johannes",
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "lastfm.freetls.fastly.net" },
+      { protocol: "https", hostname: "lastfm-img.freetls.fastly.net" },
+    ],
+  },
+  webpack(config) {
+    if (useHauss) {
+      // Swap the font module for the licensed At Haüss (see app/fonts/LICENSE-NOTE.md).
+      config.resolve.alias[path.join(here, "app/fonts.ts")] = path.join(here, "app/fonts.hauss.ts");
+    }
+    // The alias is not part of webpack's persistent cache key; key it on the font choice.
+    if (config.cache && typeof config.cache === "object") {
+      config.cache.version = `${config.cache.version ?? ""}-font-${useHauss ? "hauss" : "hanken"}`;
+    }
+    return config;
+  },
   async redirects() {
     return [
       // Temporary until a family landing page exists at the root.

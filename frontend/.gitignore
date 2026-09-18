@@ -34,3 +34,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Licensed fonts (At Hauss, Only-designers EULA: not for public sites, never commit)
+app/fonts/private/
