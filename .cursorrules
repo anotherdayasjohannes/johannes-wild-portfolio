@@ -10,17 +10,17 @@
 ## Struktur
 ```
 frontend/
-├── app/            # Routen, fonts.ts (Weiche), fonts.hauss.ts, fonts.hanken.ts, globals.css
-├── components/     # layout/, sections/, ui/, motion/
+├── app/            # page.tsx = Familie (/), johannes/ = persönliche Seite, impressum/, datenschutz/, sitemap.ts, robots.ts, fonts.ts (Weiche)
+├── components/     # family/, layout/, sections/, ui/, motion/
 ├── content/        # Texte und Daten mit Typen (types.ts)
 ├── lib/            # paths.ts, wildwuchs/ (Server-Fetches)
 └── public/         # photos/, projects/
 ```
 
 ## Entwicklung
-- `cd frontend && npm run dev` startet auf http://localhost:3100/johannes (`basePath: "/johannes"`)
-- Statische Assets immer über `asset()` aus `lib/paths.ts`; `next/image` stellt den `basePath` nicht voran. `next/link` tut es selbst.
-- Canonical-URLs über `canonical()` aus `lib/paths.ts`
+- `cd frontend && npm run dev`: http://localhost:3100 (Familie), http://localhost:3100/johannes (Johannes). Kein `basePath`.
+- Interne Links zur persönlichen Seite immer mit `/johannes`-Präfix (`content/site.ts`); Assets über `asset()` aus `lib/paths.ts` (derzeit Identität).
+- Canonicals: `canonical()` für `/johannes/*`, `rootCanonical()` für `/`, `/impressum`, `/datenschutz`.
 - `npm run lint` und `npm run build` müssen vor einem Commit grün sein
 
 ## Schrift
@@ -40,6 +40,10 @@ frontend/
 ## Motion
 - Nur über Varianten aus `components/motion/variants.ts`; `useReducedMotion` in jeder Komponente.
 - Erlaubt: WILD-Rise-in mit Gewichtsanlauf 100 → 600, `FadeUp`, `Stagger`/`StaggerItem` für Listen, 2 % Bild-Zoom über 2 s, Unterstreichung 0,3 s. Nichts darüber hinaus.
+
+## Familienseite (/)
+- Inhalte in `content/family.ts`. Kinder: nur Vornamen und „folgt“, keine Fotos, Alter, Schule, Verein, keine Unterseiten (falls doch: `robots: { index: false }`, nicht in `sitemap.ts`). Titel und Beschreibung der Root ohne Kindernamen.
+- Kachelfarben `--tile-hellblau/orange/rose/gruen`, Tinte `--tile-ink` (#111, auch dunkel). Die Farbfläche ist die eine Ausnahme vom 3-%-Budget.
 
 ## Wildwuchs
 - Statische Kacheln aus `content/wildwuchs.ts`. Live-Kacheln nur serverseitig (`lib/wildwuchs/*`), `revalidate`, Timeout 3 s, `null` bei Fehler → Kachel entfällt.

@@ -39,19 +39,19 @@ export const family = {
 };
 
 export const nav: NavItem[] = [
-  { label: "Profil", href: "/#profil" },
-  { label: "Stationen", href: "/#stationen" },
-  { label: "Projekte", href: "/#projekte" },
-  { label: "Wildwuchs", href: "/#wildwuchs" },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Profil", href: "/johannes#profil" },
+  { label: "Stationen", href: "/johannes#stationen" },
+  { label: "Projekte", href: "/johannes#projekte" },
+  { label: "Wildwuchs", href: "/johannes#wildwuchs" },
+  { label: "Kontakt", href: "/johannes#kontakt" },
 ];
 
 export const footerPages: NavItem[] = [
-  { label: "Profil", href: "/#profil" },
-  { label: "Stationen", href: "/#stationen" },
-  { label: "Projekte", href: "/#projekte" },
-  { label: "Wildwuchs", href: "/#wildwuchs" },
-  { label: "Trainer-Abrechnung", href: "/trainer-abrechnung" },
+  { label: "Profil", href: "/johannes#profil" },
+  { label: "Stationen", href: "/johannes#stationen" },
+  { label: "Projekte", href: "/johannes#projekte" },
+  { label: "Wildwuchs", href: "/johannes#wildwuchs" },
+  { label: "Trainer-Abrechnung", href: "/johannes/trainer-abrechnung" },
 ];
 
 export const footerLinks: NavItem[] = [
@@ -68,8 +68,8 @@ export const photos = {
     height: 1600,
   },
   about: {
-    src: "/photos/0050_3lectrify.webp",
-    alt: "Johannes Wild im Gespräch mit einem Kollegen am Tisch, Laptop und Kaffee",
+    src: "/photos/0087_3lectrify.webp",
+    alt: "Johannes Wild in einer Besprechung mit Kolleginnen und Kollegen am Holztisch, Pläne und Laptops",
     width: 1400,
     height: 934,
   },

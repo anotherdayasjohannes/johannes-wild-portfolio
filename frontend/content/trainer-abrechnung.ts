@@ -4,7 +4,7 @@ export const trainerTool = {
   label: "Projekt",
   name: "SCR Trainer-Abrechnung",
   tagline: "Stunden- und Unkostenabrechnung in einer App. Auf dem Gerät, offline.",
-  href: "/trainer-abrechnung",
+  href: "/johannes/trainer-abrechnung",
   appUrl: "https://scr-trainer-abrechnung.vercel.app",
   repoUrl: "https://github.com/anotherdayasjohannes/scr-trainer-abrechnung",
   screenshot: {

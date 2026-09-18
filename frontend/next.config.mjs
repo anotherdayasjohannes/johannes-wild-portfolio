@@ -8,8 +8,7 @@ const useHauss = process.env.SITE_FONT === "hauss" && existsSync(haussFile);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The site lives under wirwilden.de/johannes (fallback wilderserver.de/johannes).
-  basePath: "/johannes",
+  // wirwilden.de: family page at /, personal site under /johannes (app/johannes).
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "lastfm.freetls.fastly.net" },
@@ -28,14 +27,10 @@ const nextConfig = {
     return config;
   },
   async redirects() {
+    // Legal pages belong to the domain and live at the root.
     return [
-      // Temporary until a family landing page exists at the root.
-      {
-        source: "/",
-        destination: "/johannes",
-        basePath: false,
-        permanent: false,
-      },
+      { source: "/johannes/impressum", destination: "/impressum", permanent: true },
+      { source: "/johannes/datenschutz", destination: "/datenschutz", permanent: true },
     ];
   },
 };

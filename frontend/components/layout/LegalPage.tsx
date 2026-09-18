@@ -1,4 +1,4 @@
-import { Header } from "@/components/layout/Header";
+import { FamilyFooter, FamilyHeader } from "@/components/family/FamilyFrame";
 import { PageIntro } from "@/components/layout/PageIntro";
 import type { LegalSection } from "@/content/types";
 
@@ -10,11 +10,12 @@ type LegalPageProps = {
   updated?: string;
 };
 
+/** Domain-level legal page: family wordmark frame, same tokens as the rest. */
 export function LegalPage({ label, title, intro, sections, updated }: LegalPageProps) {
   return (
-    <>
-      <Header />
-      <main>
+    <div className="flex min-h-svh flex-col">
+      <FamilyHeader />
+      <main className="flex-1">
         <PageIntro label={label} tone="admin" title={title} lead={intro} hint={updated} />
         <div className="mt-step px-gutter">
           <div className="border-t border-line">
@@ -55,6 +56,9 @@ export function LegalPage({ label, title, intro, sections, updated }: LegalPageP
           </div>
         </div>
       </main>
-    </>
+      <div className="pt-footer">
+        <FamilyFooter />
+      </div>
+    </div>
   );
 }

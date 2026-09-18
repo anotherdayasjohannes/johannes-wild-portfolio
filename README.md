@@ -1,6 +1,6 @@
 # Johannes Wild – Website
 
-Persönliche Website von Johannes Wild und Landing Page für die SCR Trainer-Abrechnung. Neustart im September 2026 auf einem frischen Next.js-Fundament, Gestaltung „München 72“ (Aicher-Kennfarben, Rams-Zurückhaltung) mit „Anthrazit“ als Dark Mode.
+Website unter wirwilden.de: Startseite der Familie Wild (vier Kacheln) unter `/`, persönliche Seite von Johannes Wild unter `/johannes`, Landing Page für die SCR Trainer-Abrechnung, Impressum und Datenschutz für die ganze Domain. Neustart im September 2026 auf einem frischen Next.js-Fundament, Gestaltung „München 72“ (Aicher-Kennfarben, Rams-Zurückhaltung) mit „Anthrazit“ als Dark Mode.
 
 ## Stack
 
@@ -15,11 +15,11 @@ Persönliche Website von Johannes Wild und Landing Page für die SCR Trainer-Abr
 
 ```
 frontend/
-├── app/            # Routen: /, /trainer-abrechnung, /impressum, /datenschutz; fonts.ts als Schrift-Weiche
-├── components/     # layout/, sections/ (Hero, Testimonials, Wildwuchs), ui/, motion/
-├── content/        # Texte, Stationen, Projekte, Stimmen, Wildwuchs, Rechtliches (TS)
-├── lib/            # paths.ts (basePath, asset(), canonical()), wildwuchs/lastfm.ts
-└── public/         # photos/ (Fotos: Bernhard Huber), projects/ (Screenshots, WebP)
+├── app/            # /, /johannes, /johannes/trainer-abrechnung, /impressum, /datenschutz, sitemap, robots; fonts.ts als Schrift-Weiche
+├── components/     # family/ (Kacheln, Rahmen), layout/, sections/ (Hero, Testimonials, Wildwuchs), ui/, motion/
+├── content/        # family.ts, site.ts, Stationen, Projekte, Stimmen, Wildwuchs, Rechtliches (TS)
+├── lib/            # paths.ts (asset(), canonical(), rootCanonical()), wildwuchs/lastfm.ts
+└── public/         # photos/ (Porträts, Fotos: Bernhard Huber; family/), projects/ (Screenshots, WebP)
 docs/               # Ältere Projektdokumentation
 ```
 
@@ -29,14 +29,14 @@ docs/               # Ältere Projektdokumentation
 cd frontend
 npm install
 cp .env.local.example .env.local   # optional: Last.fm-Zugang eintragen
-npm run dev                        # http://localhost:3100/johannes
+npm run dev                        # http://localhost:3100 (Familie), /johannes (Johannes)
 npm run lint
 npm run build
 ```
 
-Port 3100 ist fest eingestellt. Die Seite läuft unter dem Pfad `/johannes` (`basePath` in `next.config.mjs`); `/` leitet vorerst dorthin weiter. Statische Bilder werden über `asset()` aus `lib/paths.ts` eingebunden, da `next/image` den `basePath` nicht selbst voranstellt.
+Port 3100 ist fest eingestellt. Kein `basePath`: die Familienseite liegt in `app/page.tsx`, alles Persönliche in `app/johannes/` mit eigenem Layout. `/johannes/impressum` und `/johannes/datenschutz` leiten auf die Root-Seiten um. `asset()` in `lib/paths.ts` ist derzeit die Identität und bleibt als zentrale Stelle für Asset-Pfade; `canonical()` präfixt persönliche Routen mit `/johannes`, `rootCanonical()` gilt für Domain-Seiten.
 
-Produktiv: `https://wirwilden.de/johannes` (Fallback `wilderserver.de/johannes`).
+Produktiv: `https://wirwilden.de` und `https://wirwilden.de/johannes`.
 
 ### Schrift
 
@@ -61,6 +61,9 @@ Lokal in `frontend/.env.local` (gitignored, Vorlage `.env.local.example`). Produ
 
 ## Gestaltung
 
+Startseite: 2 × 2 Kacheln, eine Farbe pro Person (Hellblau, Orange, Rosé, Grün aus der erweiterten 1972-Palette, `--tile-*`), Tinte `#111` auf allen Kacheln auch im Dark Mode. Kinder nur mit Vornamen und „folgt“, keine Fotos, keine Unterseiten, keine Namen in Titel oder Beschreibung.
+
+Persönliche Seite: 
 Farbe ist Information: Orange kennzeichnet Arbeit (Stationen, Projekte), Rosé Persönliches (Wildwuchs, wir Wilden), Grau Verwaltung. Akzente tragen nie einen Satz. Ein lautes Element pro Seite: der orange Punkt hinter WILD. Raster: 12 Spalten, 30 px Gutter, keine maximale Breite. Schriftgrößen 15 · 21 · 34, Zeilenhöhen 1,0 · 1,3 · 1,5.
 
 ## Inhalte pflegen

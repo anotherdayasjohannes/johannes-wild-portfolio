@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
 import { datenschutz } from "@/content/legal";
-import { canonical } from "@/lib/paths";
+import { rootCanonical } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: datenschutz.title,
-  alternates: { canonical: canonical("/datenschutz") },
+  alternates: { canonical: rootCanonical("/datenschutz") },
 };
 
 export default function DatenschutzPage() {

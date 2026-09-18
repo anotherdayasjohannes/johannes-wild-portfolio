@@ -25,6 +25,11 @@ const config: Config = {
       signal: "var(--signal)",
       blue: "var(--blue)",
       "blue-text": "var(--blue-text)",
+      "tile-hellblau": "var(--tile-hellblau)",
+      "tile-orange": "var(--tile-orange)",
+      "tile-rose": "var(--tile-rose)",
+      "tile-gruen": "var(--tile-gruen)",
+      "tile-ink": "var(--tile-ink)",
     },
     borderRadius: {
       none: "0",
