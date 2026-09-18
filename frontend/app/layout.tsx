@@ -17,8 +17,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: family.title,
+    title: family.title,
+    description: family.description,
     url: rootCanonical("/"),
   },
+  twitter: { card: "summary_large_image", title: family.title, description: family.description },
 };
 
 export const viewport: Viewport = {

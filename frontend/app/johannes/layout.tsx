@@ -14,8 +14,11 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: site.name,
+    title: site.name,
+    description: site.positioning,
     url: canonical("/"),
   },
+  twitter: { card: "summary_large_image", title: site.name, description: site.positioning },
 };
 
 /** Personal site under /johannes: pages render their own Header, the Footer is shared. */

@@ -18,3 +18,10 @@ modifying the files.
 
 Committed fallback, loaded by `app/fonts.hanken.ts` via `next/font/google`
 (variable weight 100–900). Used whenever `SITE_FONT` is not `hauss`.
+
+## Hanken Grotesk statics for Open Graph images
+
+`app/fonts/og/HankenGrotesk-Regular.ttf` and `-SemiBold.ttf` (Google Fonts,
+SIL Open Font License 1.1) are bundled because `next/og` (Satori) needs
+TTF/OTF/WOFF and At Haüss exists only as WOFF2. Used by
+`app/opengraph-image.tsx` and `app/johannes/opengraph-image.tsx`.
