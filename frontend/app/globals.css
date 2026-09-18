@@ -22,6 +22,14 @@
   --blue-text: #1f6a96; /* inline links in running text */
   --photo-filter: none;
 
+  /* Family tiles: extended 1972 palette, one colour = one person. Ink #111 on
+     every tile (≥ 7:1) and unchanged in dark mode. */
+  --tile-hellblau: #71bcdf; /* Sandra Maria */
+  --tile-orange: #f3821d; /* Johannes: orange = work, links to /johannes */
+  --tile-rose: #f471aa; /* Valentin Maria */
+  --tile-gruen: #8dc168; /* Leonie */
+  --tile-ink: #111111;
+
   /* Type scale 15 · 21 · 34 (1 : 1.4 : 2.27); mobile ×0.8 */
   --fs-ui: 0.9375rem;
   --fs-body: 1.3125rem;
