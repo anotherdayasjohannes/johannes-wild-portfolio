@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Footer } from "@/components/layout/Footer";
-import { site } from "@/content/site";
-import { canonical, SITE_ORIGIN } from "@/lib/paths";
+import { family } from "@/content/family";
+import { rootCanonical, SITE_ORIGIN } from "@/lib/paths";
 import { sans } from "./fonts";
 import "./globals.css";
 
+// Domain-level metadata: no first names of the children anywhere.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
   title: {
-    default: site.title,
-    template: `%s · ${site.name}`,
+    default: family.title,
+    template: `%s · ${family.title}`,
   },
-  description: site.description,
-  alternates: { canonical: canonical("/") },
+  description: family.description,
+  alternates: { canonical: rootCanonical("/") },
   openGraph: {
     type: "website",
     locale: "de_DE",
-    siteName: site.name,
-    url: canonical("/"),
+    siteName: family.title,
+    url: rootCanonical("/"),
   },
 };
 
@@ -35,10 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={sans.variable}>
-      <body className="flex min-h-svh flex-col">
-        <div className="flex-1">{children}</div>
-        <Footer />
-      </body>
+      <body className="flex min-h-svh flex-col">{children}</body>
     </html>
   );
 }

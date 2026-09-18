@@ -31,7 +31,7 @@ const addressLine = `${legalContact.name}, ${legalContact.street}, ${legalContac
 
 export const impressum = {
   title: "Impressum",
-  intro: "Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV.",
+  intro: "Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV. Gilt für wirwilden.de einschließlich der Seiten unter /johannes.",
   sections: [
     {
       heading: "Anbieter",
@@ -99,7 +99,7 @@ export const impressum = {
 export const datenschutz = {
   title: "Datenschutzerklärung",
   intro:
-    "Diese Erklärung informiert darüber, welche personenbezogenen Daten beim Besuch dieser Website verarbeitet werden, zu welchem Zweck und welche Rechte Sie haben.",
+    "Diese Erklärung gilt für wirwilden.de einschließlich der Seiten unter /johannes. Sie informiert darüber, welche personenbezogenen Daten beim Besuch verarbeitet werden, zu welchem Zweck und welche Rechte Sie haben.",
   sections: [
     {
       heading: "1. Verantwortlicher",

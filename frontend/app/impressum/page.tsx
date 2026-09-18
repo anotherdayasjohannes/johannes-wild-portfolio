@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/layout/LegalPage";
 import { impressum, legalUpdated } from "@/content/legal";
-import { canonical } from "@/lib/paths";
+import { rootCanonical } from "@/lib/paths";
 
 export const metadata: Metadata = {
   title: impressum.title,
-  alternates: { canonical: canonical("/impressum") },
+  alternates: { canonical: rootCanonical("/impressum") },
 };
 
 export default function ImpressumPage() {

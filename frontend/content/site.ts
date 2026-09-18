@@ -39,19 +39,19 @@ export const family = {
 };
 
 export const nav: NavItem[] = [
-  { label: "Profil", href: "/#profil" },
-  { label: "Stationen", href: "/#stationen" },
-  { label: "Projekte", href: "/#projekte" },
-  { label: "Wildwuchs", href: "/#wildwuchs" },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Profil", href: "/johannes#profil" },
+  { label: "Stationen", href: "/johannes#stationen" },
+  { label: "Projekte", href: "/johannes#projekte" },
+  { label: "Wildwuchs", href: "/johannes#wildwuchs" },
+  { label: "Kontakt", href: "/johannes#kontakt" },
 ];
 
 export const footerPages: NavItem[] = [
-  { label: "Profil", href: "/#profil" },
-  { label: "Stationen", href: "/#stationen" },
-  { label: "Projekte", href: "/#projekte" },
-  { label: "Wildwuchs", href: "/#wildwuchs" },
-  { label: "Trainer-Abrechnung", href: "/trainer-abrechnung" },
+  { label: "Profil", href: "/johannes#profil" },
+  { label: "Stationen", href: "/johannes#stationen" },
+  { label: "Projekte", href: "/johannes#projekte" },
+  { label: "Wildwuchs", href: "/johannes#wildwuchs" },
+  { label: "Trainer-Abrechnung", href: "/johannes/trainer-abrechnung" },
 ];
 
 export const footerLinks: NavItem[] = [

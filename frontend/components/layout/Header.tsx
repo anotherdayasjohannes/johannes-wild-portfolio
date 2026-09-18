@@ -13,7 +13,7 @@ export function Header({ overlay = false }: HeaderProps) {
         aria-label="Hauptnavigation"
         className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 p-gutter text-body font-retina leading-tight"
       >
-        <Link href="/" className="u text-ink-2 [--u-color:var(--ink)]">
+        <Link href="/johannes" className="u text-ink-2 [--u-color:var(--ink)]">
           {site.wordmark}
         </Link>
         <ul className="order-3 flex w-full flex-wrap gap-x-5 gap-y-2 md:order-none md:w-auto md:gap-7">

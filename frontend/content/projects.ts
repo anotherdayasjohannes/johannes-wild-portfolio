@@ -104,7 +104,7 @@ export const projects: Project[] = [
     summary:
       "Trainer des Skiclub Reichersbeuern füllten für Stunden- und Unkostenabrechnung zwei Excel-Dateien mit denselben Daten doppelt aus. Die gerätelokale PWA erfasst jedes Training einmal, berechnet Fahrtkosten automatisch und erzeugt beide Formulare druckfertig. Ohne Server, ohne Login, alle Daten bleiben auf dem Gerät.",
     tags: ["React", "TypeScript", "Vite", "PWA", "Offline-first", "Ehrenamt"],
-    url: "/trainer-abrechnung",
+    url: "/johannes/trainer-abrechnung",
     image: {
       src: "/projects/scr-trainer-abrechnung.webp",
       alt: "Übersicht der SCR Trainer-Abrechnung auf dem Desktop",
