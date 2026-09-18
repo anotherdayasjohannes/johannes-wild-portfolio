@@ -14,6 +14,7 @@ export type FamilyMember = {
   sub?: string;
   /** Small text top right of the tile. */
   head?: string;
+  /** Square, 800 × 800 WebP in public/photos/family/. Optional, so the children can get one later. */
   portrait?: { src: string; alt: string };
 };
 
@@ -42,6 +43,7 @@ export const family = {
       href: "/johannes",
       head: "wirwilden.de/johannes",
       sub: "Trainer, Berater, Mitgründer",
+      portrait: { src: "/photos/family/johannes.webp", alt: "Johannes Wild, Porträt" },
     },
     // Children: first names only, no photos, no details, no sub-pages.
     {

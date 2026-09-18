@@ -51,7 +51,7 @@ function Tile({ member, index }: { member: FamilyMember; index: number }) {
     <>
       <div className="flex items-start justify-between gap-4 text-ui font-medium leading-tight">
         <span className="tnum">{num}</span>
-        {member.head ? (
+        {member.head && !member.portrait ? (
           <span>
             <span className="hidden md:inline">{member.head.replace(/\/johannes$/, "")}</span>/johannes
           </span>
