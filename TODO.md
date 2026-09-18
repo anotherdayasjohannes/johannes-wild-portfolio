@@ -31,7 +31,6 @@ Phasen nach dem Restart-Proposal (Sep 2026), ergänzt um den Redesign-Durchgang 
 - [x] Wildwuchs: Helden, Dinge die bleiben, einer der Wilden, Last.fm „Gerade gehört“ (nur mit Env)
 - [x] Rechts- und Trainer-Seiten auf die neuen Tokens
 - [ ] WILD-Gewicht bestätigen: 600 (gebaut) oder 500 (Vergleichs-Screenshot)
-- [ ] „Dinge, die bleiben“: Modelle und Jahre von Johannes
 - [ ] At Haüss Web-Lizenz kaufen oder Hanken Grotesk akzeptieren
 - [ ] Weitere Live-Kacheln: Discogs (Token), Strava (OAuth), siehe Konzept
 - [ ] Namensspiel „Vertikal“ (WILD im linken Rand der Unterseiten), optional

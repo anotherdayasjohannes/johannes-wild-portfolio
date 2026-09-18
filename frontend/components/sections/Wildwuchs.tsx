@@ -48,7 +48,9 @@ export async function Wildwuchs() {
             {wildwuchs.dinge.items.map((d) => (
               <li key={d.thing} className="flex items-baseline gap-4 border-t border-line py-2.5">
                 <span className="font-normal">{d.thing}</span>
-                {d.since ? <span className="tnum ml-auto text-ui font-retina text-ink-2">{d.since}</span> : null}
+                {d.detail ? (
+                  <span className="ml-auto text-right text-ui font-retina text-ink-2">{d.detail}</span>
+                ) : null}
               </li>
             ))}
           </ul>

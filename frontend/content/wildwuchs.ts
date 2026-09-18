@@ -10,17 +10,17 @@ export const wildwuchs = {
       { name: "Dieter Rams", note: "Weniger" },
       { name: "Bauhaus", note: "Form folgt" },
       { name: "Gmund Papier", note: "Material" },
+      // Name only: Apple's trademark guidelines do not allow third parties to use the logo.
+      { name: "Apple", note: "Einfachheit" },
     ],
   },
   dinge: {
     label: "Dinge, die bleiben",
-    // TODO: Modelle und Jahre mit Johannes abstimmen.
     items: [
-      { thing: "Buchardt Lautsprecher", since: "2022" },
-      { thing: "Roon Server", since: "2019" },
-      { thing: "Atomic Ski, Head Schuhe", since: null },
-      { thing: "VW Bus, elektrisch", since: null },
-      { thing: "Apple, seit dem ersten iBook", since: null },
+      { thing: "Musik und Hifi", detail: "Vinyl, Roon, Buchardt" },
+      { thing: "Outdoor-Enthusiast", detail: "Trailrunning, Skifahren, MTB" },
+      { thing: "Familie und Freunde", detail: null },
+      { thing: "Heimat", detail: "Reichersbeuern, Oberbayern" },
     ],
   },
   gehoert: {
