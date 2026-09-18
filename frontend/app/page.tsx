@@ -42,13 +42,13 @@ export default function HomePage() {
               </div>
             </FadeUp>
             <FadeUp className="col-span-12 md:col-span-6">
-              <figure className="tile aspect-square">
+              <figure className="tile aspect-[3/2]">
                 <Image
                   src={asset(photos.about.src)}
                   alt={photos.about.alt}
                   fill
                   sizes="(min-width: 810px) 50vw, 100vw"
-                  className="object-cover object-[62%_30%]"
+                  className="object-cover"
                 />
               </figure>
             </FadeUp>

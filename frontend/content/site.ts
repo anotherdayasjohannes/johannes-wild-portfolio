@@ -68,9 +68,9 @@ export const photos = {
     height: 1600,
   },
   about: {
-    src: "/photos/0255_3lectrify-ret1.jpg",
-    alt: "Johannes Wild, ruhiges Porträt",
-    width: 1600,
-    height: 1067,
+    src: "/photos/0050_3lectrify.webp",
+    alt: "Johannes Wild im Gespräch mit einem Kollegen am Tisch, Laptop und Kaffee",
+    width: 1400,
+    height: 934,
   },
 } satisfies Record<string, Photo>;
