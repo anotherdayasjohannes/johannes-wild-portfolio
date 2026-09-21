@@ -39,6 +39,8 @@
   --fs-mark: 4rem;
 
   --gutter: 30px;
+  /* Header line: gutter + 21 px text + gutter. Hero and portrait cap subtract it. */
+  --header-h: 81px;
 }
 
 @media (prefers-color-scheme: dark) {

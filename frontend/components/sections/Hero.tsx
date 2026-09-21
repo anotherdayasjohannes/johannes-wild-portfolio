@@ -20,15 +20,16 @@ const WILD_WEIGHT = 600;
 /**
  * Typographic hero on the 12-column module: JOHANNES label, WILD with the
  * orange full stop (the one signal element on the page), claim, role line.
- * Portrait as a framed 4:5 tile in columns 8–12, bottom-aligned with the type.
+ * Portrait as a framed 4:5 tile in columns 8–12, bottom-aligned with the type;
+ * on very wide screens its width is capped so it never grows past the hero height.
  */
 export function Hero({ firstName, surname, fullName, claim, roleLine, portrait }: HeroProps) {
   const reduceMotion = useReducedMotion();
   const v = (delay: number) => (reduceMotion ? undefined : fadeUpAt(delay));
 
   return (
-    <section className="relative md:h-screen md:min-h-hero">
-      <div className="grid h-full grid-cols-12 items-end gap-x-gutter gap-y-10 px-gutter pb-gutter pt-32 md:pt-0">
+    <section className="relative md:h-[calc(100svh-var(--header-h))] md:min-h-hero">
+      <div className="grid h-full grid-cols-12 items-end gap-x-gutter gap-y-10 px-gutter pb-gutter pt-6 md:pt-0">
         <div className="order-2 col-span-12 self-end md:order-1 md:col-span-7">
           <motion.p
             className="case mb-5 text-body font-medium uppercase tracking-[0.14em] text-ink-2 md:mb-7"
@@ -76,7 +77,7 @@ export function Hero({ firstName, surname, fullName, claim, roleLine, portrait }
         </div>
 
         <motion.figure
-          className="tile order-1 col-span-12 aspect-[4/5] md:order-2 md:col-span-5"
+          className="tile order-1 col-span-12 aspect-[4/5] md:order-2 md:col-span-5 md:w-full md:max-w-[calc((100svh-var(--header-h)-2*var(--gutter))*0.8)] md:justify-self-end"
           initial={reduceMotion ? false : { opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
