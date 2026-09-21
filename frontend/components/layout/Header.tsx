@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { family, nav, site } from "@/content/site";
 
-type HeaderProps = {
-  /** Over the hero the header floats; on inner pages it sits in the flow. */
-  overlay?: boolean;
-};
-
-export function Header({ overlay = false }: HeaderProps) {
+/**
+ * Always in normal flow on the page background, so the nav never sits on a
+ * photo. The hero subtracts the header height (--header-h) from the viewport.
+ */
+export function Header() {
   return (
-    <header className={`${overlay ? "absolute inset-x-0 top-0 z-20" : "relative"}`}>
+    <header className="relative md:h-[var(--header-h)]">
       <nav
         aria-label="Hauptnavigation"
         className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 p-gutter text-body font-retina leading-tight"

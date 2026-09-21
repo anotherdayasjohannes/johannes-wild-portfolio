@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Header overlay />
+      <Header />
       <main>
         <Hero
           firstName={site.firstName}
