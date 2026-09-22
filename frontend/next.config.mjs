@@ -36,8 +36,17 @@ const nextConfig = {
       permanent: false,
     }));
 
+    // The old WordPress host: every legacy link lands on the personal site, for good.
+    const wilderserver = {
+      source: "/:path*",
+      has: [{ type: "host", value: "(www\\.)?wilderserver\\.de" }],
+      destination: "https://www.wirwilden.de/johannes",
+      permanent: true,
+    };
+
     return [
       ...kidsDomains,
+      wilderserver,
       // Legal pages belong to the domain and live at the root.
       { source: "/johannes/impressum", destination: "/impressum", permanent: true },
       { source: "/johannes/datenschutz", destination: "/datenschutz", permanent: true },
