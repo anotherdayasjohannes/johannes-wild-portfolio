@@ -27,8 +27,18 @@ const nextConfig = {
     return config;
   },
   async redirects() {
-    // Legal pages belong to the domain and live at the root.
+    // The children's domains point at this project and send every request to the
+    // family root for now (307, so they can get their own pages later).
+    const kidsDomains = ["valentinwild\\.de", "leoniewild\\.de"].map((host) => ({
+      source: "/:path*",
+      has: [{ type: "host", value: `(www\\.)?${host}` }],
+      destination: "https://www.wirwilden.de/",
+      permanent: false,
+    }));
+
     return [
+      ...kidsDomains,
+      // Legal pages belong to the domain and live at the root.
       { source: "/johannes/impressum", destination: "/impressum", permanent: true },
       { source: "/johannes/datenschutz", destination: "/datenschutz", permanent: true },
     ];
