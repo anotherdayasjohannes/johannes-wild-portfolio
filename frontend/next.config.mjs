@@ -36,17 +36,17 @@ const nextConfig = {
       permanent: false,
     }));
 
-    // The old WordPress host: every legacy link lands on the personal site, for good.
-    const wilderserver = {
+    // Legacy hosts (old WordPress, old brand): every link lands on the personal site, for good.
+    const legacyHosts = ["wilderserver\\.de", "dasnachtwerk\\.de"].map((host) => ({
       source: "/:path*",
-      has: [{ type: "host", value: "(www\\.)?wilderserver\\.de" }],
+      has: [{ type: "host", value: `(www\\.)?${host}` }],
       destination: "https://www.wirwilden.de/johannes",
       permanent: true,
-    };
+    }));
 
     return [
       ...kidsDomains,
-      wilderserver,
+      ...legacyHosts,
       // Legal pages belong to the domain and live at the root.
       { source: "/johannes/impressum", destination: "/impressum", permanent: true },
       { source: "/johannes/datenschutz", destination: "/datenschutz", permanent: true },
