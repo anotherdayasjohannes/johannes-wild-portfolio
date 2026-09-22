@@ -38,6 +38,18 @@ Port 3100 ist fest eingestellt. Kein `basePath`: die Familienseite liegt in `app
 
 Produktiv: `https://wirwilden.de` und `https://wirwilden.de/johannes`.
 
+## Domains
+
+| Domain | Ziel |
+|---|---|
+| `wirwilden.de`, `www.wirwilden.de` | diese App (Familie unter `/`, Johannes unter `/johannes`) |
+| `valentinwild.de`, `leoniewild.de` (je mit `www`) | 307 auf `https://www.wirwilden.de/`, solange die Kinder keine eigenen Seiten haben |
+| `wilderserver.de`, `www.wilderserver.de` | 308 auf `https://www.wirwilden.de/johannes`; alte Lebenslauf- und LinkedIn-Links landen dauerhaft auf der persönlichen Seite |
+
+Die Host-Regeln stehen in `next.config.mjs` (`redirects()` mit `has: host`).
+
+Alle Domains hängen am selben Vercel-Projekt; DNS jeweils `@` A-Record auf Vercel, `www` CNAME auf das von Vercel angezeigte Ziel. Ein Hosting-Paket wird für keine der Domains benötigt.
+
 ### Schrift
 
 Standard ist Hanken Grotesk. Mit der lizenzierten At Haüss baut man lokal so:

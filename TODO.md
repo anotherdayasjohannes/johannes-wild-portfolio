@@ -50,7 +50,8 @@ Phasen nach dem Restart-Proposal (Sep 2026), ergänzt um den Redesign-Durchgang 
 - [ ] Vercel Deployment Protection für Produktion lockern oder Custom Domain anbinden
 - [ ] Falls Fallback: DNS bei netcup auf Vercel umstellen, UCS-Portal nach `ucs.wilderserver.de`
 - [ ] WordPress-Container in Univention entfernen
-- [ ] GoDaddy-Hosting für `wirwilden.de` kündigen, Mail und Hochzeits-Redirect behalten
+- [ ] GoDaddy-Hosting für `wirwilden.de` kündigen, Mail (iCloud) behalten
+- [ ] `valentinwild.de` und `leoniewild.de` im Vercel-Projekt anlegen, DNS bei GoDaddy umstellen
 - [ ] Zugänglichkeits- und Performance-Check (Lighthouse)
 
 ## Später
